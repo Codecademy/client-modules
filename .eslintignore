@@ -6,4 +6,3 @@ docs
 **/*.d.ts
 **/dist
 **/tmp
-packages/gamut-icons/src/icons
