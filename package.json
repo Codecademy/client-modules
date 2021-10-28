@@ -11,10 +11,10 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
+    "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\" --max-warnings 0",
     "lint:fix": "yarn lint --fix",
     "lerna": "lerna",
-    "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
+    "prettier": "prettier --ignore-path .prettierignore \"./**/*.{js,ts,tsx,json}\"",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
     "verify-all": "lerna run verify",
@@ -22,17 +22,11 @@
     "clear-modules": "lerna clean -y && rm -rf node_modules",
     "build-all": "lerna run lernaBuildTask",
     "build-changed": "lerna run lernaBuildTask --since --include-dependencies",
-    "start": "yarn && yarn start:storybook",
-    "start:storybook": "cd ./packages/styleguide && yarn start",
-    "build-storybook": "cd ./packages/styleguide && yarn build-storybook",
     "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist"
   },
   "lint-staged": {
-    "**/*.{mdx,js,ts,tsx,json}": [
+    "**/*.{js,ts,tsx,json}": [
       "eslint-fix",
-      "prettier --ignore-path .prettierignore --write"
-    ],
-    "**/*.{css,scss}": [
       "prettier --ignore-path .prettierignore --write"
     ]
   },
@@ -43,12 +37,6 @@
   "workspaces": {
     "packages": [
       "packages/*"
-    ],
-    "nohoist": [
-      "**/@storybook",
-      "**/@storybook/**",
-      "**/storybook-addon-designs",
-      "**/storybook-addon-designs/**"
     ]
   },
   "dependencies": {

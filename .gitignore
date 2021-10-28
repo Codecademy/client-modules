@@ -38,12 +38,6 @@ tmp
 # lerna-changelog cache
 .changelog
 
-# Storybook build
-dist/storybook
-dist/docs
-
-packages/gamut-styles/demo-styles
-
 # For vim users
 *.swp
 *.swo

@@ -8,66 +8,10 @@ _Shared node modules for codecademy.com & co_
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
 
-## Gamut Kit
-
-We provide a single package to manage the versions of a few core dependencies: `gamut`, `gamut-icons`, `gamut-illustrations`, `gamut-labs`, `gamut-patterns`, `gamut-styles`. Since these packages are highly intertwined we suggest only installing `@codecademy/gamut-kit` when your app needs all of these.
-
-[`gamut-kit`: Include in your application instead of the individual packages to simplify version management. ](/packages/gamut-kit/README.md)
-
-- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-kit.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-kit)
-
-1. Run `yarn add @codecademy/gamut-kit`
-2. Add each of the managed packages to your peer dependencies (this is required for enabling intellisense for these packages and does not have any effect on version resolution)
-
-```json
-{
-  "peerDependencies": {
-    "@codecademy/gamut": "*",
-    "@codecademy/gamut-icons": "*",
-    "@codecademy/gamut-patterns": "*",
-    "@codecademy/gamut-illustrations": "*",
-    "@codecademy/gamut-labs": "*",
-    "@codecademy/gamut-styles": "*",
-    "@codecademy/gamut-tests": "*",
-    "@codecademy/variance": "*"
-  }
-}
-```
-
-## Individual Packages
-
-[`gamut`: Our React UI component library](/packages/gamut/README.md)
-
-- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut)
-
-[`gamut-styles`: Utility styles for gamut components and codecademy apps](/packages/gamut-styles/README.md)
-
-- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-styles.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-styles)
-
-[`gamut-icons`: SVG Icons for gamut components and codecademy apps](/packages/gamut-icons/README.md)
-
-- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-icons.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-icons)
-
-[`gamut-labs`: Experimental and brand level components](/packages/gamut-labs/README.md)
-
-- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-labs.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-labs)
-
-[`variance`: TypeScript CSS in JS utility library](/packages/variance/README.md)
-
-- [![npm version](https://badge.fury.io/js/%40codecademy%2Fvariance.svg)](https://badge.fury.io/js/%40codecademy%2Fvariance)
-
-[`styleguide`: Styleguide Documentation & storybook development sandbox](/packages/styleguide/README.md)
-
 ## Local development
 
 1.  Run `yarn` in the root directory
-1.  Run `yarn build-all` (certain packages like `gamut-icons` need to be built to function in storybook)
-
-### Running the storybook styleguide
-
-1.  Run `yarn start` to start the storybook server
-1.  Add new stories to `packages/styleguide/stories`
-1.  Stories are written using storybook's [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/)
+1.  Run `yarn build-all`
 
 ### Publishing Modules
 
@@ -90,101 +34,14 @@ Every PR that changes files in a package publishes alpha releases that you can u
 
 ### Working with pre-published changes
 
-> NOTE: Due to the inconsistencies of symlinks in a lerna repo, _instead_ of using `yarn link`, we recommend using the `npm-link-better` package with the `--copy` flag to copy packages into your local repo's `node_modules` directory.
+For quicker development cycles, it's possible to run a pre-published version of a client-modules package in another project.
+We do that using symlinks (the following instructions assume you have set up and built client-modules):
 
-**Initial Setup:**
-
-1. Ensure you have npm-link-better installed: `npm install -g npm-link-better`
-1. Ensure you've built the entire `client-modules` repo since you last synced: `yarn build-all`
-
-**Instructions:**
-
-For each of your local `client-modules` packages (e.g. `gamut`), you'll need to do 2 things to get it working in your project:
-
-1. Make sure your package changes have been built into the `client-modules/packages/[package]/dist` folder.
-
-   - `yarn build`<br/>or<br/>
-     `yarn build:watch` (not all packages support this yet)
-
-1. Copy that built `/dist` folder to your project's `node_modules/@codecademy/[package]` folder.
-   ```bash
-   cd myProjectRepo
-   npm-link-better --copy --watch path/to/client-modules/packages/[package]
-   ```
-   > NOTE: The `--watch` flag will automatically copy your package into `node_modules` everytime it is built.
-
-<details>
-<summary>Example Workflow</summary>
-
-Let's say we are making changes to the `gamut` package, and our app that uses the `gamut` package uses `yarn start` to build, serve, and watch our app for changes.
-
-Let's also assume these two repos are sibling directories inside of a folder called `repos`
-
-```
-repos
-  |- client-modules
-  |- my-app
-```
-
-We would run the following commands in 3 separate shells
-
-```bash
-# Shell 1: Auto-build gamut changes
-cd repos/client-modules/packages/gamut
-yarn build:watch
-
-# Shell 2: Auto-copy built gamut changes to my-app.
-cd repos/my-app
-npm-link-better --copy --watch ../client-modules/packages/gamut
-
-# Shell 3: Auto-update app when anything changes.
-cd repos/my-app
-yarn start
-```
-
-This would allow us to make a change in our `gamut` package, and see that change automatically reflected in our local app in the browser.
-
-</details>
-
-<details>
-  <summary>Troubleshooting</summary>
-
-- If you see compilation issues in your project's dev server after running `npm-link-better`, you may have to restart your app's dev server.
-- If you are seeing compilation issues in a `client-modules` package, you may need to rebuild the whole repository via
-
-  ```bash
-  cd client-modules
-  yarn build-all
-  ```
-
-</details>
-
-<details>
-  <summary>Instructions for using `yarn link` instead (not recommended)</summary>
-
-For quicker development cycles, it's possible to run a pre-published version of Gamut in another project. We do that using
-symlinks (the following instructions assume you have set up and built client-modules):
-
-1. `cd /path/to/client-modules/packages/gamut`
+1. `cd /path/to/client-modules/packages/tracking`
 1. `yarn link`
 1. `cd path/to/other/repo`
-1. `yarn link @codecademy/gamut`
+1. `yarn link @codecademy/tracking`
 1. `yarn install`
-
-If your other project uses React, you must link that copy of React in Gamut:
-
-1. `cd path/to/other/repo`
-1. `cd node_modules/react`
-1. `yarn link`
-1. `cd /path/to/client-modules/packages/gamut`
-1. `yarn link react`
-1. `yarn build-all`
-
-[See the docs](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
-for more information for why you have to do this.
-
-</details>
-<br/>
 
 ### Adding a New Package
 
@@ -196,10 +53,6 @@ for more information for why you have to do this.
 1. Run `yarn lerna bootstrap` from the repository root
 1. Send a `feat` PR adding that package
 1. One merged, message out in our #frontend Slack channel to other client-modules developers to re-run `yarn lerna bootstrap` after they merge from `main`
-
-Notes:
-
-If your package will be used in other packages in the monorepo, you may need to set up aliases in jest and storybook so that they can be run without building your package first. You can find these aliases in [jest.config.js](/jest.config.js) and the [styleguide storybook config](/packages/styleguide/.storybook/main.ts).
 
 ### PR Title Guide
 
@@ -290,7 +143,7 @@ If your changes will require changes in any downstream repositories:
 5. Update your repository PRs to use the new (non-alpha) package versions once published
 6. Merge your repository PRs
 
-This process minimizes the likelihood of accidental breaking changes in Gamut negatively affecting development on our other repositories.
+This process minimizes the likelihood of accidental breaking changes in client-modules negatively affecting development on our other repositories.
 
 **Body**
 
@@ -300,6 +153,3 @@ This goes in the description for your PR, between the `<!--- CHANGELOG-DESCRIPTI
 
 If you include the text `BREAKING CHANGE:` in your description it will trigger a major version bump. We prefer to use the `feat!:` syntax for breaking changes described above.
 
-## Publishing Storybook
-
-Storybook is built and published automatically when there are merges into the main branch.
