@@ -2,6 +2,4 @@ node_modules
 **/node_modules
 **/dist
 **/tmp
-packages/gamut-icons/src/icons
-packages/gamut-styles/**/*.d.ts
 packages/styleguide/stories/Core/Atoms/Markdown/*.md
