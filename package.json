@@ -21,8 +21,7 @@
     "verify-changed": "lerna run verify --since --include-dependencies",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
     "build-all": "lerna run lernaBuildTask",
-    "build-changed": "lerna run lernaBuildTask --since --include-dependencies",
-    "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist"
+    "build-changed": "lerna run lernaBuildTask --since --include-dependencies"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json}": [
