@@ -105,26 +105,6 @@ jobs:
       - *save_yarn_cache
       - *save_node_modules
 
-  verify_formatting:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_node_modules
-      - run:
-          name: Verify Prettier
-          command: yarn format:verify
-
-  verify_linting:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_node_modules
-      - run:
-          name: Verify ESLint
-          command: yarn lint --format junit --output-file /tmp/test-results/eslint.xml
-      - store_test_results:
-          path: /tmp/test-results
-
   verify_packages:
     <<: *default_env
     steps:
@@ -170,69 +150,6 @@ jobs:
           name: Lerna Publish
           command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
 
-  deploy:
-    <<: *default_env
-    resource_class: large
-    steps:
-      - *skip_on_automated_commit
-      - *set_git_user
-      - checkout
-      - *restore_node_modules
-      - *build_all_packages
-      - *restore_webpack_cache
-      - run:
-          name: build storybook
-          command: yarn build-storybook
-      - *save_webpack_cache
-      - run:
-          name: deploy
-          command: yarn deploy
-
-  deploy_alpha:
-    <<: *default_env
-    resource_class: large
-    steps:
-      - *skip_if_not_pr
-      - *skip_on_automated_commit
-      - *set_git_user
-      - checkout
-      - *restore_node_modules
-      - *build_all_packages
-      - *restore_webpack_cache
-      - run:
-          name: build storybook
-          command: yarn build-storybook
-      - *save_webpack_cache
-      - run:
-          name: deploy
-          command: |
-            DEPLOY_MESSAGE="User: ${CIRCLE_USERNAME} Project: ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} Pull Request: ${CIRCLE_PULL_REQUEST}"
-            npx netlify-cli@2.37.0 deploy --message="${DEPLOY_MESSAGE}" --dir=dist/docs --json > .deploy-output
-      - setup_remote_docker
-      - run: docker pull cloudposse/github-commenter:0.5.0-58
-      - run:
-          name: comment
-          command: |
-            export DEPLOY_OUTPUT="$(cat .deploy-output)"
-            echo $DEPLOY_OUTPUT
-            DEPLOY_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).deploy_url)" | node -)
-            LOGS_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).logs)" | node -)
-            COMMENT_MSG="<p><a href="${DEPLOY_URL}">${DEPLOY_URL}</a></p><p><a href="${LOGS_URL}">Deploy Logs</a></p>"
-            if [ -z "$DEPLOY_OUTPUT" ]
-            then
-              echo "No deploy output found, will not add PR comment"
-            else
-              docker run --rm \
-                      -e GITHUB_TOKEN \
-                      -e GITHUB_OWNER="${CIRCLE_PROJECT_USERNAME}" \
-                      -e GITHUB_REPO="${CIRCLE_PROJECT_REPONAME}" \
-                      -e GITHUB_COMMENT_TYPE=pr \
-                      -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
-                      -e GITHUB_COMMENT_TEMPLATE='<p>🚀 Styleguide deploy preview ready!</p>{{.}}<!--ALPHA_DEPLOY_COMMENT-->' \
-                      -e GITHUB_DELETE_COMMENT_REGEX="ALPHA_DEPLOY_COMMENT" \
-                      -e GITHUB_COMMENT="${COMMENT_MSG}" \
-                      cloudposse/github-commenter:0.5.0-58
-            fi
 
   publish_alpha:
     <<: *default_env
@@ -245,6 +162,7 @@ jobs:
       - *restore_node_modules
       - *set_npm_token
       - *build_changed_packages
+      - run: npm whoami
       - run:
           name: lerna publish (alpha)
           command: yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${CIRCLE_SHA1:0:6} --dist-tag=alpha.${CIRCLE_SHA1:0:6}
@@ -283,44 +201,18 @@ workflows:
       - tests:
           requires:
             - checkout_code
-      - verify_linting:
-          requires:
-            - checkout_code
-      - verify_formatting:
-          requires:
-            - checkout_code
       - verify_packages:
           requires:
             - checkout_code
       - publish:
+          context: GitHub Publishing
           requires:
             - checkout_code
           filters:
             branches:
               only: main
       - publish_alpha:
-          filters:
-            branches:
-              ignore:
-                - main
-                - gh-pages
-          requires:
-            - checkout_code
-  deploy:
-    jobs:
-      - queue/block_workflow:
-          only-on-branch: main
-          time: '10'
-      - checkout_code:
-          requires:
-            - queue/block_workflow
-      - deploy:
-          requires:
-            - checkout_code
-          filters:
-            branches:
-              only: main
-      - deploy_alpha:
+          context: GitHub Publishing
           filters:
             branches:
               ignore:

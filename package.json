@@ -21,8 +21,7 @@
     "verify-changed": "lerna run verify --since --include-dependencies",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
     "build-all": "lerna run lernaBuildTask",
-    "build-changed": "lerna run lernaBuildTask --since --include-dependencies",
-    "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist"
+    "build-changed": "lerna run lernaBuildTask --since --include-dependencies"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json}": [
@@ -81,7 +80,6 @@
     "eslint-plugin-jest": "^24.4.0",
     "eslint-plugin-jest-react": "^0.0.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-local-rules": "^1.1.0",
     "eslint-plugin-no-only-tests": "^2.6.0",
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
