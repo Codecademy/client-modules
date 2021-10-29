@@ -205,12 +205,14 @@ workflows:
           requires:
             - checkout_code
       - publish:
+          context: github-publishing
           requires:
             - checkout_code
           filters:
             branches:
               only: main
       - publish_alpha:
+          context: github-publishing
           filters:
             branches:
               ignore:
