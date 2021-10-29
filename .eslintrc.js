@@ -8,8 +8,6 @@ module.exports = {
 
   extends: [require.resolve('./packages/eslint-config')],
 
-  plugins: ['local-rules'],
-
   overrides: [
     {
       files: ['**/typings/*', '*.d.ts'],

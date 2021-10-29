@@ -182,6 +182,7 @@ jobs:
       - *restore_node_modules
       - *set_npm_token
       - *build_changed_packages
+      - run: npm whoami
       - run:
           name: lerna publish (alpha)
           command: yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${CIRCLE_SHA1:0:6} --dist-tag=alpha.${CIRCLE_SHA1:0:6}
