@@ -205,12 +205,14 @@ workflows:
           requires:
             - checkout_code
       - publish:
+          context: org-global
           requires:
             - checkout_code
           filters:
             branches:
               only: main
       - publish_alpha:
+          context: org-global
           filters:
             branches:
               ignore:
