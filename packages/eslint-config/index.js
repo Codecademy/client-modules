@@ -7,6 +7,7 @@ module.exports = {
     jest: true,
     node: true,
   },
+
   extends: [
     'eslint:recommended',
     'plugin:import/errors',
@@ -21,14 +22,6 @@ module.exports = {
   ],
 
   overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {
-        // These off-by-default or configurable rules are good and we like having them on
-        '@typescript-eslint/non-nullable-type-assertion-style': 'error',
-        '@typescript-eslint/prefer-optional-chain': 'error',
-      },
-    },
     // Stories generally have empty functions and other syntax shenanigans for code examples
     {
       files: ['*.stories.*'],

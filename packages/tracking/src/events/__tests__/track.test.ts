@@ -73,7 +73,7 @@ describe('createTracker', () => {
           `${apiBaseUrl}/analytics/user?utm_source=twitter`,
           expect.any(FormData)
         );
-        const formData = mockBeacon.mock.calls[0][1];
+        const formData = mockBeacon.mock.calls[0][1] as FormData;
         expect(Object.fromEntries(formData)).toEqual(
           expect.objectContaining({
             category: 'user',
@@ -81,7 +81,7 @@ describe('createTracker', () => {
             gdpr_safe: 'undefined',
           })
         );
-        expect(JSON.parse(formData.get('properties'))).toEqual({
+        expect(JSON.parse(formData.get('properties') as string)).toEqual({
           ...expectedProps,
           fullpath: window.location.pathname + window.location.search,
           path: window.location.pathname,
