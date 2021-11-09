@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.16.0 (2021-11-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* prepended OneTrust to tracking integrations loads
+* clean up tracker and remove auth token
+
+### Features
+
+* **tracking:** Add source tracking for PWA ([32321cc](https://github.com/Codecademy/client-modules/commit/32321cc489dfd2ada1d967ad6630e849ddebd6e6))
+* **tracking:** ignore known client failures in fetching destinations ([#2](https://github.com/Codecademy/client-modules/issues/2)) ([432549d](https://github.com/Codecademy/client-modules/commit/432549df9b556672eb9b3a321a90d37dd1009b09))
+* add user impression to tracking ([3ec4f61](https://github.com/Codecademy/client-modules/commit/3ec4f6113350859b9d792467ca29b01e0855b4a4))
+* bump ESLint configs to latest ([3a403c0](https://github.com/Codecademy/client-modules/commit/3a403c01358f8b4a0d10d99f8d57e1979ebce189))
+* **event type:** adding business reporting types ([d4a0243](https://github.com/Codecademy/client-modules/commit/d4a0243b6380666850ef0f4bcfcd3c80a065d011)), closes [/github.com/codecademy-engineering/business-reporting/blob/develop/src/util/eventTracking/index.tsx#L104-L110](https://github.com/Codecademy//github.com/codecademy-engineering/business-reporting/blob/develop/src/util/eventTracking/index.tsx/issues/L104-L110)
+* **tracking:** Add a fullstory boolean to TrackingOptions type ([4433669](https://github.com/Codecademy/client-modules/commit/443366955e8beb6aca3337841bf70c583df89f5f))
+* **tracking:** Add a new page_career_path_visited event ([#1283](https://github.com/Codecademy/client-modules/issues/1283)) ([1228399](https://github.com/Codecademy/client-modules/commit/12283990e0bfa0d8d03fb78c83c84cab318e68b1))
+* **tracking:** Added repo-tracking to user events ([d8a72f1](https://github.com/Codecademy/client-modules/commit/d8a72f19afbb02ba6d0aeef7a6b4b2b55820f111))
+* **tracking:** Record the page referrer for every event. ([da11524](https://github.com/Codecademy/client-modules/commit/da11524588571f2ce44bd9af4486b9b64b66408c))
+* **tracking:** Update business event name ([8babbf9](https://github.com/Codecademy/client-modules/commit/8babbf98dad5deb25782aa5b72229c2fea1a6c88))
+* add container_slugs to UserClickData tracking type ([0a70fec](https://github.com/Codecademy/client-modules/commit/0a70fec80c88833bfad73728ae4a52cd54dc659e))
+* added useTrackingIntegrations to tracking package ([b93ca89](https://github.com/Codecademy/client-modules/commit/b93ca897634c62a8d6defb6f6b426395d2daf9f0))
+* clean up tracker and remove auth token ([7d98f82](https://github.com/Codecademy/client-modules/commit/7d98f82f64e48984e0913de83aea0635e93b21d9))
+* Creating the @codecademy/tracking pachage. ([eb2cdca](https://github.com/Codecademy/client-modules/commit/eb2cdca0f1ecf2f77035ffac39e4c7cbe956bed2))
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([5eac76b](https://github.com/Codecademy/client-modules/commit/5eac76b95f547f0457360c8f7428af17152d1d67))
+* prepended OneTrust to tracking integrations loads ([9c2e18e](https://github.com/Codecademy/client-modules/commit/9c2e18e35f3f3f538dc3727f4efdde3521708b6c))
+
+
+### Bug Fixes
+
+* Add a runtime dependency ([436c3fb](https://github.com/Codecademy/client-modules/commit/436c3fba8812d6f74181de57dca9e8750e371760))
+* Add query params to tracking calls ([#1189](https://github.com/Codecademy/client-modules/issues/1189)) ([6611839](https://github.com/Codecademy/client-modules/commit/661183985d81ca4f75cdfb39a4514f4d7f287d8d))
+* allow no user for tracking integrations ([#1726](https://github.com/Codecademy/client-modules/issues/1726)) ([fa31842](https://github.com/Codecademy/client-modules/commit/fa318421ea2396497bf80fe69ba56063330dd0ed))
+* bump tracking package babel-preset-codecademy to latest ([5c66f67](https://github.com/Codecademy/client-modules/commit/5c66f67c2833993a0dbd6b2e9441b3e590225437))
+* business reporting event types ([2d9fb8e](https://github.com/Codecademy/client-modules/commit/2d9fb8e62d078aed0721df4afae775de2832733f))
+* support navigator.sendBeacon not existing ([79b94cc](https://github.com/Codecademy/client-modules/commit/79b94cc0c140da083a770527a7cf4622c6578a97))
+* switch tracking 'verbose' type back to boolean ([913c870](https://github.com/Codecademy/client-modules/commit/913c8703fb6a06363b324940d7ee406f839e4b53))
+* use old style existence check for navigator.sendBeacon ([f0bf309](https://github.com/Codecademy/client-modules/commit/f0bf30947aa6edb767cab500480a0a71ca147d39))
+
+
+### Reverts
+
+* Revert "feat(tracking): Add a fullstory boolean to TrackingOptions type" (#1381) ([376df52](https://github.com/Codecademy/client-modules/commit/376df52daec85208bbaf28760c5fd6bfa5e52810)), closes [#1381](https://github.com/Codecademy/client-modules/issues/1381)
+
+
+
 ## [0.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.14.2...@codecademy/tracking@0.15.0) (2021-10-20)
 
 

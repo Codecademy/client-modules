@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.2.0 (2021-11-09)
+
+
+### Features
+
+* Add shared config modules for eslint & prettier ([#224](http://github.com//undefined/issues/224)) ([642c730](http://github.com///commit/642c730833f8e54d1775521c75b5b43dcae402e1))
+
+
+### Bug Fixes
+
+* **prettier-config:** don't apply typescript parser to all files ([#488](http://github.com//undefined/issues/488)) ([e0e6d29](http://github.com///commit/e0e6d29ee723db46e56c230c37387f4559d55d81))
+
+
+### Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([498f5ca](http://github.com///commit/498f5ca196fd56393facdf76d85b0471580c81c0)), closes [#970](http://github.com///issues/970) [#981](http://github.com///issues/981)
+
+
+
 ### [0.1.10](http://github.com///compare/@codecademy/prettier-config@0.1.9...@codecademy/prettier-config@0.1.10) (2021-02-04)
 
 **Note:** Version bump only for package @codecademy/prettier-config

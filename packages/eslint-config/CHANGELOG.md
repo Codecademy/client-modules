@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.0.0 (2021-11-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump eslint-config packages to latest
+* bumped ESLint packages to latest and added recommended & Jest linting
+* Added import/no-default-export to ESLint config (#929)
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+* Strict TypeScript with react-hook-form@6 (#852)
+
+### Features
+
+* add react hooks linting ([#325](http://github.com//undefined/issues/325)) ([f07f605](http://github.com///commit/f07f6053af75e47ec852e2631700514a0b2ef89b))
+* Add shared config modules for eslint & prettier ([#224](http://github.com//undefined/issues/224)) ([642c730](http://github.com///commit/642c730833f8e54d1775521c75b5b43dcae402e1))
+* Added import/no-default-export to ESLint config ([#929](http://github.com//undefined/issues/929)) ([7be21b3](http://github.com///commit/7be21b354f5b08e2d2443ced252bc20d23fb3dd4))
+* bump ESLint configs to latest ([3a403c0](http://github.com///commit/3a403c01358f8b4a0d10d99f8d57e1979ebce189))
+* bump eslint-config packages to latest ([d8cf835](http://github.com///commit/d8cf83502715c3aef7ba63bb9e1c8a76fb30d542))
+* bumped ESLint packages to latest and added recommended & Jest linting ([450a0e2](http://github.com///commit/450a0e2065090723fe21f980e01a3811dd3c6244))
+* disabled consistent-return ESLint rule ([73d5744](http://github.com///commit/73d5744851be2d8ede1fef2154cc241415f4279a))
+* enable @typescript-eslint/prefer-optional-chain ([21c5f91](http://github.com///commit/21c5f919685b7f6d84bec112eb778e6e85f250f3))
+* enable non-nullable-type-assertion-style ([dd59272](http://github.com///commit/dd5927267be8a1355bddd8f4d12aa8e8e873b99a))
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([5eac76b](http://github.com///commit/5eac76b95f547f0457360c8f7428af17152d1d67))
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](http://github.com//undefined/issues/838)) ([b24a466](http://github.com///commit/b24a46670bc875f16e403e5f405730a8e9ed46b6))
+* use correct parser for eslint files by default ([#336](http://github.com//undefined/issues/336)) ([949210a](http://github.com///commit/949210ac2b392d54aedd962401b15ec49db822be))
+
+
+### Bug Fixes
+
+* disable react/jsx-one-expression-per-line rule ([#1728](http://github.com//undefined/issues/1728)) ([0f54775](http://github.com///commit/0f547759b14a617a4b84129152dedd7d2a4991c2)), closes [#1727](http://github.com///issues/1727)
+* use separate eslint-fix config ([4c75355](http://github.com///commit/4c7535530062eac9a1c644de366237089ba67c65))
+* **deps:** pin dependencies ([#288](http://github.com//undefined/issues/288)) ([d7113f0](http://github.com///commit/d7113f0013c4c2bf4dddc4d06784be48d2bd9698))
+* **lint:** Fix SB and Eslint config ([55f6863](http://github.com///commit/55f6863f126fda4967a875f5769de9e3a60960b9))
+* **MDX:** Parsing Validation and ESlint for MDX WEB-1238 ([c2c18cb](http://github.com///commit/c2c18cbab915dcc2c96c15d82d7544b9dba25973))
+* **styleguide:** Enable no jsx-no-undef on mdx ([55dbb67](http://github.com///commit/55dbb67ef13d7394ad6d8dc16373e9038e2d65db))
+* **System:** Typescript memory performance fixes ([#1145](http://github.com//undefined/issues/1145)) ([7d33e4f](http://github.com///commit/7d33e4f5be9c429b406155ca51dae90617b3bbd9))
+* Disabled no-unused-vars for TypeScript ([#329](http://github.com//undefined/issues/329)) ([6d3ae92](http://github.com///commit/6d3ae929e0bfd53773e0ca3c2039da57c0bec1a8))
+* Strict TypeScript with react-hook-form@6 ([#852](http://github.com//undefined/issues/852)) ([328baf8](http://github.com///commit/328baf87e8de597a75d627e46293c4a1d562885f))
+* switch hooks exhaustive deps rule to error ([#371](http://github.com//undefined/issues/371)) ([c814c16](http://github.com///commit/c814c16ad22a063dca36fe2467b23f8f4da3f8a5))
+
+
+### Reverts
+
+* Revert "A few more disables, from the PRs" ([dea32d1](http://github.com///commit/dea32d1c896ebb678e68db560cd9a71880c1006a))
+* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([498f5ca](http://github.com///commit/498f5ca196fd56393facdf76d85b0471580c81c0)), closes [#970](http://github.com///issues/970) [#981](http://github.com///issues/981)
+
+
+
 ## [5.4.0](http://github.com///compare/@codecademy/eslint-config@5.3.0...@codecademy/eslint-config@5.4.0) (2021-09-10)
 
 
