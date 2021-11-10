@@ -90,13 +90,6 @@ module.exports = {
     'react/no-array-index-key': 'error',
     'react/no-danger': 'error',
     'react/no-unused-state': 'error',
-    'react/prop-types': [
-      'error',
-      {
-        ignore: ['children'],
-        skipUndeclared: true,
-      },
-    ],
     'simple-import-sort/imports': 'error',
 
     // These functional rules are annoying and we generally don't want them on
