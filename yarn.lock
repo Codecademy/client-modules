@@ -2723,7 +2723,7 @@
     semver "^7.3.5"
     tsutils "^3.21.0"
 
-"@typescript-eslint/experimental-utils@5.3.1", "@typescript-eslint/experimental-utils@^4.14.0", "@typescript-eslint/experimental-utils@^5.0.0", "@typescript-eslint/experimental-utils@^5.3.1":
+"@typescript-eslint/experimental-utils@5.3.1", "@typescript-eslint/experimental-utils@^5.0.0", "@typescript-eslint/experimental-utils@^5.3.1":
   version "5.3.1"
   resolved "https://registry.npmjs.org/@typescript-eslint/experimental-utils/-/experimental-utils-5.3.1.tgz#bbd8f9b67b4d5fdcb9d2f90297d8fcda22561e05"
   integrity sha512-RgFn5asjZ5daUhbK5Sp0peq0SSMytqcrkNfU4pnDma2D8P3ElZ6JbYjY8IMSFfZAJ0f3x3tnO3vXHweYg0g59w==
@@ -5036,13 +5036,6 @@ eslint-plugin-import@^2.25.2:
     object.values "^1.1.5"
     resolve "^1.20.0"
     tsconfig-paths "^3.11.0"
-
-eslint-plugin-jest-react@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.npmjs.org/eslint-plugin-jest-react/-/eslint-plugin-jest-react-0.0.2.tgz#17026d6a9ed6003eb053fde8138721ee4519e673"
-  integrity sha512-fW+BEFUEjmnhwOJBEWIs5xE4r5oF3lGVZlJ664osL96hKojw0FrlTN72qX8DFYRcfH8uQPBIl/ZbAAX+fiQZPA==
-  dependencies:
-    "@typescript-eslint/experimental-utils" "^4.14.0"
 
 eslint-plugin-jest-react@^0.1.0:
   version "0.1.0"
