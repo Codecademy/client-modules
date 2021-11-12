@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.16.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.16.0...@codecademy/tracking@0.16.1) (2021-11-12)
+
+
+### Bug Fixes
+
+* **tracking:** super-bind the sendBeacon to navigator ([b32a8ec](https://github.com/Codecademy/client-modules/commit/b32a8ece14b2c2d62abf98f762f1be17690406f8))
+
+
+
 ## 0.16.0 (2021-11-10)
 
 
