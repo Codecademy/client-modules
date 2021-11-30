@@ -7,6 +7,7 @@ module.exports = {
     jest: true,
     node: true,
   },
+
   extends: [
     'eslint:recommended',
     'plugin:import/errors',
@@ -21,14 +22,6 @@ module.exports = {
   ],
 
   overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {
-        // These off-by-default or configurable rules are good and we like having them on
-        '@typescript-eslint/non-nullable-type-assertion-style': 'error',
-        '@typescript-eslint/prefer-optional-chain': 'error',
-      },
-    },
     // Stories generally have empty functions and other syntax shenanigans for code examples
     {
       files: ['*.stories.*'],
@@ -97,13 +90,6 @@ module.exports = {
     'react/no-array-index-key': 'error',
     'react/no-danger': 'error',
     'react/no-unused-state': 'error',
-    'react/prop-types': [
-      'error',
-      {
-        ignore: ['children'],
-        skipUndeclared: true,
-      },
-    ],
     'simple-import-sort/imports': 'error',
 
     // These functional rules are annoying and we generally don't want them on
@@ -148,6 +134,7 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-useless-constructor': 'off',
     'prefer-template': 'off',
+    'default-props-match-prop-types': 'off',
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-no-bind': 'off',
