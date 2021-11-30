@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](http://github.com///compare/@codecademy/eslint-config@6.0.0...@codecademy/eslint-config@7.0.0) (2021-11-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint-config:** bump ESLint to 8 and typescript-eslint to 5 (#4)
+
+### Features
+
+* **eslint-config:** bump ESLint to 8 and typescript-eslint to 5 ([#4](http://github.com//undefined/issues/4)) ([64423d6](http://github.com///commit/64423d69ad0f90f2e717373db6b1988b715681cc))
+
+
+
 ## 6.0.0 (2021-11-10)
 
 
