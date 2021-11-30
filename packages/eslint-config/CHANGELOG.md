@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.0.1](http://github.com///compare/@codecademy/eslint-config@7.0.0...@codecademy/eslint-config@7.0.1) (2021-11-30)
+
+
+### Bug Fixes
+
+* **eslint-config:** disable react/prop-types in TypeScript files ([b599b03](http://github.com///commit/b599b03101d8d071b57c32d60d338e7b8e51feff))
+
+
+
 ## [7.0.0](http://github.com///compare/@codecademy/eslint-config@6.0.0...@codecademy/eslint-config@7.0.0) (2021-11-30)
 
 
