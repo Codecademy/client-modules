@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.0.2](http://github.com///compare/@codecademy/eslint-config@7.0.1...@codecademy/eslint-config@7.0.2) (2021-12-01)
+
+
+### Bug Fixes
+
+* **eslint-config:** removing react/default-props-match-prop-types lint rule ([1de5dc0](http://github.com///commit/1de5dc07e0af6e2b699140cd4aae2265a56c27f8))
+
+
+
 ### [7.0.1](http://github.com///compare/@codecademy/eslint-config@7.0.0...@codecademy/eslint-config@7.0.1) (2021-11-30)
 
 
