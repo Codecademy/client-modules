@@ -17,7 +17,7 @@ const tsConfig = {
 
     // These are no longer necessary now that we have TypeScript
     'react/prop-types': 'off',
-    'react/default-props-match-prop-types': 'off'
+    'react/default-props-match-prop-types': 'off',
   },
 };
 
