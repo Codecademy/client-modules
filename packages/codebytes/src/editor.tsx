@@ -1,7 +1,5 @@
 import React from 'react';
 
-export type CopyButtonMode = 'hide' | undefined;
-
 type EditorProps = {
   text: string;
   onChange: (text: string) => void;
