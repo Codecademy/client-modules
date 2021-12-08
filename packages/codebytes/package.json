@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/codebytes",
-  "description": "",
+  "description": "Codebytes code editor",
   "version": "40.4.1",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
@@ -38,19 +38,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@codecademy/gamut-tests": "^3.0.1",
     "@emotion/jest": "^11.3.0",
     "@storybook/addon-actions": "^6.4.4",
     "@storybook/addon-essentials": "^6.4.4",
     "@storybook/addon-links": "^6.4.4",
     "@storybook/react": "^6.4.4",
     "@testing-library/dom": "^7.31.2",
-    "@testing-library/react": "^11.0.4",
-    "@types/enzyme": "3.10.7",
-    "babel-loader": "^8.2.3",
-    "enzyme": "3.11.0",
-    "onchange": "^7.0.2"
+    "@testing-library/react": "^11.0.4"
   },
   "publishConfig": {
     "access": "public"
