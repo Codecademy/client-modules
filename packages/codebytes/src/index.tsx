@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import type { CopyButtonMode, languageOption } from './consts';
+import type { languageOption } from './consts';
 import { Editor } from './editor';
 
 interface CodeByteEditorProps {
   language?: languageOption;
   text?: string;
-  copyButtonMode?: CopyButtonMode;
+  hideCopyButton?: boolean;
+  onCopy?: (text: string, language: string) => void;
 }
 
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language,
-  copyButtonMode,
+  hideCopyButton = false,
+  onCopy,
 }) => {
   const [text, setText] = useState<string>(initialText ?? '');
   return (
@@ -22,10 +24,11 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           <Editor
             language={language}
             text={text}
-            copyButtonMode={copyButtonMode}
+            hideCopyButton={hideCopyButton}
             onChange={(newText: string) => {
               setText(newText);
             }}
+            onCopy={onCopy}
           />
         ) : (
           <div>Language</div>

@@ -6,14 +6,12 @@ import {
   ToolTip,
 } from '@codecademy/gamut';
 import { CopyIcon } from '@codecademy/gamut-icons';
-import { colors } from '@codecademy/gamut-styles';
-import { Drawers } from './drawers';
-
+import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import type { CopyButtonMode, languageOption } from './consts';
-import { createBBCodeBlock, trackClick } from './helpers';
+import type { languageOption } from './consts';
+import { Drawers } from './drawers';
 
 const Output = styled.pre<{ hasError: boolean }>`
   width: 100%;
@@ -23,9 +21,9 @@ const Output = styled.pre<{ hasError: boolean }>`
   font-family: Monaco;
   font-size: 0.875rem;
   overflow: auto;
-  ${({ hasError, theme }) => `
+  ${({ hasError }) => `
   color: ${hasError ? theme.colors.orange : theme.colors.white};
-  background-color: ${colors['gray-900']};
+  background-color: ${theme.colors['gray-900']};
 `}
 `;
 
@@ -35,34 +33,41 @@ const CopyIconStyled = styled(CopyIcon)`
 
 const DOCKER_SIGTERM = 143;
 
-// some of the language names we use internally differ from those used by monaco
-const languageOverrides: { [key in languageOption]?: string } = {
-  golang: 'go',
-};
-
 type EditorProps = {
-  copyButtonMode?: CopyButtonMode;
+  hideCopyButton: boolean;
   language: languageOption;
   text: string;
   onChange: (text: string) => void;
+  onCopy?: (text: string, language: string) => void;
 };
 
+interface Response {
+  stderr: string;
+  stdout: string;
+  exit_code: number;
+}
+
 export const Editor: React.FC<EditorProps> = ({
-  copyButtonMode,
   language,
   text,
+  hideCopyButton,
   onChange,
   onCopy,
 }) => {
   const [output, setOutput] = useState('');
   const [status, setStatus] = useState<'ready' | 'waiting' | 'error'>('ready');
   const [isCodeByteCopied, setIsCodeByteCopied] = useState(false);
-  const hideCopyButton = copyButtonMode === 'hide';
   const onCopyClick = () => {
     if (!isCodeByteCopied) {
-      navigator.clipboard.writeText(createBBCodeBlock({ language, text }));
+      navigator.clipboard
+        .writeText(text)
+        // eslint-disable-next-line no-console
+        .catch(() => console.error('Failed to copy'));
+      onCopy?.(
+        text,
+        language
+      ); /* TODO: pass in onCopyBBCodeblock behavior from static sites */
       setIsCodeByteCopied(true);
-      onCopy?.();
     }
   };
 
@@ -81,7 +86,6 @@ export const Editor: React.FC<EditorProps> = ({
     };
     setStatus('waiting');
     setOutput('');
-    trackClick('run');
 
     const snippetsEndpoint =
       'https://' + process.env.GATSBY_CONTAINER_API_BASE + '/snippets';
@@ -94,7 +98,7 @@ export const Editor: React.FC<EditorProps> = ({
       },
     })
       .then((res) => res.json())
-      .then((response) => {
+      .then((response: Response) => {
         if (response.stderr.length > 0) {
           setErrorStatusAndOutput(response.stderr);
         } else if (response.exit_code === DOCKER_SIGTERM) {
@@ -125,10 +129,11 @@ export const Editor: React.FC<EditorProps> = ({
       />
       <FlexBox
         justifyContent={hideCopyButton ? 'flex-end' : 'space-between'}
-        pl={8}
+        pl="8"
       >
         {!hideCopyButton ? (
           <ToolTip
+            id="codebyte-copied"
             alignment="top-right"
             mode="dark"
             target={
@@ -155,7 +160,3 @@ export const Editor: React.FC<EditorProps> = ({
     </>
   );
 };
-
-// export const Editor: React.FC<EditorProps> = ({ text, onChange }) => {
-//   return <textarea value={text} onChange={(e) => onChange(e.target.value)} />;
-// };

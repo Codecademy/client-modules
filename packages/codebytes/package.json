@@ -22,8 +22,9 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^6.0.1",
-    "@codecademy/gamut-styles": "^12.1.0"
+    "@codecademy/gamut": "*",
+    "@codecademy/gamut-styles": "*",
+    "@codecademy/gamut-icons": "*"
   },
   "scripts": {
     "verify": "tsc --noEmit",
