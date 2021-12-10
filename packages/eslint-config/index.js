@@ -1,13 +1,11 @@
-const localExtends = ['./rules/typescript', './rules/mdx'].map(require.resolve);
+const localExtends = [
+  // ugh
+  './rules/jest',
+  './rules/mdx',
+  './rules/typescript',
+];
 
 module.exports = {
-  // env: {
-  //   browser: true,
-  //   es6: true,
-  //   jest: true,
-  //   node: true,
-  // },
-
   extends: [
     'eslint:recommended',
     'plugin:import/errors',
@@ -18,10 +16,11 @@ module.exports = {
     'airbnb',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    ...localExtends,
+    ...localExtends.map(require.resolve),
   ],
 
   overrides: [
+    // TODO: move into mdx
     // Stories generally have empty functions and other syntax shenanigans for code examples
     {
       files: ['*.stories.*'],
@@ -30,45 +29,11 @@ module.exports = {
         '@typescript-eslint/no-empty-function': 'off',
       },
     },
-    // JS and test files generally don't need quite the same level of 'any' scrutiny
-    {
-      files: [
-        '*-test.*',
-        '*.js',
-        '*.spec.*',
-        '*.test.*',
-        '**/__fixtures__/*',
-        '**/__tests__/*',
-      ],
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
-        '@typescript-eslint/no-unsafe-assignment': 'off',
-        '@typescript-eslint/no-unsafe-call': 'off',
-        '@typescript-eslint/no-unsafe-member-access': 'off',
-        '@typescript-eslint/no-unsafe-return': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-        '@typescript-eslint/require-await': 'off',
-        '@typescript-eslint/restrict-template-expressions': 'off',
-        '@typescript-eslint/unbound-method': 'off',
-      },
-    },
   ],
 
   // pluginsProvidingAdditionalRules
   // "these are now available to you"
-  plugins: [
-    'import',
-    'jest',
-    'jest-react',
-    'jsx-a11y',
-    'no-only-tests',
-    'react',
-    'react-hooks',
-    'simple-import-sort',
-  ],
+  plugins: ['import', 'jsx-a11y', 'react', 'react-hooks', 'simple-import-sort'],
 
   rules: {
     // These off-by-default or configurable rules are good and we like having them on
@@ -77,7 +42,6 @@ module.exports = {
     'no-console': 'error',
     'no-eval': 'error',
     'no-global-assign': 'error',
-    'no-only-tests/no-only-tests': 'error',
     'prefer-destructuring': [
       'error',
       {
