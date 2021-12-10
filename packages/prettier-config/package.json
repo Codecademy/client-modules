@@ -8,7 +8,7 @@
     "url": "git+https://github.com/Codecademy/client-modules/packages/prettier-config"
   },
   "author": "codecademy",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Codecademy/client-modules/packages/prettier-config"
   },

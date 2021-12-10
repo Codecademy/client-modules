@@ -1,12 +1,12 @@
 const localExtends = ['./rules/typescript', './rules/mdx'].map(require.resolve);
 
 module.exports = {
-  env: {
-    browser: true,
-    es6: true,
-    jest: true,
-    node: true,
-  },
+  // env: {
+  //   browser: true,
+  //   es6: true,
+  //   jest: true,
+  //   node: true,
+  // },
 
   extends: [
     'eslint:recommended',
@@ -26,6 +26,7 @@ module.exports = {
     {
       files: ['*.stories.*'],
       rules: {
+        // TODO: investigate requiring people using storybook actions?
         '@typescript-eslint/no-empty-function': 'off',
       },
     },
@@ -56,6 +57,8 @@ module.exports = {
     },
   ],
 
+  // pluginsProvidingAdditionalRules
+  // "these are now available to you"
   plugins: [
     'import',
     'jest',

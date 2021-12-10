@@ -14,7 +14,7 @@
     "verify": "eslint --config ./index.js --print-config ./index.js"
   },
   "author": "codecademy",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Codecademy/client-modules/packages/eslint-config"
   },
