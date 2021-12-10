@@ -1,7 +1,9 @@
 const localExtends = [
   // ugh
+  './rules/gamut',
   './rules/jest',
   './rules/mdx',
+  './rules/react',
   './rules/typescript',
 ];
 
@@ -33,7 +35,7 @@ module.exports = {
 
   // pluginsProvidingAdditionalRules
   // "these are now available to you"
-  plugins: ['import', 'jsx-a11y', 'react', 'react-hooks', 'simple-import-sort'],
+  plugins: ['import', 'simple-import-sort'],
 
   rules: {
     // These off-by-default or configurable rules are good and we like having them on
@@ -50,13 +52,6 @@ module.exports = {
       },
     ],
     'prefer-promise-reject-errors': 'error',
-    'react-hooks/exhaustive-deps': 'error',
-    'react-hooks/rules-of-hooks': 'error',
-    'react/button-has-type': 'error',
-    'react/no-access-state-in-setstate': 'error',
-    'react/no-array-index-key': 'error',
-    'react/no-danger': 'error',
-    'react/no-unused-state': 'error',
     'simple-import-sort/imports': 'error',
 
     // These functional rules are annoying and we generally don't want them on
@@ -101,19 +96,6 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-useless-constructor': 'off',
     'prefer-template': 'off',
-    'default-props-match-prop-types': 'off',
-    'react/destructuring-assignment': 'off',
-    'react/jsx-filename-extension': 'off',
-    'react/jsx-no-bind': 'off',
-    'react/jsx-one-expression-per-line': 'off',
-    'react/jsx-pascal-case': 'off',
-    'react/jsx-props-no-spreading': 'off',
-    'react/prefer-es6-class': 'off',
-    'react/require-default-props': 'off',
-    'react/sort-comp': 'off',
-    'react/state-in-constructor': 'off',
-    'react/static-property-placement': 'off',
-    'react/style-prop-object': 'off',
     strict: 'off',
   },
 
