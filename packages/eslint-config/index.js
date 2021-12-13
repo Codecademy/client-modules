@@ -2,6 +2,7 @@ const localExtends = [
   // ugh
   './rules/gamut',
   './rules/jest',
+  './rules/javascript',
   './rules/mdx',
   './rules/react',
   './rules/typescript',
