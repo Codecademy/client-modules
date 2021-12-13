@@ -6,14 +6,14 @@ export interface UserIntegrationSummary {
 }
 
 export interface SegmentAnalytics {
-  identify(
+  identify: (
     id: string,
     details: Record<string, string>,
     options: SegmentAnalyticsOptions
-  ): void;
+  ) => void;
   initialize?: boolean;
-  load(writeKey: string, options: SegmentAnalyticsOptions): void;
-  page(): void;
+  load: (writeKey: string, options: SegmentAnalyticsOptions) => void;
+  page: () => void;
 }
 
 export interface SegmentDestination {
