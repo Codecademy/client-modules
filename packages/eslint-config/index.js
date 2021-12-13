@@ -1,5 +1,4 @@
 const localExtends = [
-  // ugh
   './rules/gamut',
   './rules/jest',
   './rules/javascript',
