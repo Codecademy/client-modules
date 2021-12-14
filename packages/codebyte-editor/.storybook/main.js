@@ -14,7 +14,8 @@ function emotionless(object) {
 }
 
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  // stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/stories/**/*.stories.@(mdx|tsx)'],
   framework: '@storybook/react',
   addons: [
     '@storybook/addon-essentials',
