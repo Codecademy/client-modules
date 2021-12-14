@@ -1,7 +1,7 @@
 {
-  "name": "@codecademy/codebyte-code-editor",
-  "description": "Codebyte Code Editor",
-  "version": "0.0.1",
+  "name": "@codecademy/codebytes",
+  "description": "Codebytes code editor",
+  "version": "40.4.1",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -16,14 +16,24 @@
     "url": "git@github.com:Codecademy/gamut.git"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^6.0.1",
-    "@codecademy/gamut-styles": "^12.1.0"
+    "@codecademy/gamut": "*",
+    "@codecademy/gamut-styles": "*",
+    "@codecademy/gamut-icons": "*",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@storybook/addon-a11y": "6.3.4",
+    "@storybook/addon-actions": "6.3.4",
+    "@storybook/addon-controls": "6.3.4",
+    "@storybook/addon-docs": "6.3.4",
+    "@storybook/addon-essentials": "6.3.4",
+    "@storybook/addon-links": "6.3.4",
+    "@storybook/addons": "6.3.4",
+    "@storybook/react": "6.3.4",
+    "@storybook/theming": "6.3.4"
   },
   "scripts": {
     "verify": "tsc --noEmit",
@@ -44,7 +54,12 @@
     "@storybook/addon-links": "^6.4.4",
     "@storybook/react": "^6.4.4",
     "@testing-library/dom": "^7.31.2",
-    "@testing-library/react": "^11.0.4"
+    "@testing-library/react": "^11.0.4",
+    "@storybook/addon-a11y": "^6.4.4",
+    "@storybook/addon-controls": "^6.4.4",
+    "@storybook/addon-docs": "^6.4.4",
+    "@storybook/addons": "^6.4.4",
+    "@storybook/theming": "^6.4.4"
   },
   "publishConfig": {
     "access": "public"
