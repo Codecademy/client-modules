@@ -1,7 +1,7 @@
 {
-  "name": "@codecademy/codebytes",
-  "description": "Codebytes code editor",
-  "version": "40.4.1",
+  "name": "@codecademy/codebyte-code-editor",
+  "description": "Codebyte Code Editor",
+  "version": "0.0.1",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
