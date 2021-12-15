@@ -16,7 +16,7 @@ module.exports = {
       },
     },
     {
-      files: ['**/jest/*', '**/*.stories.tsx'],
+      files: ['**/jest/*', '**/*.stories.mdx'],
       rules: {
         'import/no-extraneous-dependencies': [
           'error',
