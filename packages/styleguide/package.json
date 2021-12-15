@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
-  "description": "Styleguide & Component library for codecademy.com",
-  "version": "52.2.2",
+  "description": "Styleguide for Client Modules",
+  "version": "0.0.1",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Codecademy/gamut.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "dependencies": {
     "@babel/cli": "^7.13.10",
