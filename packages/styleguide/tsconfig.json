@@ -2,22 +2,13 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "~styleguide/blocks": [".storybook/components"],
-      "@codecademy/storybook-addon-variance": [
-        ".storybook/addons/system/components"
-      ]
-    },
-    "allowJs": true,
     "noEmit": true,
     "declaration": false
   },
   "include": [
-    "../../typings/*.d.ts",
     "./.storybook/**/*.ts",
     "./.storybook/**/*.tsx",
     "./**/*.tsx",
-    "./**/*.ts",
-    "../../packages/gamut-styles/dist/typings/theme.d.ts"
+    "./**/*.ts"
   ]
 }

@@ -36,9 +36,7 @@ module.exports = {
 
     config.resolve = {
       ...config.resolve,
-      alias: {
-        ...emotionless(config.resolve.alias),
-      },
+      alias: emotionless(config.resolve.alias),
     };
 
     return config;

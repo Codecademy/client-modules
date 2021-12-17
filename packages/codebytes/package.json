@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/codebytes",
-  "description": "Codebytes code editor",
+  "description": "Codebytes Code Editor",
   "version": "0.0.1",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
@@ -13,7 +13,7 @@
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Codecademy/gamut.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
     "react": ">=16.8.1",
