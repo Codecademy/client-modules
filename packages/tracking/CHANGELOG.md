@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.17.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.17.0...@codecademy/tracking@0.17.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* **tracking:** remove navigator.sendBeacon .bind and add try/catch ([b924d7e](https://github.com/Codecademy/client-modules/commit/b924d7e1ffd22d75adcaf15c9726d10f19b2924e))
+
+
+
 ## [0.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.16.1...@codecademy/tracking@0.17.0) (2021-11-30)
 
 
