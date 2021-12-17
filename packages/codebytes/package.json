@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/codebytes",
   "description": "Codebytes Code Editor",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@codecademy/gamut": "*",
-    "@codecademy/gamut-styles": "*",
     "@codecademy/gamut-icons": "*",
+    "@codecademy/gamut-styles": "*",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0"
   },

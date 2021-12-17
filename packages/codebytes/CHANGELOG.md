@@ -9,9 +9,3 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **Codebytes:** move codebytes parent disc 351 ([#11](https://github.com/Codecademy/client-modules/issues/11)) ([30edd2b](https://github.com/Codecademy/client-modules/commit/30edd2b7a0e50c27d3adcf231b56441b8e8f6b81))
-
-
-
-### [0.0.1]
-
-**Note:** Storybook setup and adding skeleton for Codebytes package
