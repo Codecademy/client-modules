@@ -126,6 +126,24 @@ describe('createTracker', () => {
           { body: expect.any(FormData), method: 'POST' }
         );
       });
+
+      it('calls to fetch when beacon throws an error', () => {
+        Object.defineProperty(navigator, 'sendBeacon', {
+          writable: true,
+          value: () => {
+            throw new Error('Oh no!');
+          },
+        });
+
+        tracker[event](expectedProps);
+
+        expect(
+          fetch
+        ).toHaveBeenCalledWith(
+          'https://www.codecademy.com/analytics/user?utm_source=twitter',
+          { body: expect.any(FormData), method: 'POST' }
+        );
+      });
     });
   };
 
