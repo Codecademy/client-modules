@@ -24,12 +24,10 @@ export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
     }
 
     // Firefox allows users to disable navigator.sendBeacon, and very old Safari versions don't have it.
-    const sendBeacon =
-      // [WEB-1700]: Additionally, Chrome 79-80 gives "Illegal invocation" with ?., so through 2022 we should support them.
-      // It seems similar to this: https://github.com/vercel/next.js/issues/23856
-      // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
-      navigator.sendBeacon && navigator.sendBeacon.bind(navigator);
-    if (sendBeacon?.(uri, form)) {
+    // [WEB-1700]: Additionally, Chrome 79-80 gives "Illegal invocation" with ?., so through 2022 we should support them.
+    // It seems similar to this: https://github.com/vercel/next.js/issues/23856
+    // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+    if (navigator.sendBeacon && navigator.sendBeacon(uri, form)) {
       return;
     }
 
