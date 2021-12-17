@@ -15,7 +15,7 @@ import { Drawers } from './drawers';
 
 const Output = styled.pre<{ hasError: boolean }>`
   width: 100%;
-  height: 100%;
+  height: 20rem;
   margin: 0;
   padding: 0 1rem;
   font-family: Monaco;
@@ -119,9 +119,8 @@ export const Editor: React.FC<EditorProps> = ({
 
   return (
     <>
-      <h1>Hi</h1>
       <Drawers
-        leftChild={<div>Simple Monaco Editor Placeholder</div>}
+        leftChild={<div>{text}</div>}
         rightChild={
           <Output hasError={status === 'error'} aria-live="polite">
             {output}
