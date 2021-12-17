@@ -1,0 +1,18 @@
+import { CodeByteEditor } from '@codecademy/codebytes/src';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="CodeByteEditor"
+  component={CodeByteEditor}
+  parameters={{
+    subtitle: 'Dummy',
+    status: 'updating',
+    source: 'client-modules',
+  }}
+/>
+
+<Canvas>
+  <Story name="default" args={{ text: 'This is example input for a codebyte' }}>
+    {(args) => <CodeByteEditor {...args} />}
+  </Story>
+</Canvas>
