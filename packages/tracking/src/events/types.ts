@@ -182,6 +182,7 @@ export type UserClickData = UserSharedData & {
   course_progress?: number;
   assessment_id?: string;
   container_slugs?: string[];
+  search_id?: string;
 };
 
 /**
