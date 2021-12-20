@@ -12,6 +12,7 @@ import React, { useState } from 'react';
 
 import type { languageOption } from './consts';
 import { Drawers } from './drawers';
+import { SimpleMonacoEditor } from './MonacoEditor';
 
 const Output = styled.pre<{ hasError: boolean }>`
   width: 100%;
@@ -37,8 +38,7 @@ type EditorProps = {
   hideCopyButton: boolean;
   language: languageOption;
   text: string;
-  // eslint-disable-next-line react/no-unused-prop-types
-  onChange: (text: string) => void /* Will use in upcoming pr */;
+  onChange: (text: string) => void;
   onCopy?: (text: string, language: string) => void;
 };
 
@@ -53,6 +53,7 @@ export const Editor: React.FC<EditorProps> = ({
   text,
   hideCopyButton,
   onCopy,
+  onChange,
 }) => {
   const [output, setOutput] = useState('');
   const [status, setStatus] = useState<'ready' | 'waiting' | 'error'>('ready');
@@ -120,7 +121,13 @@ export const Editor: React.FC<EditorProps> = ({
   return (
     <>
       <Drawers
-        leftChild={<div>{text}</div>}
+        leftChild={
+          <SimpleMonacoEditor
+            value={text}
+            language={language}
+            onChange={onChange}
+          />
+        }
         rightChild={
           <Output hasError={status === 'error'} aria-live="polite">
             {output}

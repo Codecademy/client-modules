@@ -24,8 +24,11 @@
     "@codecademy/gamut-icons": "*",
     "@codecademy/gamut-styles": "*",
     "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0"
-  },
+    "@emotion/styled": "^11.3.0",
+    "@loadable/component": "^5.13.1",
+    "react-monaco-editor": "0.34.0",
+    "react-resize-observer": "1.1.1",
+    "monaco-editor": "0.20.0"  },
   "scripts": {
     "verify": "tsc --noEmit",
     "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
@@ -38,7 +41,9 @@
   "devDependencies": {
     "@emotion/jest": "^11.3.0",
     "@testing-library/dom": "^7.31.2",
-    "@testing-library/react": "^11.0.4"
+    "@testing-library/react": "^11.0.4",
+    "@types/loadable__component": "^5.13.2",
+    "monaco-editor-webpack-plugin": "1.9.1"
   },
   "publishConfig": {
     "access": "public"
