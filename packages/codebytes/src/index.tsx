@@ -1,6 +1,7 @@
 import { Box, IconButton } from '@codecademy/gamut';
 import { FaviconIcon } from '@codecademy/gamut-icons';
-import { Background, system } from '@codecademy/gamut-styles';
+import { Background, states, system } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
@@ -12,18 +13,30 @@ export interface CodeByteEditorProps {
   language: languageOption;
   hideCopyButton: boolean;
   onCopy?: (text: string, language: string) => void;
+  isIFrame?: boolean;
 }
 
-const EditorContainer = styled(Background)(
-  system.css({
-    border: '1',
-    borderColor: 'gray-900',
-    display: 'flex',
-    flexDirection: 'column',
-    height: '400px',
-    width: '688px',
-    overflow: 'hidden',
-  })
+const editorStates = states({
+  isIFrame: { height: '100vh' },
+});
+
+const editorBaseStyles = system.css({
+  border: '1',
+  borderColor: 'gray-900',
+  display: 'flex',
+  flexDirection: 'column',
+  height: '400px',
+  width: '688px',
+  overflow: 'hidden',
+});
+
+export interface EditorStyleProps
+  extends StyleProps<typeof editorBaseStyles>,
+    StyleProps<typeof editorStates> {}
+
+const EditorContainer = styled(Background)<EditorStyleProps>(
+  editorBaseStyles,
+  editorStates
 );
 
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
@@ -31,11 +44,12 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   language,
   hideCopyButton,
   onCopy,
+  isIFrame = false,
 }) => {
   const [text, setText] = useState<string>(initialText);
   return (
     <>
-      <EditorContainer bg="black" as="main">
+      <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
         <Box borderBottom="1" borderColor="gray-900" py="4" pl="8">
           <IconButton
             icon={FaviconIcon}

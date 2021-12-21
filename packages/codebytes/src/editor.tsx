@@ -16,7 +16,7 @@ import { SimpleMonacoEditor } from './MonacoEditor';
 
 const Output = styled.pre<{ hasError: boolean }>`
   width: 100%;
-  height: 20rem;
+  height: 100%;
   margin: 0;
   padding: 0 1rem;
   font-family: Monaco;
@@ -91,8 +91,8 @@ export const Editor: React.FC<EditorProps> = ({
     setStatus('waiting');
     setOutput('');
 
-    const snippetsEndpoint =
-      'https://' + process.env.GATSBY_CONTAINER_API_BASE + '/snippets';
+    const snippetsEndpoint = 'https://staging-propeller.cc-le-cf.com/snippets';
+    /* Confirm with web plat re: where we want to store secrets */
 
     fetch(snippetsEndpoint, {
       method: 'POST',

@@ -2115,7 +2115,7 @@
     react-use "^15.3.8"
     sanitize-markdown "^2.6.6"
 
-"@codecademy/variance@^0.19.0":
+"@codecademy/variance@*", "@codecademy/variance@^0.19.0":
   version "0.19.0"
   resolved "https://registry.npmjs.org/@codecademy/variance/-/variance-0.19.0.tgz#7cdef433caca52a300ab71e1a36e0cf70276138c"
   integrity sha512-5cPVt1cJWU3BwZgs/q3HMAClQqYnVgnR5FhXrA3sTq3wrb+cQSbxz2MIBzWP3nCyB0maMGzkUBPsNPRauySklQ==
