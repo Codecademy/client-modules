@@ -38,7 +38,10 @@ type EditorProps = {
   hideCopyButton: boolean;
   language: languageOption;
   text: string;
-  onChange: (text: string) => void;
+  // eslint-disable-next-line react/no-unused-prop-types
+  onChange: (
+    text: string
+  ) => void /* TODO: Add onChange behavior in DISC-353 */;
   onCopy?: (text: string, language: string) => void;
 };
 
@@ -67,7 +70,7 @@ export const Editor: React.FC<EditorProps> = ({
       onCopy?.(
         text,
         language
-      ); /* TODO: pass in onCopyBBCodeblock behavior from static sites */
+      ); /* TODO: pass in onCopyBBCodeblock behavior from the future version we migrate to Next.js  */
       setIsCodeByteCopied(true);
     }
   };
