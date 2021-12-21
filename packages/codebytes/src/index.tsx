@@ -11,6 +11,7 @@ export interface CodeByteEditorProps {
   text: string;
   language: languageOption;
   hideCopyButton: boolean;
+  onCopy?: (text: string, language: string) => void;
 }
 
 const EditorContainer = styled(Background)(
@@ -29,6 +30,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language,
   hideCopyButton,
+  onCopy,
 }) => {
   const [text, setText] = useState<string>(initialText);
   return (
@@ -45,12 +47,13 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           />
         </Box>
         <Editor
+          language={language}
           text={text}
+          hideCopyButton={hideCopyButton}
           onChange={(newText: string) => {
             setText(newText);
           }}
-          hideCopyButton={hideCopyButton}
-          language={language}
+          onCopy={onCopy}
         />
       </EditorContainer>
     </>
