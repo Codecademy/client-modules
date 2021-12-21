@@ -43,6 +43,7 @@ type EditorProps = {
     text: string
   ) => void /* TODO: Add onChange behavior in DISC-353 */;
   onCopy?: (text: string, language: string) => void;
+  snippetsBaseUrl?: string;
 };
 
 interface Response {
@@ -57,6 +58,7 @@ export const Editor: React.FC<EditorProps> = ({
   hideCopyButton,
   onCopy,
   onChange,
+  snippetsBaseUrl,
 }) => {
   const [output, setOutput] = useState('');
   const [status, setStatus] = useState<'ready' | 'waiting' | 'error'>('ready');
@@ -91,8 +93,7 @@ export const Editor: React.FC<EditorProps> = ({
     setStatus('waiting');
     setOutput('');
 
-    const snippetsEndpoint = 'https://staging-propeller.cc-le-cf.com/snippets';
-    /* Confirm with web plat re: where we want to store secrets */
+    const snippetsEndpoint = 'https://' + snippetsBaseUrl + '/snippets';
 
     fetch(snippetsEndpoint, {
       method: 'POST',

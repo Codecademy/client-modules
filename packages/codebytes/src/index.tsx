@@ -14,6 +14,7 @@ export interface CodeByteEditorProps {
   hideCopyButton: boolean;
   onCopy?: (text: string, language: string) => void;
   isIFrame?: boolean;
+  snippetsBaseUrl?: string;
 }
 
 const editorStates = states({
@@ -45,6 +46,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   hideCopyButton,
   onCopy,
   isIFrame = false,
+  snippetsBaseUrl = process.env.CONTAINER_API_BASE,
 }) => {
   const [text, setText] = useState<string>(initialText);
   return (
@@ -68,6 +70,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             setText(newText);
           }}
           onCopy={onCopy}
+          snippetsBaseUrl={snippetsBaseUrl}
         />
       </EditorContainer>
     </>
