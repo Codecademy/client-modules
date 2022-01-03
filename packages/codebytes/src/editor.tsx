@@ -15,7 +15,7 @@ import { Drawers } from './drawers';
 
 const Output = styled.pre<{ hasError: boolean }>`
   width: 100%;
-  height: 20rem;
+  height: 100%;
   margin: 0;
   padding: 0 1rem;
   font-family: Monaco;
@@ -42,6 +42,7 @@ type EditorProps = {
     text: string
   ) => void /* TODO: Add onChange behavior in DISC-353 */;
   onCopy?: (text: string, language: string) => void;
+  snippetsBaseUrl?: string;
 };
 
 interface Response {
