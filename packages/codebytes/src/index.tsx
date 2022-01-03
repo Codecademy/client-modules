@@ -8,16 +8,6 @@ import React, { useState } from 'react';
 import { languageOption } from './consts';
 import { Editor } from './editor';
 
-export interface CodeByteEditorProps {
-  text: string;
-  language: languageOption;
-  hideCopyButton: boolean;
-  onCopy?: (text: string, language: string) => void;
-  isIFrame?: boolean;
-  snippetsBaseUrl?: string;
-  onTextChange?: (text: string) => void;
-}
-
 const editorStates = states({
   isIFrame: { height: '100vh' },
 });
@@ -27,11 +17,10 @@ const editorBaseStyles = system.css({
   borderColor: 'gray-900',
   display: 'flex',
   flexDirection: 'column',
-  height: '400px',
-  width: '688px',
+  height: '25rem',
+  width: '43rem',
   overflow: 'hidden',
 });
-
 export interface EditorStyleProps
   extends StyleProps<typeof editorBaseStyles>,
     StyleProps<typeof editorStates> {}
@@ -40,6 +29,16 @@ const EditorContainer = styled(Background)<EditorStyleProps>(
   editorBaseStyles,
   editorStates
 );
+
+export interface CodeByteEditorProps {
+  text: string;
+  language: languageOption;
+  hideCopyButton: boolean;
+  onCopy?: (text: string, language: string) => void;
+  isIFrame?: boolean;
+  snippetsBaseUrl?: string;
+  onTextChange?: (text: string) => void;
+}
 
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
