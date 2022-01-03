@@ -140,7 +140,7 @@ export const Editor: React.FC<EditorProps> = ({
       />
       <FlexBox
         justifyContent={hideCopyButton ? 'flex-end' : 'space-between'}
-        pl="8"
+        pl={8}
       >
         {!hideCopyButton ? (
           <ToolTip

@@ -15,6 +15,7 @@ export interface CodeByteEditorProps {
   onCopy?: (text: string, language: string) => void;
   isIFrame?: boolean;
   snippetsBaseUrl?: string;
+  onTextChange?: (text: string) => void;
 }
 
 const editorStates = states({
@@ -22,7 +23,7 @@ const editorStates = states({
 });
 
 const editorBaseStyles = system.css({
-  border: '1',
+  border: 1,
   borderColor: 'gray-900',
   display: 'flex',
   flexDirection: 'column',
@@ -47,33 +48,33 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onCopy,
   isIFrame = false,
   snippetsBaseUrl = process.env.CONTAINER_API_BASE,
+  onTextChange,
 }) => {
   const [text, setText] = useState<string>(initialText);
   return (
-    <>
-      <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
-        <Box borderBottom="1" borderColor="gray-900" py="4" pl="8">
-          <IconButton
-            icon={FaviconIcon}
-            variant="secondary"
-            href="https://www.codecademy.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="visit codecademy.com"
-          />
-        </Box>
-        <Editor
-          language={language}
-          text={text}
-          hideCopyButton={hideCopyButton}
-          onChange={(newText: string) => {
-            setText(newText);
-          }}
-          onCopy={onCopy}
-          snippetsBaseUrl={snippetsBaseUrl}
+    <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
+      <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
+        <IconButton
+          icon={FaviconIcon}
+          variant="secondary"
+          href="https://www.codecademy.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="visit codecademy.com"
         />
-      </EditorContainer>
-    </>
+      </Box>
+      <Editor
+        language={language}
+        text={text}
+        hideCopyButton={hideCopyButton}
+        onChange={(newText: string) => {
+          setText(newText);
+          onTextChange?.(newText);
+        }}
+        onCopy={onCopy}
+        snippetsBaseUrl={snippetsBaseUrl}
+      />
+    </EditorContainer>
   );
 };
 
