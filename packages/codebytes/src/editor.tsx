@@ -62,10 +62,7 @@ export const Editor: React.FC<EditorProps> = ({
         .writeText(text)
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
-      onCopy?.(
-        text,
-        language
-      ); /* TODO: pass in onCopyBBCodeblock behavior from the future version we migrate to Next.js  */
+      onCopy?.(text, language);
       setIsCodeByteCopied(true);
     }
   };
