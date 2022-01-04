@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide for Client Modules",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
@@ -17,8 +17,8 @@
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
     "@codecademy/gamut": "^42.1.1",
-    "@codecademy/webpack-config": "^6.0.0",
     "@codecademy/variance": "*",
+    "@codecademy/webpack-config": "^6.0.0",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",

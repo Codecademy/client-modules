@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.1.0...@codecademy/codebytes@0.2.0) (2022-01-04)
+
+
+### Features
+
+* **Codebytes:** add editor and drawers disc 351 ([#14](https://github.com/Codecademy/client-modules/issues/14)) ([e84e265](https://github.com/Codecademy/client-modules/commit/e84e265e4cf4bf8360830ebf2dbea930ab503c9c))
+
+
+
 ## 0.1.0 (2021-12-17)
 
 
