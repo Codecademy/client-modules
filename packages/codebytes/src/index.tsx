@@ -14,7 +14,7 @@ export interface CodeByteEditorProps {
   hideCopyButton: boolean;
   onCopy?: (text: string, language: string) => void;
   isIFrame?: boolean;
-  snippetsBaseUrl?: string;
+  snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
   onTextChange?: (text: string) => void;
 }
 
