@@ -19,7 +19,7 @@ const Drawer = styled(FlexBox)<{ open?: boolean; hideOnClose?: boolean }>`
   position: relative;
   ${({ open, hideOnClose }) => `
     flex-basis: ${open ? '100%' : '0%'};
-    ${!open && hideOnClose ? 'visibility: hidden;' : ''}
+    visibility: ${!open && hideOnClose ? 'hidden' : 'visible'};
     transition: flex-basis 0.2s ${
       open ? 'ease-out' : 'ease-in, visibility 0s 0.2s'
     };
@@ -36,48 +36,52 @@ export type DrawersProps = {
 };
 
 export const Drawers: React.FC<DrawersProps> = ({ leftChild, rightChild }) => {
-  const [show, setShow] = useState<'left' | 'right' | 'both'>('both');
+  const [open, setOpen] = useState<'left' | 'right' | 'both'>('both');
 
-  let buttonLabelL = 'hide code';
-  let buttonLabelR = 'hide output';
+  let ariaLabelCodeButton = 'hide code';
+  let ariaLabelOutputButton = 'hide output';
+  let isLeftOpen = false;
+  let isRightOpen = false;
 
-  if (show === 'left') {
-    buttonLabelL = buttonLabelR = 'show output';
-  } else if (show === 'right') {
-    buttonLabelL = buttonLabelR = 'show code';
+  if (open === 'left') {
+    ariaLabelCodeButton = ariaLabelOutputButton = 'show output';
+    isLeftOpen = true;
+  } else if (open === 'right') {
+    ariaLabelCodeButton = ariaLabelOutputButton = 'show code';
+    isRightOpen = true;
   }
 
   return (
     <>
       <FlexBox>
         <Drawer
-          open={show !== 'right'}
+          open={!isRightOpen}
           alignItems="center"
           flexWrap="nowrap"
           textAlign="left"
-          borderRight="1"
+          borderRight={1}
           borderColor="gray-900"
-          px="8"
+          px={8}
         >
           <IconButton
             icon={LeftDrawerIcon}
             variant="secondary"
             size="small"
             onClick={() =>
-              setShow((state) => (state === 'both' ? 'right' : 'both'))
+              setOpen((state) => (state === 'both' ? 'right' : 'both'))
             }
-            aria-label={buttonLabelL}
+            aria-label={ariaLabelCodeButton}
             aria-controls="code-drawer"
-            aria-expanded={show !== 'right'}
+            aria-expanded={!isRightOpen}
           />
           <DrawerLabel id="code-drawer-label">Code</DrawerLabel>
         </Drawer>
         <Drawer
-          open={show !== 'left'}
+          open={!isLeftOpen}
           alignItems="center"
           flexWrap="nowrap"
           justifyContent="flex-end"
-          px="8"
+          px={8}
         >
           <DrawerLabel id="output-drawer-label">Output</DrawerLabel>
           <IconButton
@@ -85,17 +89,17 @@ export const Drawers: React.FC<DrawersProps> = ({ leftChild, rightChild }) => {
             variant="secondary"
             size="small"
             onClick={() =>
-              setShow((state) => (state === 'both' ? 'left' : 'both'))
+              setOpen((state) => (state === 'both' ? 'left' : 'both'))
             }
-            aria-label={buttonLabelR}
+            aria-label={ariaLabelOutputButton}
             aria-controls="output-drawer"
-            aria-expanded={show !== 'left'}
+            aria-expanded={!isLeftOpen}
           />
         </Drawer>
       </FlexBox>
       <FlexBox
         flexGrow={1}
-        borderY="1"
+        borderY={1}
         borderColor="gray-900"
         alignItems="stretch"
         overflow="hidden"
@@ -104,7 +108,7 @@ export const Drawers: React.FC<DrawersProps> = ({ leftChild, rightChild }) => {
           hideOnClose
           id="code-drawer"
           aria-labelledby="code-drawer-label"
-          open={show !== 'right'}
+          open={!isRightOpen}
           flexGrow={0}
           overflow="hidden"
           borderColor="gray-900"
@@ -117,7 +121,7 @@ export const Drawers: React.FC<DrawersProps> = ({ leftChild, rightChild }) => {
           hideOnClose
           id="output-drawer"
           aria-labelledby="output-drawer-label"
-          open={show !== 'left'}
+          open={!isLeftOpen}
           overflow="hidden"
         >
           {rightChild}

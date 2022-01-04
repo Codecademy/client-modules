@@ -10,6 +10,7 @@ import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
+import { postSnippet } from './api';
 import type { languageOption } from './consts';
 import { Drawers } from './drawers';
 import { SimpleMonacoEditor } from './MonacoEditor';
@@ -46,12 +47,6 @@ type EditorProps = {
   snippetsBaseUrl?: string;
 };
 
-interface Response {
-  stderr: string;
-  stdout: string;
-  exit_code: number;
-}
-
 export const Editor: React.FC<EditorProps> = ({
   language,
   text,
@@ -69,10 +64,7 @@ export const Editor: React.FC<EditorProps> = ({
         .writeText(text)
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
-      onCopy?.(
-        text,
-        language
-      ); /* TODO: pass in onCopyBBCodeblock behavior from the future version we migrate to Next.js  */
+      onCopy?.(text, language);
       setIsCodeByteCopied(true);
     }
   };
@@ -82,7 +74,7 @@ export const Editor: React.FC<EditorProps> = ({
     setStatus('error');
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (text.trim().length === 0) {
       return;
     }
@@ -93,33 +85,23 @@ export const Editor: React.FC<EditorProps> = ({
     setStatus('waiting');
     setOutput('');
 
-    const snippetsEndpoint = 'https://' + snippetsBaseUrl + '/snippets';
-
-    fetch(snippetsEndpoint, {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'x-codecademy-user-id': 'codebytes-anon-user',
-      },
-    })
-      .then((res) => res.json())
-      .then((response: Response) => {
-        if (response.stderr.length > 0) {
-          setErrorStatusAndOutput(response.stderr);
-        } else if (response.exit_code === DOCKER_SIGTERM) {
-          setErrorStatusAndOutput(
-            'Your code took too long to return a result. Double check your code for any issues and try again!'
-          );
-        } else if (response.exit_code !== 0) {
-          setErrorStatusAndOutput('An unknown error occured.');
-        } else {
-          setOutput(response.stdout);
-          setStatus('ready');
-        }
-      })
-      .catch((error) => {
-        setErrorStatusAndOutput('Error: ' + error);
-      });
+    try {
+      const response = await postSnippet(data, snippetsBaseUrl);
+      if (response.stderr.length > 0) {
+        setErrorStatusAndOutput(response.stderr);
+      } else if (response.exit_code === DOCKER_SIGTERM) {
+        setErrorStatusAndOutput(
+          'Your code took too long to return a result. Double check your code for any issues and try again!'
+        );
+      } else if (response.exit_code !== 0) {
+        setErrorStatusAndOutput('An unknown error occured.');
+      } else {
+        setOutput(response.stdout);
+        setStatus('ready');
+      }
+    } catch (error) {
+      setErrorStatusAndOutput('Error: ' + error);
+    }
   };
 
   return (

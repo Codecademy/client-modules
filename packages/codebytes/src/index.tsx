@@ -31,7 +31,6 @@ const editorBaseStyles = system.css({
   width: '688px',
   overflow: 'hidden',
 });
-
 export interface EditorStyleProps
   extends StyleProps<typeof editorBaseStyles>,
     StyleProps<typeof editorStates> {}
@@ -47,7 +46,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   hideCopyButton,
   onCopy,
   isIFrame = false,
-  snippetsBaseUrl = process.env.CONTAINER_API_BASE,
+  snippetsBaseUrl = '',
   onTextChange,
 }) => {
   const [text, setText] = useState<string>(initialText);
