@@ -1,5 +1,4 @@
 import { CodeByteEditor } from '@codecademy/codebytes/src';
-import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { AppWrapper } from '@codecademy/gamut';
 import {
   createEmotionCache,
@@ -7,6 +6,7 @@ import {
   theme,
 } from '@codecademy/gamut-styles';
 import { AssetProvider } from '@codecademy/gamut-styles/dist/AssetProvider';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title="CodeByteEditor"
@@ -23,7 +23,7 @@ import { AssetProvider } from '@codecademy/gamut-styles/dist/AssetProvider';
     name="default"
     args={{
       text:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+        'console.log("Welcome to the Codebytes Editor!");',
       language: 'javascript',
       snippetsBaseUrl: process.env.CONTAINER_API_BASE,
     }}
