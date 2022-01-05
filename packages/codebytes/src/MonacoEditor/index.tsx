@@ -46,7 +46,7 @@ export const SimpleMonacoEditor: React.FC<SimpleMonacoEditorProps> = ({
         options={{ minimap: { enabled: false } }}
         theme="dark"
         value={value}
-        language="language"
+        language={language}
       />
     </>
   );
