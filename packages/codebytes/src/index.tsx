@@ -27,8 +27,8 @@ const editorBaseStyles = system.css({
   borderColor: 'gray-900',
   display: 'flex',
   flexDirection: 'column',
-  height: '400px',
-  width: '688px',
+  height: '25rem',
+  width: '43rem',
   overflow: 'hidden',
 });
 export interface EditorStyleProps
