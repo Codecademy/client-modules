@@ -17,8 +17,14 @@ export interface CodeByteEditorProps {
   onCopy?: (text: string, language: string) => void;
   isIFrame?: boolean;
   snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
-  onTextChange?: ChangeHandler;
-  onLanguageChange?: ChangeHandler;
+  on: {
+    edit?: ChangeHandler;
+    copy?: () => void;
+    languageChange?: ChangeHandler;
+    run?: () => void;
+  };
+  // onTextChange?: ChangeHandler;
+  // onLanguageChange?: ChangeHandler;
 }
 
 const editorStates = states({
@@ -50,8 +56,9 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onCopy,
   isIFrame = false,
   snippetsBaseUrl = '',
-  onTextChange,
-  onLanguageChange,
+  // onTextChange,
+  // onLanguageChange,
+  on,
 }) => {
   const [text, setText] = useState<string>(initialText);
   const [language, setLanguage] = useState<languageOption>(initialLanguage);
@@ -74,7 +81,8 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           hideCopyButton={hideCopyButton}
           onChange={(newText: string) => {
             setText(newText);
-            onTextChange?.(newText, language);
+            on.edit?.(newText, language);
+            // onTextChange?.(newText, language);
           }}
           onCopy={onCopy}
           snippetsBaseUrl={snippetsBaseUrl}
@@ -85,7 +93,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             const newText: string = text || helloWorld[newLanguage] || '';
             setLanguage(newLanguage);
             setText(newText);
-            onLanguageChange?.(newText, newLanguage);
+            on.languageChange?.(newText, newLanguage);
           }}
         />
       )}
