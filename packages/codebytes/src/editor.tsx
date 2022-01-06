@@ -6,10 +6,11 @@ import {
   ToolTip,
 } from '@codecademy/gamut';
 import { CopyIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
+import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
+import { CodeBytesChangeHandlerMap } from '.';
 import { postSnippet } from './api';
 import type { languageOption } from './consts';
 import { Drawers } from './drawers';
@@ -23,9 +24,9 @@ const Output = styled.pre<{ hasError: boolean }>`
   font-family: Monaco;
   font-size: 0.875rem;
   overflow: auto;
-  ${({ hasError }) => `
+  ${({ hasError, theme }) => `
   color: ${hasError ? theme.colors.orange : theme.colors.white};
-  background-color: ${theme.colors['gray-900']};
+  background-color: ${colors['gray-900']};
 `}
 `;
 
@@ -43,17 +44,17 @@ type EditorProps = {
   onChange: (
     text: string
   ) => void /* TODO: Add onChange behavior in DISC-353 */;
-  onCopy?: (text: string, language: string) => void;
   snippetsBaseUrl?: string;
+  on?: Pick<CodeBytesChangeHandlerMap, 'edit' | 'copy' | 'run'>;
 };
 
 export const Editor: React.FC<EditorProps> = ({
   language,
   text,
   hideCopyButton,
-  onCopy,
   onChange,
   snippetsBaseUrl,
+  on,
 }) => {
   const [output, setOutput] = useState('');
   const [status, setStatus] = useState<'ready' | 'waiting' | 'error'>('ready');
@@ -64,7 +65,7 @@ export const Editor: React.FC<EditorProps> = ({
         .writeText(text)
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
-      onCopy?.(text, language);
+      on?.copy?.(text, language);
       setIsCodeByteCopied(true);
     }
   };
@@ -84,6 +85,7 @@ export const Editor: React.FC<EditorProps> = ({
     };
     setStatus('waiting');
     setOutput('');
+    on?.run?.();
 
     try {
       const response = await postSnippet(data, snippetsBaseUrl);

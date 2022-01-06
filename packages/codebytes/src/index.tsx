@@ -9,7 +9,18 @@ import { helloWorld, languageOption } from './consts';
 import { Editor } from './editor';
 import { LanguageSelection } from './languageSelection';
 
-type ChangeHandler = (text: string, language: languageOption) => void;
+export type CodeBytesChangeHandler = (
+  text: string,
+  language: languageOption
+) => void;
+
+export type CodeBytesChangeHandlerMap = {
+  logoClick?: () => void;
+  edit?: CodeBytesChangeHandler;
+  copy?: CodeBytesChangeHandler;
+  languageChange?: CodeBytesChangeHandler;
+  run?: () => void;
+};
 export interface CodeByteEditorProps {
   text: string;
   language: languageOption;
@@ -17,14 +28,7 @@ export interface CodeByteEditorProps {
   onCopy?: (text: string, language: string) => void;
   isIFrame?: boolean;
   snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
-  on: {
-    edit?: ChangeHandler;
-    copy?: () => void;
-    languageChange?: ChangeHandler;
-    run?: () => void;
-  };
-  // onTextChange?: ChangeHandler;
-  // onLanguageChange?: ChangeHandler;
+  on?: CodeBytesChangeHandlerMap;
 }
 
 const editorStates = states({
@@ -53,11 +57,8 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language: initialLanguage,
   hideCopyButton,
-  onCopy,
   isIFrame = false,
   snippetsBaseUrl = '',
-  // onTextChange,
-  // onLanguageChange,
   on,
 }) => {
   const [text, setText] = useState<string>(initialText);
@@ -81,10 +82,9 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           hideCopyButton={hideCopyButton}
           onChange={(newText: string) => {
             setText(newText);
-            on.edit?.(newText, language);
-            // onTextChange?.(newText, language);
+            on?.edit?.(newText, language);
           }}
-          onCopy={onCopy}
+          on={on}
           snippetsBaseUrl={snippetsBaseUrl}
         />
       ) : (
@@ -93,7 +93,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             const newText: string = text || helloWorld[newLanguage] || '';
             setLanguage(newLanguage);
             setText(newText);
-            on.languageChange?.(newText, newLanguage);
+            on?.languageChange?.(newText, newLanguage);
           }}
         />
       )}
