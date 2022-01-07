@@ -74,7 +74,10 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           hideCopyButton={hideCopyButton}
           onChange={(newText: string) => {
             setText(newText);
-            onEdit?.(newText, language);
+            onEdit?.(
+              newText,
+              language
+            ); /* TODO: in DISC-355 update component to use an object that contains all change handlers */
           }}
           onCopy={onCopy}
           snippetsBaseUrl={snippetsBaseUrl}
@@ -85,7 +88,10 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             const newText: string = text || helloWorld[newLanguage] || '';
             setLanguage(newLanguage);
             setText(newText);
-            onLanguageChange?.(newText, newLanguage);
+            onLanguageChange?.(
+              newText,
+              newLanguage
+            ); /* TODO: in DISC-355 update component to use an object that contains all change handlers */
           }}
         />
       )}
