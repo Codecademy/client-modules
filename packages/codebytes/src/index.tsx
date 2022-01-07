@@ -17,7 +17,7 @@ export interface CodeByteEditorProps {
   onCopy?: (text: string, language: string) => void;
   isIFrame?: boolean;
   snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
-  onTextChange?: ChangeHandler;
+  onEdit?: ChangeHandler;
   onLanguageChange?: ChangeHandler;
 }
 
@@ -50,7 +50,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onCopy,
   isIFrame = false,
   snippetsBaseUrl = '',
-  onTextChange,
+  onEdit,
   onLanguageChange,
 }) => {
   const [text, setText] = useState<string>(initialText);
@@ -74,7 +74,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           hideCopyButton={hideCopyButton}
           onChange={(newText: string) => {
             setText(newText);
-            onTextChange?.(newText, language);
+            onEdit?.(newText, language);
           }}
           onCopy={onCopy}
           snippetsBaseUrl={snippetsBaseUrl}
