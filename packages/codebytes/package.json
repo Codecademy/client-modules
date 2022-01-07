@@ -29,7 +29,8 @@
     "@loadable/component": "^5.13.1",
     "react-monaco-editor": "0.34.0",
     "react-resize-observer": "1.1.1",
-    "monaco-editor": "0.20.0"  },
+    "monaco-editor": "0.20.0"
+  },
   "scripts": {
     "verify": "tsc --noEmit",
     "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",

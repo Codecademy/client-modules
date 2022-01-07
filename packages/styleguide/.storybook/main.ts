@@ -32,11 +32,10 @@ module.exports = {
 
   webpackFinal: (config: any) => {
     const commonRules = configs.css().module.rules; /* Codecademy configs */
-    config.module.rules = config.module.rules.concat(
-      [{...commonRules[0], include: [
-        /node_modules\/@codecademy/
-      ]}, commonRules[1]],
-    );
+    config.module.rules = config.module.rules.concat([
+      { ...commonRules[0], include: [/node_modules\/@codecademy/] },
+      commonRules[1],
+    ]);
 
     config.resolve = {
       ...config.resolve,
@@ -44,9 +43,5 @@ module.exports = {
     };
 
     return config;
-
-    
   },
-
-
 };
