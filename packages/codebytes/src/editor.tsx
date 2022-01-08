@@ -44,7 +44,7 @@ type EditorProps = {
     text: string
   ) => void /* TODO: Add onChange behavior in DISC-353 */;
   onCopy?: (text: string, language: string) => void;
-  snippetsBaseUrl?: string;
+  snippetsBaseUrl: string;
 };
 
 export const Editor: React.FC<EditorProps> = ({
@@ -60,10 +60,8 @@ export const Editor: React.FC<EditorProps> = ({
   const [isCodeByteCopied, setIsCodeByteCopied] = useState(false);
   const onCopyClick = () => {
     if (!isCodeByteCopied) {
-      navigator.clipboard
-        .writeText(text)
-        // eslint-disable-next-line no-console
-        .catch(() => console.error('Failed to copy'));
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      navigator.clipboard.writeText(text);
       onCopy?.(text, language);
       setIsCodeByteCopied(true);
     }
@@ -134,15 +132,20 @@ export const Editor: React.FC<EditorProps> = ({
                 variant="secondary"
                 onClick={onCopyClick}
                 onBlur={() => setIsCodeByteCopied(false)}
+                data-testid="copy-codebyte-btn"
               >
                 <CopyIconStyled aria-hidden="true" /> Copy Codebyte
               </TextButton>
             }
           >
             {isCodeByteCopied ? (
-              <span role="alert">Copied!</span>
+              <span data-testid="copy-confirmation-tooltip" role="alert">
+                Copied!
+              </span>
             ) : (
-              <span>Copy to your clipboard</span>
+              <span data-testid="copy-prompt-tooltip">
+                Copy to your clipboard
+              </span>
             )}
           </ToolTip>
         ) : null}
