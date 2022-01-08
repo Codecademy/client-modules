@@ -2086,6 +2086,15 @@
     "@emotion/is-prop-valid" "^1.1.0"
     polished "^4.1.2"
 
+"@codecademy/gamut-tests@*":
+  version "3.0.2"
+  resolved "https://registry.npmjs.org/@codecademy/gamut-tests/-/gamut-tests-3.0.2.tgz#c6f542864d520e9c1355341965f48375ea85a968"
+  integrity sha512-znNjOMbTNmdeSOtniXtHCDMG7VSoI/BCC7MQbGru/SbP2qXXGeIgwg7DGgal/TocLFfZigzQtCn3wd4rd2cPcA==
+  dependencies:
+    "@codecademy/gamut-styles" "^12.1.1"
+    component-test-setup "*"
+    lodash "^4.17.5"
+
 "@codecademy/gamut@*", "@codecademy/gamut@^42.1.1":
   version "42.1.1"
   resolved "https://registry.npmjs.org/@codecademy/gamut/-/gamut-42.1.1.tgz#e974a18e1e80185c69cb8196be1a4b5b0f7e1a5e"
@@ -7270,7 +7279,7 @@ component-emitter@^1.2.1:
   resolved "https://registry.npmjs.org/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
 
-component-test-setup@^0.3.1:
+component-test-setup@*, component-test-setup@^0.3.1:
   version "0.3.2"
   resolved "https://registry.npmjs.org/component-test-setup/-/component-test-setup-0.3.2.tgz#07537cd81c6d858e692d4dee74138666700bfc74"
   integrity sha512-FqXLkH8J3PRnLm2tdSlM+kvAXGz+DqeGSxr3ahgxTMq55eN33xDaJyUSPmEJOPBKV28d6piAnwxn4TZ5/LIajQ==
