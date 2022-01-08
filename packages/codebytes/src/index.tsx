@@ -3,7 +3,7 @@ import { FaviconIcon } from '@codecademy/gamut-icons';
 import { Background, states, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { helloWorld, languageOption } from './consts';
 import { Editor } from './editor';
@@ -11,12 +11,12 @@ import { LanguageSelection } from './languageSelection';
 
 type ChangeHandler = (text: string, language: languageOption) => void;
 export interface CodeByteEditorProps {
-  text: string;
-  language: languageOption;
-  hideCopyButton: boolean;
+  text?: string;
+  language?: languageOption;
+  hideCopyButton?: boolean;
   onCopy?: (text: string, language: string) => void;
   isIFrame?: boolean;
-  snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
+  snippetsBaseUrl: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
   onEdit?: ChangeHandler;
   onLanguageChange?: ChangeHandler;
 }
@@ -46,15 +46,25 @@ const EditorContainer = styled(Background)<EditorStyleProps>(
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language: initialLanguage,
-  hideCopyButton,
+  hideCopyButton = false,
   onCopy,
   isIFrame = false,
-  snippetsBaseUrl = '',
+  snippetsBaseUrl,
   onEdit,
   onLanguageChange,
 }) => {
-  const [text, setText] = useState<string>(initialText);
-  const [language, setLanguage] = useState<languageOption>(initialLanguage);
+  const [text, setText] = useState<string>(initialText ?? '');
+  const [language, setLanguage] = useState<languageOption | undefined>(
+    initialLanguage
+  );
+
+  /* Resetting the state when the props change. If the language changes and the text is not provided output helloworld  */
+  useEffect(() => {
+    if (language) {
+      setText(initialText ?? (helloWorld[language] || ''));
+    }
+  }, [language, initialText]);
+
   return (
     <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
