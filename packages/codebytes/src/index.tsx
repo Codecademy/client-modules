@@ -9,16 +9,22 @@ import { helloWorld, languageOption } from './consts';
 import { Editor } from './editor';
 import { LanguageSelection } from './languageSelection';
 
-type ChangeHandler = (text: string, language: languageOption) => void;
+type CodebytesChangeHandler = (text: string, language: languageOption) => void;
+export type CodebytesChangeHandlerMap = {
+  logoClick?: () => void;
+  edit?: CodebytesChangeHandler;
+  languageChange?: CodebytesChangeHandler;
+  copy?: CodebytesChangeHandler;
+  run?: () => void;
+};
+
 export interface CodeByteEditorProps {
   text: string;
   language: languageOption;
   hideCopyButton: boolean;
-  onCopy?: (text: string, language: string) => void;
   isIFrame?: boolean;
   snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
-  onEdit?: ChangeHandler;
-  onLanguageChange?: ChangeHandler;
+  on?: CodebytesChangeHandlerMap;
 }
 
 const editorStates = states({
@@ -47,11 +53,9 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language: initialLanguage,
   hideCopyButton,
-  onCopy,
   isIFrame = false,
   snippetsBaseUrl = '',
-  onEdit,
-  onLanguageChange,
+  on,
 }) => {
   const [text, setText] = useState<string>(initialText);
   const [language, setLanguage] = useState<languageOption>(initialLanguage);
@@ -65,6 +69,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           target="_blank"
           rel="noreferrer"
           aria-label="visit codecademy.com"
+          onClick={() => on?.logoClick?.()}
         />
       </Box>
       {language ? (
@@ -74,12 +79,9 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           hideCopyButton={hideCopyButton}
           onChange={(newText: string) => {
             setText(newText);
-            onEdit?.(
-              newText,
-              language
-            ); /* TODO: in DISC-355 update component to use an object that contains all change handlers */
+            on?.edit?.(newText, language);
           }}
-          onCopy={onCopy}
+          on={on}
           snippetsBaseUrl={snippetsBaseUrl}
         />
       ) : (
@@ -88,10 +90,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             const newText: string = text || helloWorld[newLanguage] || '';
             setLanguage(newLanguage);
             setText(newText);
-            onLanguageChange?.(
-              newText,
-              newLanguage
-            ); /* TODO: in DISC-355 update component to use an object that contains all change handlers */
+            on?.languageChange?.(newText, newLanguage);
           }}
         />
       )}
