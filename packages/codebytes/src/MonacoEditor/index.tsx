@@ -4,14 +4,14 @@
 // Monaco as a shared package RFC https://www.notion.so/codecademy/Monaco-editor-as-a-shared-package-1f4484db165b4abc8394c3556451ef6a
 
 import loadable from '@loadable/component';
+import { OnMount } from '@monaco-editor/react';
 import React, { useCallback, useRef } from 'react';
-import MonacoEditor from 'react-monaco-editor';
 import ResizeObserver from 'react-resize-observer';
 
 import { dark } from './theme';
 import { Monaco } from './types';
 
-const ReactMonacoEditor = loadable(() => import('react-monaco-editor'));
+const ReactMonacoEditor = loadable(() => import('@monaco-editor/react'));
 
 export type SimpleMonacoEditorProps = {
   value: string;
@@ -19,16 +19,23 @@ export type SimpleMonacoEditorProps = {
   onChange?: (value: string) => void;
 };
 
+type ThemedEditor = Parameters<OnMount>[0];
+
 export const SimpleMonacoEditor: React.FC<SimpleMonacoEditorProps> = ({
   value,
   language,
   onChange,
 }) => {
-  const editorRef = useRef<MonacoEditor>(null);
-  const editorWillMount = useCallback((monaco: Monaco) => {
-    monaco.editor.defineTheme('dark', dark);
-    monaco.editor.setTheme('dark');
-  }, []);
+  /* The library doesn't export the required type for the editor and so we'll use any for now */
+  const editorRef = useRef<any>(null);
+  const editorWillMount = useCallback(
+    (editor: ThemedEditor, monaco: Monaco) => {
+      editorRef.current = editor;
+      monaco.editor.defineTheme('dark', dark);
+      monaco.editor.setTheme('dark');
+    },
+    []
+  );
   return (
     <>
       <ResizeObserver
@@ -40,8 +47,7 @@ export const SimpleMonacoEditor: React.FC<SimpleMonacoEditorProps> = ({
         }}
       />
       <ReactMonacoEditor
-        ref={editorRef}
-        editorWillMount={editorWillMount}
+        onMount={editorWillMount}
         onChange={onChange}
         options={{ minimap: { enabled: false } }}
         theme="dark"
