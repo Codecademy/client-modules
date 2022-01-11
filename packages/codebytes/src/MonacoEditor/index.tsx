@@ -26,7 +26,6 @@ export const SimpleMonacoEditor: React.FC<SimpleMonacoEditorProps> = ({
   language,
   onChange,
 }) => {
-  /* The library doesn't export the required type for the editor and so we'll use any for now */
   const editorRef = useRef<any>(null);
   const editorWillMount = useCallback(
     (editor: ThemedEditor, monaco: Monaco) => {
