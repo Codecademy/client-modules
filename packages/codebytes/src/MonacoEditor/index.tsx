@@ -5,6 +5,7 @@
 
 import loadable from '@loadable/component';
 import { OnMount } from '@monaco-editor/react';
+import { editor } from 'monaco-editor/esm/vs/editor/editor.api';
 import React, { useCallback, useRef } from 'react';
 import ResizeObserver from 'react-resize-observer';
 
@@ -26,7 +27,7 @@ export const SimpleMonacoEditor: React.FC<SimpleMonacoEditorProps> = ({
   language,
   onChange,
 }) => {
-  const editorRef = useRef<any>(null);
+  const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
   const editorWillMount = useCallback(
     (editor: ThemedEditor, monaco: Monaco) => {
       editorRef.current = editor;
@@ -39,7 +40,7 @@ export const SimpleMonacoEditor: React.FC<SimpleMonacoEditorProps> = ({
     <>
       <ResizeObserver
         onResize={({ height, width }) => {
-          editorRef.current?.editor?.layout({
+          editorRef.current?.layout({
             height,
             width,
           });
@@ -49,7 +50,7 @@ export const SimpleMonacoEditor: React.FC<SimpleMonacoEditorProps> = ({
         onMount={editorWillMount}
         onChange={onChange}
         options={{ minimap: { enabled: false } }}
-        theme="dark"
+        theme="vs-dark"
         value={value}
         language={language}
       />
