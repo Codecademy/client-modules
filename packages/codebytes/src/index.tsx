@@ -50,6 +50,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onCopy,
   isIFrame = false,
   snippetsBaseUrl = process.env.CONTAINER_API_BASE,
+  onLanguageChange,
   onEdit,
 }) => {
   const [text, setText] = useState<string>(initialText);
