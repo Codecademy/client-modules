@@ -34,7 +34,7 @@ export const LanguageSelection: React.FC<LanguageSelectionProps> = ({
 }) => {
   return (
     <Background bg="black" flex={1} px={16} pt={48}>
-      What language do you want to write?
+      Which language do you want to code in?
       <StyledSelect
         id="language-select"
         aria-label="Select your language"
