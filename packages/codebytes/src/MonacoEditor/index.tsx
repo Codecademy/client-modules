@@ -3,16 +3,13 @@
 // We are working on a monaco package in client-modules that has more configuration around themes and languages
 // Monaco as a shared package RFC https://www.notion.so/codecademy/Monaco-editor-as-a-shared-package-1f4484db165b4abc8394c3556451ef6a
 
-import loadable from '@loadable/component';
-import { OnMount } from '@monaco-editor/react';
+import ReactMonacoEditor, { OnMount } from '@monaco-editor/react';
 import { editor } from 'monaco-editor/esm/vs/editor/editor.api';
 import React, { useCallback, useRef } from 'react';
 import ResizeObserver from 'react-resize-observer';
 
 import { dark } from './theme';
 import { Monaco } from './types';
-
-const ReactMonacoEditor = loadable(() => import('@monaco-editor/react'));
 
 export type SimpleMonacoEditorProps = {
   value: string;

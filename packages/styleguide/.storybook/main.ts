@@ -1,6 +1,5 @@
 const path = require('path');
 const { configs } = require('@codecademy/webpack-config');
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 // https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
 // make a shallow copy of an object, rejecting keys that match /emotion/
