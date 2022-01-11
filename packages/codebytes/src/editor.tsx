@@ -6,7 +6,6 @@ import {
   ToolTip,
 } from '@codecademy/gamut';
 import { CopyIcon } from '@codecademy/gamut-icons';
-import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
