@@ -40,25 +40,6 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
       </GamutProvider>
     )}
   </Story>
-  <Story
-    name="Language not provided"
-    args={{
-      text: "Welcome to the Codebytes Editor!",
-      snippetsBaseUrl: process.env.CONTAINER_API_BASE,
-    }}
-  >
-    {(args) => (
-      <GamutProvider
-        cache={createEmotionCache({ container: document.head })}
-        theme={theme}
-      >
-        <AssetProvider />
-        <AppWrapper>
-          <CodeByteEditor {...args} />
-        </AppWrapper>
-      </GamutProvider>
-    )}
-  </Story>
    <Story
     name="Language and text not provided"
     args={{
