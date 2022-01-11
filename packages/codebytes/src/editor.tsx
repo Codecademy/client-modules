@@ -6,7 +6,6 @@ import {
   ToolTip,
 } from '@codecademy/gamut';
 import { CopyIcon } from '@codecademy/gamut-icons';
-import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
@@ -25,7 +24,7 @@ const Output = styled.pre<{ hasError: boolean }>`
   overflow: auto;
   ${({ hasError, theme }) => `
   color: ${hasError ? theme.colors.orange : theme.colors.white};
-  background-color: ${colors['gray-900']};
+  background-color: ${theme.colors['navy-900']};
 `}
 `;
 
