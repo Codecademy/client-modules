@@ -39,10 +39,7 @@ type EditorProps = {
   hideCopyButton: boolean;
   language: languageOption;
   text: string;
-  // eslint-disable-next-line react/no-unused-prop-types
-  onChange: (
-    text: string
-  ) => void /* TODO: Add onChange behavior in DISC-353 */;
+  onChange: (text: string) => void;
   onCopy?: (text: string, language: string) => void;
   snippetsBaseUrl?: string;
 };
