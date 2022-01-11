@@ -25,7 +25,7 @@ const Output = styled.pre<{ hasError: boolean }>`
   overflow: auto;
   ${({ hasError, theme }) => `
   color: ${hasError ? theme.colors.orange : theme.colors.white};
-  background-color: ${colors['gray-900']};
+  background-color: ${theme.colors['navy-900']};
 `}
 `;
 
