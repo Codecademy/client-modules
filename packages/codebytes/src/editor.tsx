@@ -9,6 +9,7 @@ import { CopyIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
+import { CodebytesChangeHandlerMap } from '.';
 import { postSnippet } from './api';
 import type { languageOption } from './consts';
 import { Drawers } from './drawers';
@@ -38,8 +39,9 @@ type EditorProps = {
   hideCopyButton: boolean;
   language: languageOption;
   text: string;
+
   onChange: (text: string) => void;
-  onCopy?: (text: string, language: string) => void;
+  on?: Pick<CodebytesChangeHandlerMap, 'copy' | 'run'>;
   snippetsBaseUrl?: string;
 };
 
@@ -47,7 +49,7 @@ export const Editor: React.FC<EditorProps> = ({
   language,
   text,
   hideCopyButton,
-  onCopy,
+  on,
   onChange,
   snippetsBaseUrl,
 }) => {
@@ -60,7 +62,7 @@ export const Editor: React.FC<EditorProps> = ({
         .writeText(text)
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
-      onCopy?.(text, language);
+      on?.copy?.(text, language);
       setIsCodeByteCopied(true);
     }
   };
@@ -80,6 +82,7 @@ export const Editor: React.FC<EditorProps> = ({
     };
     setStatus('waiting');
     setOutput('');
+    on?.run?.();
 
     try {
       const response = await postSnippet(data, snippetsBaseUrl);
