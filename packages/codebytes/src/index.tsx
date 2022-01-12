@@ -8,6 +8,16 @@ import React, { useState } from 'react';
 import { languageOption } from './consts';
 import { Editor } from './editor';
 
+export interface CodeByteEditorProps {
+  text: string;
+  language: languageOption;
+  hideCopyButton: boolean;
+  onCopy?: (text: string, language: string) => void;
+  isIFrame?: boolean;
+  snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
+  onTextChange?: (text: string) => void;
+}
+
 const editorStates = states({
   isIFrame: { height: '100vh' },
 });
@@ -30,23 +40,13 @@ const EditorContainer = styled(Background)<EditorStyleProps>(
   editorStates
 );
 
-export interface CodeByteEditorProps {
-  text: string;
-  language: languageOption;
-  hideCopyButton: boolean;
-  onCopy?: (text: string, language: string) => void;
-  isIFrame?: boolean;
-  snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
-  onTextChange?: (text: string) => void;
-}
-
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language,
   hideCopyButton,
   onCopy,
   isIFrame = false,
-  snippetsBaseUrl = '',
+  snippetsBaseUrl = process.env.CONTAINER_API_BASE,
   onTextChange,
 }) => {
   const [text, setText] = useState<string>(initialText);

@@ -6,13 +6,13 @@ import {
   ToolTip,
 } from '@codecademy/gamut';
 import { CopyIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
 import { postSnippet } from './api';
 import type { languageOption } from './consts';
 import { Drawers } from './drawers';
+import { SimpleMonacoEditor } from './MonacoEditor';
 
 const Output = styled.pre<{ hasError: boolean }>`
   width: 100%;
@@ -22,9 +22,9 @@ const Output = styled.pre<{ hasError: boolean }>`
   font-family: Monaco;
   font-size: 0.875rem;
   overflow: auto;
-  ${({ hasError }) => `
+  ${({ hasError, theme }) => `
   color: ${hasError ? theme.colors.orange : theme.colors.white};
-  background-color: ${theme.colors['gray-900']};
+  background-color: ${theme.colors['navy-900']};
 `}
 `;
 
@@ -38,10 +38,7 @@ type EditorProps = {
   hideCopyButton: boolean;
   language: languageOption;
   text: string;
-  // eslint-disable-next-line react/no-unused-prop-types
-  onChange: (
-    text: string
-  ) => void /* TODO: Add onChange behavior in DISC-353 */;
+  onChange: (text: string) => void;
   onCopy?: (text: string, language: string) => void;
   snippetsBaseUrl?: string;
 };
@@ -51,6 +48,7 @@ export const Editor: React.FC<EditorProps> = ({
   text,
   hideCopyButton,
   onCopy,
+  onChange,
   snippetsBaseUrl,
 }) => {
   const [output, setOutput] = useState('');
@@ -105,7 +103,13 @@ export const Editor: React.FC<EditorProps> = ({
   return (
     <>
       <Drawers
-        leftChild={<div>{text}</div>}
+        leftChild={
+          <SimpleMonacoEditor
+            value={text}
+            language={language}
+            onChange={onChange}
+          />
+        }
         rightChild={
           <Output hasError={status === 'error'} aria-live="polite">
             {output}
