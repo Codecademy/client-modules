@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.2.0...@codecademy/codebytes@0.3.0) (2022-01-12)
+
+
+### Features
+
+* **Codebytes:** add simple monaco editor disc 353 ([#16](https://github.com/Codecademy/client-modules/issues/16)) ([eec98ba](https://github.com/Codecademy/client-modules/commit/eec98ba9aad45f07fb5f3417e3da1e1935985deb))
+
+
+
 ## [0.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.1.0...@codecademy/codebytes@0.2.0) (2022-01-04)
 
 
