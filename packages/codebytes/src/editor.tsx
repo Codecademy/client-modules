@@ -40,7 +40,6 @@ type EditorProps = {
   language: languageOption;
   text: string;
 
-  // eslint-disable-next-line react/no-unused-prop-types
   onChange: (text: string) => void;
   on?: Pick<CodebytesChangeHandlerMap, 'copy' | 'run'>;
   snippetsBaseUrl?: string;
