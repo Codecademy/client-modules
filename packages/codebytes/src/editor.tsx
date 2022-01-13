@@ -41,7 +41,7 @@ type EditorProps = {
   text: string;
 
   onChange: (text: string) => void;
-  on?: Pick<CodebytesChangeHandlerMap, 'copy' | 'run'>;
+  on?: CodebytesChangeHandlerMap;
   snippetsBaseUrl?: string;
 };
 
