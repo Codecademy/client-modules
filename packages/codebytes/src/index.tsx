@@ -3,7 +3,7 @@ import { FaviconIcon } from '@codecademy/gamut-icons';
 import { Background, states, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { helloWorld, languageOption } from './consts';
 import { Editor } from './editor';
@@ -61,6 +61,14 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   const [language, setLanguage] = useState<languageOption>(
     initialLanguage ?? ''
   );
+
+  /* Resetting the state when the props change. If the language changes and the text is not provided output helloworld  */
+  useEffect(() => {
+    if (language) {
+      setText(initialText ?? (helloWorld[language] || ''));
+    }
+  }, [language, initialText]);
+
   return (
     <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>

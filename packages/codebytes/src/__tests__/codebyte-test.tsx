@@ -47,10 +47,10 @@ describe('CodeBytes', () => {
     view.getByText(helloWorld.javascript!);
   });
 
-  // it('initializes with a language-specific "hello world" program when there is a language prop but no text prop', () => {
-  //   const { view } = renderWrapper({ language: 'javascript' });
-  //   view.getByText(helloWorld.javascript!);
-  // });
+  it('initializes with a language-specific "hello world" program when there is a language prop but no text prop', () => {
+    const { view } = renderWrapper({ language: 'javascript' });
+    view.getByText(helloWorld.javascript!);
+  });
 
   it('initializes with deserialized text when there is a text prop but no language prop', () => {
     const testString = 'yes hello';
