@@ -9,11 +9,11 @@ import { CopyIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { CodebytesChangeHandlerMap } from '.';
 import { postSnippet } from './api';
 import type { languageOption } from './consts';
 import { Drawers } from './drawers';
 import { SimpleMonacoEditor } from './MonacoEditor';
+import { CodebytesChangeHandlerMap } from './types';
 
 const Output = styled.pre<{ hasError: boolean }>`
   width: 100%;
