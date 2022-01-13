@@ -9,7 +9,6 @@ import { CopyIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { CodebytesChangeHandlerMap } from '.';
 import { postSnippet } from './api';
 import type { languageOption } from './consts';
 import { Drawers } from './drawers';
@@ -81,7 +80,6 @@ export const Editor: React.FC<EditorProps> = ({
     };
     setStatus('waiting');
     setOutput('');
-    on?.run?.();
 
     try {
       const response = await postSnippet(data, snippetsBaseUrl);
