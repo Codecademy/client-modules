@@ -19,11 +19,11 @@ export type CodebytesChangeHandlerMap = {
 };
 
 export interface CodeByteEditorProps {
-  text: string;
-  language: languageOption;
-  hideCopyButton: boolean;
+  text?: string;
+  language?: languageOption;
+  hideCopyButton?: boolean;
   isIFrame?: boolean;
-  snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
+  snippetsBaseUrl?: string;
   on?: CodebytesChangeHandlerMap;
 }
 
@@ -52,13 +52,15 @@ const EditorContainer = styled(Background)<EditorStyleProps>(
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language: initialLanguage,
-  hideCopyButton,
+  hideCopyButton = false,
   isIFrame = false,
   on,
   snippetsBaseUrl = process.env.CONTAINER_API_BASE,
 }) => {
-  const [text, setText] = useState<string>(initialText);
-  const [language, setLanguage] = useState<languageOption>(initialLanguage);
+  const [text, setText] = useState<string>(initialText ?? '');
+  const [language, setLanguage] = useState<languageOption>(
+    initialLanguage ?? ''
+  );
   return (
     <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
