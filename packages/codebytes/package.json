@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/codebytes",
   "description": "Codebytes Code Editor",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -27,8 +27,8 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@monaco-editor/react": "4.3.1",
-    "react-resize-observer": "1.1.1",
-    "monaco-editor": ">= 0.25.0 < 1"
+    "monaco-editor": ">= 0.25.0 < 1",
+    "react-resize-observer": "1.1.1"
   },
   "scripts": {
     "verify": "tsc --noEmit",

@@ -36,7 +36,7 @@ export const LanguageSelection: React.FC<LanguageSelectionProps> = ({
       Which language do you want to code in?
       <StyledSelect
         id="language-select"
-        aria-label="Select your language"
+        aria-label="Select a language"
         options={languageOptions}
         onChange={(e) => onChange(e.target.value as languageOption)}
       />

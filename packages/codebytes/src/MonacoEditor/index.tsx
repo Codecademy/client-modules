@@ -25,11 +25,14 @@ export const SimpleMonacoEditor: React.FC<SimpleMonacoEditorProps> = ({
   onChange,
 }) => {
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
-  const editorOnMount = useCallback((editor: ThemedEditor, monaco: Monaco) => {
-    editorRef.current = editor;
-    monaco.editor.defineTheme('dark', dark);
-    monaco.editor.setTheme('dark');
-  }, []);
+  const editorWillMount = useCallback(
+    (editor: ThemedEditor, monaco: Monaco) => {
+      editorRef.current = editor;
+      monaco.editor.defineTheme('dark', dark);
+      monaco.editor.setTheme('dark');
+    },
+    []
+  );
   return (
     <>
       <ResizeObserver
@@ -41,7 +44,7 @@ export const SimpleMonacoEditor: React.FC<SimpleMonacoEditorProps> = ({
         }}
       />
       <ReactMonacoEditor
-        onMount={editorOnMount}
+        onMount={editorWillMount}
         onChange={onChange}
         options={{ minimap: { enabled: false } }}
         theme="vs-dark"

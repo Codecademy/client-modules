@@ -39,9 +39,8 @@ type EditorProps = {
   hideCopyButton: boolean;
   language: languageOption;
   text: string;
-
   onChange: (text: string) => void;
-  on?: Pick<CodebytesChangeHandlerMap, 'copy' | 'run'>;
+  onCopy?: (text: string, language: string) => void;
   snippetsBaseUrl?: string;
 };
 
@@ -49,7 +48,7 @@ export const Editor: React.FC<EditorProps> = ({
   language,
   text,
   hideCopyButton,
-  on,
+  onCopy,
   onChange,
   snippetsBaseUrl,
 }) => {
@@ -62,7 +61,7 @@ export const Editor: React.FC<EditorProps> = ({
         .writeText(text)
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
-      on?.copy?.(text, language);
+      onCopy?.(text, language);
       setIsCodeByteCopied(true);
     }
   };
