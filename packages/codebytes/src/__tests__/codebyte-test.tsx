@@ -68,4 +68,54 @@ describe('CodeBytes', () => {
     });
     view.getByText(testString);
   });
+
+  describe.only('Change Handlers', () => {
+    it('triggers onLogoClick upon clicking the logo', () => {
+      const onLogoClick = jest.fn();
+      const { view } = renderWrapper({
+        on: {
+          logoClick: onLogoClick,
+        },
+      });
+
+      const logo = view.getByLabelText('visit codecademy.com');
+      userEvent.click(logo);
+
+      expect(onLogoClick).toHaveBeenCalled();
+    });
+
+    it('triggers onEdit on text edit', () => {
+      const onEdit = jest.fn();
+      const { view } = renderWrapper({
+        text: '',
+        language: 'javascript',
+        on: {
+          edit: onEdit,
+        },
+      });
+
+      const editor = view.getByTestId(mockEditorTestId);
+      userEvent.type(editor, 'dog');
+
+      expect(onEdit).toHaveBeenCalledTimes(3);
+      expect(onEdit).toHaveBeenLastCalledWith('dog', 'javascript');
+    });
+
+    it('triggers onLanguageChange on language selection', () => {
+      const onLanguageChange = jest.fn();
+      const { view } = renderWrapper({
+        on: {
+          languageChange: onLanguageChange,
+        },
+      });
+
+      const selectedLanguage = view.getByRole('combobox') as Element;
+      userEvent.selectOptions(selectedLanguage, ['javascript']);
+
+      expect(onLanguageChange).toHaveBeenCalledWith(
+        "console.log('Hello world!');",
+        'javascript'
+      );
+    });
+  });
 });

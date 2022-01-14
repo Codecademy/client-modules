@@ -1,6 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
+import { act } from 'react-test-renderer';
 
 import { Editor } from '../editor';
 
@@ -55,5 +56,48 @@ describe('Editor', () => {
     const { view } = renderWrapper();
 
     view.getByTestId('copy-codebyte-btn');
+  });
+
+  describe.only('Change Handlers', () => {
+    it('triggers onCopy upon clicking the copy button', () => {
+      const onCopy = jest.fn();
+      const { view } = renderWrapper({
+        on: {
+          copy: onCopy,
+        },
+      });
+
+      const copyButton = view.getByTestId('copy-codebyte-btn');
+      userEvent.click(copyButton);
+
+      expect(onCopy).toHaveBeenCalled();
+    });
+
+    it('triggers onRun upon clicking the run button', async () => {
+      (global as any).fetch.mockResolvedValue({
+        json: () =>
+          Promise.resolve({
+            stderr: [],
+            exit_code: 0,
+            stdout: '',
+          }),
+      });
+      const onRun = jest.fn();
+      const { view } = renderWrapper({
+        onChange: jest.fn(),
+        text: 'test',
+        language: 'javascript',
+        on: {
+          run: onRun,
+        },
+      });
+
+      const runButton = view.getByText('Run');
+      await act(async () => {
+        userEvent.click(runButton);
+      });
+
+      expect(onRun).toHaveBeenCalled();
+    });
   });
 });
