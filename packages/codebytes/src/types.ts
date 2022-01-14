@@ -11,9 +11,9 @@ export type CodebytesChangeHandlerMap = {
 };
 
 export interface CodeByteEditorProps {
-  text: string;
-  language: languageOption;
-  hideCopyButton: boolean;
+  text?: string;
+  language?: languageOption;
+  hideCopyButton?: boolean;
   isIFrame?: boolean;
   snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
   on?: CodebytesChangeHandlerMap;
