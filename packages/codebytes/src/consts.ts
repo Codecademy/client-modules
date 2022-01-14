@@ -16,7 +16,7 @@ export type languageOption = keyof typeof languageOptions;
 
 export const validLanguages = Object.keys(languageOptions).filter(
   (option) => !!option
-) as languageOption[];
+) as Exclude<languageOption, ''>[];
 
 const cpp = `#include <iostream>
 int main() {
@@ -52,7 +52,7 @@ const scheme = `(begin
   (display "Hello world!")
   (newline))`;
 
-export const helloWorld: { [key in languageOption]?: string } = {
+export const helloWorld = {
   cpp,
   csharp,
   golang,
@@ -61,4 +61,4 @@ export const helloWorld: { [key in languageOption]?: string } = {
   python,
   ruby,
   scheme,
-};
+} as const;
