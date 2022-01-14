@@ -9,23 +9,7 @@ import { helloWorld, languageOption } from './consts';
 import { Editor } from './editor';
 import { LanguageSelection } from './languageSelection';
 
-type CodebytesChangeHandler = (text: string, language: languageOption) => void;
-export type CodebytesChangeHandlerMap = {
-  logoClick?: () => void;
-  edit?: CodebytesChangeHandler;
-  languageChange?: CodebytesChangeHandler;
-  copy?: CodebytesChangeHandler;
-  run?: () => void;
-};
-
-export interface CodeByteEditorProps {
-  text?: string;
-  language?: languageOption;
-  hideCopyButton?: boolean;
-  isIFrame?: boolean;
-  snippetsBaseUrl?: string;
-  on?: CodebytesChangeHandlerMap;
-}
+import { CodeByteEditorProps } from './types';
 
 const editorStates = states({
   isIFrame: { height: '100vh' },
@@ -54,7 +38,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   language: initialLanguage,
   hideCopyButton = false,
   isIFrame = false,
-  on,
+  on = {},
   snippetsBaseUrl = process.env.CONTAINER_API_BASE,
 }) => {
   const [text, setText] = useState<string>(initialText ?? '');
@@ -79,7 +63,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           target="_blank"
           rel="noreferrer"
           aria-label="visit codecademy.com"
-          onClick={() => on?.logoClick?.()}
+          onClick={() => on.logoClick?.()}
         />
       </Box>
       {language ? (
@@ -89,7 +73,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           hideCopyButton={hideCopyButton}
           onChange={(newText: string) => {
             setText(newText);
-            on?.edit?.(newText, language);
+            on.edit?.(newText, language);
           }}
           on={on}
           snippetsBaseUrl={snippetsBaseUrl}
@@ -100,7 +84,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             const newText: string = text || helloWorld[newLanguage] || '';
             setLanguage(newLanguage);
             setText(newText);
-            on?.languageChange?.(newText, newLanguage);
+            on.languageChange?.(newText, newLanguage);
           }}
         />
       )}

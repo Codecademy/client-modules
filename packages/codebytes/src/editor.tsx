@@ -9,11 +9,11 @@ import { CopyIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { CodebytesChangeHandlerMap } from '.';
 import { postSnippet } from './api';
 import type { languageOption } from './consts';
 import { Drawers } from './drawers';
 import { SimpleMonacoEditor } from './MonacoEditor';
+import { CodebytesChangeHandlerMap } from './types';
 
 const Output = styled.pre<{ hasError: boolean }>`
   width: 100%;
@@ -39,9 +39,8 @@ type EditorProps = {
   hideCopyButton: boolean;
   language: languageOption;
   text: string;
-
   onChange: (text: string) => void;
-  on?: Pick<CodebytesChangeHandlerMap, 'copy' | 'run'>;
+  on?: CodebytesChangeHandlerMap;
   snippetsBaseUrl?: string;
 };
 
@@ -49,7 +48,7 @@ export const Editor: React.FC<EditorProps> = ({
   language,
   text,
   hideCopyButton,
-  on,
+  on = {},
   onChange,
   snippetsBaseUrl,
 }) => {
@@ -62,7 +61,7 @@ export const Editor: React.FC<EditorProps> = ({
         .writeText(text)
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
-      on?.copy?.(text, language);
+      on.copy?.(text, language);
       setIsCodeByteCopied(true);
     }
   };
@@ -82,7 +81,7 @@ export const Editor: React.FC<EditorProps> = ({
     };
     setStatus('waiting');
     setOutput('');
-    on?.run?.();
+    on.run?.();
 
     try {
       const response = await postSnippet(data, snippetsBaseUrl);
