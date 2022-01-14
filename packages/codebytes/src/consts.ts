@@ -1,7 +1,7 @@
 // key = language param to send to snippets service
 // val = label in language selection drop down
 export const languageOptions = {
-  '': 'Select your language',
+  '': 'Select a language',
   cpp: 'C++',
   csharp: 'C#',
   golang: 'Go',

@@ -45,7 +45,6 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
     initialLanguage ?? ''
   );
 
-  /* Resetting the state when the props change. If the language changes and the text is not provided output helloworld  */
   useEffect(() => {
     if (language) {
       setText(initialText ?? (helloWorld[language] || ''));
