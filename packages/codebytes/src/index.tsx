@@ -8,7 +8,6 @@ import React, { useEffect, useState } from 'react';
 import { helloWorld, languageOption } from './consts';
 import { Editor } from './editor';
 import { LanguageSelection } from './languageSelection';
-
 import { CodeByteEditorProps } from './types';
 
 const editorStates = states({

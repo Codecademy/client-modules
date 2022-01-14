@@ -44,12 +44,12 @@ describe('CodeBytes', () => {
     const { view } = renderWrapper();
     const selectedLanguage = view.getByRole('combobox') as Element;
     userEvent.selectOptions(selectedLanguage, ['javascript']);
-    view.getByText(helloWorld.javascript!);
+    view.getByText(helloWorld.javascript);
   });
 
   it('initializes with a language-specific "hello world" program when there is a language prop but no text prop', () => {
     const { view } = renderWrapper({ language: 'javascript' });
-    view.getByText(helloWorld.javascript!);
+    view.getByText(helloWorld.javascript);
   });
 
   it('initializes with deserialized text when there is a text prop but no language prop', () => {
