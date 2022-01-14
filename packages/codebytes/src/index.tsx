@@ -81,7 +81,8 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
       ) : (
         <LanguageSelection
           onChange={(newLanguage) => {
-            const newText: string = text || helloWorld[newLanguage] || '';
+            const newText: string =
+              text || (newLanguage ? helloWorld[newLanguage] : '');
             setLanguage(newLanguage);
             setText(newText);
             onLanguageChange?.(newText, newLanguage);
