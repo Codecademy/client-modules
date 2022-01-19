@@ -1,14 +1,14 @@
 import { languageOption } from './consts';
-
-type CodebytesChangeHandler = (text: string, language: languageOption) => void;
-
-export type CodebytesChangeHandlerMap = {
+interface CodebytesChangeHandler {
+  (text: string, language: languageOption): void;
+}
+export interface CodebytesChangeHandlerMap {
   logoClick?: () => void;
   edit?: CodebytesChangeHandler;
   languageChange?: CodebytesChangeHandler;
   copy?: CodebytesChangeHandler;
   run?: () => void;
-};
+}
 
 export interface CodeByteEditorProps {
   text: string;
