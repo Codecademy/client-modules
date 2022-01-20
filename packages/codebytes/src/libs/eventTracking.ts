@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { createTracker } from '@codecademy/tracking';
 
 const IS_DEV = process.env.NODE_ENV === 'development';
