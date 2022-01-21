@@ -1,7 +1,7 @@
 // key = language param to send to snippets service
 // val = label in language selection drop down
-export const languageOptions = {
-  '': 'Select your language',
+export const LanguageOptions = {
+  '': 'Select a language',
   cpp: 'C++',
   csharp: 'C#',
   golang: 'Go',
@@ -12,4 +12,53 @@ export const languageOptions = {
   scheme: 'Scheme',
 };
 
-export type languageOption = keyof typeof languageOptions;
+export type LanguageOption = keyof typeof LanguageOptions;
+
+export const validLanguages = Object.keys(LanguageOptions).filter(
+  (option) => !!option
+) as LanguageOption[];
+
+const cpp = `#include <iostream>
+int main() {
+  std::cout << "Hello world!";
+  return 0;
+}`;
+
+const csharp = `namespace HelloWorld {
+  class Hello {
+    static void Main(string[] args) {
+      System.Console.WriteLine("Hello world!");
+    }
+  }
+}`;
+
+const golang = `package main
+import "fmt"
+func main() {
+  fmt.Println("Hello world!")
+}`;
+
+const javascript = "console.log('Hello world!');";
+
+const php = `<?php
+  echo "Hello world!";
+?>`;
+
+const python = "print('Hello world!')";
+
+const ruby = 'puts "Hello world!"';
+
+const scheme = `(begin
+  (display "Hello world!")
+  (newline))`;
+
+export const helloWorld = {
+  cpp,
+  csharp,
+  golang,
+  javascript,
+  php,
+  python,
+  ruby,
+  scheme,
+} as const;

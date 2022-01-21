@@ -1,4 +1,4 @@
-import type { languageOption } from './consts';
+import type { LanguageOption } from './consts';
 
 interface Response {
   stderr: string;
@@ -7,7 +7,7 @@ interface Response {
 }
 
 interface PostSnippetData {
-  language: languageOption;
+  language: LanguageOption;
   code: string;
 }
 

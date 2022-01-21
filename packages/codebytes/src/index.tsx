@@ -5,17 +5,21 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { languageOption } from './consts';
+import { helloWorld, LanguageOption } from './consts';
 import { Editor } from './editor';
+import { LanguageSelection } from './languageSelection';
+
+type CodebytesChangeHandler = (text: string, language: LanguageOption) => void;
 
 export interface CodeByteEditorProps {
   text: string;
-  language: languageOption;
+  language: LanguageOption;
   hideCopyButton: boolean;
-  onCopy?: (text: string, language: string) => void;
+  onCopy?: CodebytesChangeHandler;
   isIFrame?: boolean;
-  snippetsBaseUrl?: string /* TODO in DISC-353: Determine best way to host and include snippets endpoint for both staging and production in both the monolith and next.js repo. */;
-  onTextChange?: (text: string) => void;
+  snippetsBaseUrl?: string;
+  onEdit?: CodebytesChangeHandler;
+  onLanguageChange?: CodebytesChangeHandler;
 }
 
 const editorStates = states({
@@ -42,14 +46,15 @@ const EditorContainer = styled(Background)<EditorStyleProps>(
 
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
-  language,
+  language: initialLanguage,
   hideCopyButton,
-  onCopy,
   isIFrame = false,
   snippetsBaseUrl = process.env.CONTAINER_API_BASE,
-  onTextChange,
+  onEdit,
+  onLanguageChange,
 }) => {
   const [text, setText] = useState<string>(initialText);
+  const [language, setLanguage] = useState<LanguageOption>(initialLanguage);
   return (
     <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
@@ -62,17 +67,28 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           aria-label="visit codecademy.com"
         />
       </Box>
-      <Editor
-        language={language}
-        text={text}
-        hideCopyButton={hideCopyButton}
-        onChange={(newText: string) => {
-          setText(newText);
-          onTextChange?.(newText);
-        }}
-        onCopy={onCopy}
-        snippetsBaseUrl={snippetsBaseUrl}
-      />
+      {language ? (
+        <Editor
+          language={language}
+          text={text}
+          hideCopyButton={hideCopyButton}
+          onChange={(newText: string) => {
+            setText(newText);
+            onEdit?.(newText, language);
+          }}
+          snippetsBaseUrl={snippetsBaseUrl}
+        />
+      ) : (
+        <LanguageSelection
+          onChange={(newLanguage) => {
+            const newText: string =
+              text || (newLanguage ? helloWorld[newLanguage] : '');
+            setLanguage(newLanguage);
+            setText(newText);
+            onLanguageChange?.(newText, newLanguage);
+          }}
+        />
+      )}
     </EditorContainer>
   );
 };
