@@ -2,11 +2,11 @@ import { Select, Text } from '@codecademy/gamut';
 import { ColorMode } from '@codecademy/gamut-styles';
 import React from 'react';
 
-import type { languageOption } from './consts';
-import { languageOptions } from './consts';
+import type { LanguageOption } from './consts';
+import { LanguageOptions } from './consts';
 
 export type LanguageSelectionProps = {
-  onChange: (newLanguage: languageOption) => void;
+  onChange: (newLanguage: LanguageOption) => void;
 };
 
 export const LanguageSelection: React.FC<LanguageSelectionProps> = ({
@@ -18,8 +18,8 @@ export const LanguageSelection: React.FC<LanguageSelectionProps> = ({
       <Select
         id="language-select"
         aria-label="Select a language"
-        options={languageOptions}
-        onChange={(e) => onChange(e.target.value as languageOption)}
+        options={LanguageOptions}
+        onChange={(e) => onChange(e.target.value as LanguageOption)}
       />
     </ColorMode>
   );

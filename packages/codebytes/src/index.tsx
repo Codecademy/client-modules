@@ -5,15 +5,15 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { helloWorld, languageOption } from './consts';
+import { helloWorld, LanguageOption } from './consts';
 import { Editor } from './editor';
 import { LanguageSelection } from './languageSelection';
 
-type CodebytesChangeHandler = (text: string, language: languageOption) => void;
+type CodebytesChangeHandler = (text: string, language: LanguageOption) => void;
 
 export interface CodeByteEditorProps {
   text: string;
-  language: languageOption;
+  language: LanguageOption;
   hideCopyButton: boolean;
   onCopy?: CodebytesChangeHandler;
   isIFrame?: boolean;
@@ -54,7 +54,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onLanguageChange,
 }) => {
   const [text, setText] = useState<string>(initialText);
-  const [language, setLanguage] = useState<languageOption>(initialLanguage);
+  const [language, setLanguage] = useState<LanguageOption>(initialLanguage);
   return (
     <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
