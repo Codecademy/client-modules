@@ -1,9 +1,8 @@
 import { decode } from 'js-base64';
 import Uri from 'jsuri';
 
-import { trackUserClick } from '../libs/eventTracking';
-
 import { languageOption, validLanguages } from '../consts';
+import { trackUserClick } from '../libs/eventTracking';
 
 export type CopyButtonMode = 'hide' | undefined;
 
