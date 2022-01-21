@@ -10,7 +10,7 @@ import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
 import { postSnippet } from './api';
-import type { languageOption } from './consts';
+import type { LanguageOption } from './consts';
 import { Drawers } from './drawers';
 import { trackClick } from './helpers';
 import { SimpleMonacoEditor } from './MonacoEditor';
@@ -37,7 +37,7 @@ const DOCKER_SIGTERM = 143;
 
 type EditorProps = {
   hideCopyButton: boolean;
-  language: languageOption;
+  language: LanguageOption;
   text: string;
   onChange: (text: string) => void;
   snippetsBaseUrl?: string;

@@ -1,6 +1,6 @@
 // key = language param to send to snippets service
 // val = label in language selection drop down
-export const languageOptions = {
+export const LanguageOptions = {
   '': 'Select a language',
   cpp: 'C++',
   csharp: 'C#',
@@ -12,11 +12,11 @@ export const languageOptions = {
   scheme: 'Scheme',
 };
 
-export type languageOption = keyof typeof languageOptions;
+export type LanguageOption = keyof typeof LanguageOptions;
 
-export const validLanguages = Object.keys(languageOptions).filter(
+export const validLanguages = Object.keys(LanguageOptions).filter(
   (option) => !!option
-) as languageOption[];
+) as LanguageOption[];
 
 const cpp = `#include <iostream>
 int main() {

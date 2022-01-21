@@ -5,7 +5,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 
-import { helloWorld, languageOption } from './consts';
+import { helloWorld, LanguageOption } from './consts';
 import { Editor } from './editor';
 import { getOptions, trackClick } from './helpers';
 import { LanguageSelection } from './languageSelection';
@@ -42,7 +42,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   snippetsBaseUrl = process.env.CONTAINER_API_BASE,
 }) => {
   const [text, setText] = useState<string>(initialText);
-  const [language, setLanguage] = useState<languageOption>(initialLanguage);
+  const [language, setLanguage] = useState<LanguageOption>(initialLanguage);
   const [hasBeenEdited, setHasBeenEdited] = useState(false);
 
   useEffect(() => {
