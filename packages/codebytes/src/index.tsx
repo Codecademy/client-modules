@@ -40,6 +40,8 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   hideCopyButton,
   isIFrame = false,
   snippetsBaseUrl = process.env.CONTAINER_API_BASE,
+  onEdit,
+  onLanguageChange,
 }) => {
   const [text, setText] = useState<string>(initialText);
   const [language, setLanguage] = useState<LanguageOption>(initialLanguage);
@@ -78,6 +80,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           hideCopyButton={hideCopyButton}
           onChange={(newText: string) => {
             setText(newText);
+            onEdit?.(newText, language);
 
             const { renderMode } = getOptions();
             if (!renderMode && hasBeenEdited === false) {
@@ -95,6 +98,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             setLanguage(newLanguage);
             setText(newText);
             trackClick('lang_select');
+            onLanguageChange?.(newText, newLanguage);
           }}
         />
       )}
