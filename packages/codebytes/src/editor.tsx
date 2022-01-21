@@ -59,8 +59,8 @@ export const Editor: React.FC<EditorProps> = ({
         .writeText(text)
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
-      trackClick('copy');
       setIsCodeByteCopied(true);
+      trackClick('copy');
     }
   };
 

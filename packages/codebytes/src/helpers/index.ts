@@ -1,15 +1,8 @@
-import { decode } from 'js-base64';
 import Uri from 'jsuri';
 
-import { languageOption, validLanguages } from '../consts';
 import { trackUserClick } from '../libs/eventTracking';
 
-export type CopyButtonMode = 'hide' | undefined;
-
 export type CodebyteOptions = {
-  language: languageOption;
-  text: string;
-  copyMode: CopyButtonMode;
   clientName: string;
   parentPage: string;
   renderMode: string;
@@ -28,15 +21,6 @@ export const getOptions = (): CodebyteOptions => {
   const currentUri = new Uri(window.location.href);
 
   return {
-    language:
-      validLanguages.find(
-        (lang) =>
-          currentUri.getQueryParamValue(CodebytesParams.Language) === lang
-      ) ?? '',
-    text: decode(currentUri.getQueryParamValue(CodebytesParams.Text) ?? ''),
-    copyMode: currentUri
-      .getQueryParamValue(CodebytesParams.CopyMode)
-      ?.toLowerCase() as CopyButtonMode,
     clientName:
       currentUri.getQueryParamValue(CodebytesParams.ClientName) || 'Unknown',
     parentPage:
