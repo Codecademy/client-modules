@@ -74,7 +74,7 @@ describe('Editor', () => {
   });
 
   describe('Tracking', () => {
-    it('track clicks on Run button', async () => {
+    it('tracks clicks on the run button', async () => {
       (global as any).fetch.mockResolvedValue({
         json: () =>
           Promise.resolve({
@@ -95,6 +95,19 @@ describe('Editor', () => {
       });
 
       expect(trackClick).toHaveBeenCalledWith('run');
+    });
+
+    it('tracks clicks on the copy codebyte button', () => {
+      const { view } = renderWrapper({
+        onChange: jest.fn(),
+        text: 'test',
+        language: 'javascript',
+      });
+
+      const copyButton = view.getByTestId('copy-codebyte-btn');
+      userEvent.click(copyButton);
+
+      expect(trackClick).toHaveBeenCalledWith('copy');
     });
   });
 });
