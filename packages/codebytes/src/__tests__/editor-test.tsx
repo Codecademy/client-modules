@@ -1,3 +1,5 @@
+import './mocks';
+
 import { setupRtl } from '@codecademy/gamut-tests';
 import { act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -8,15 +10,6 @@ import { trackClick } from '../helpers';
 
 jest.mock('../MonacoEditor', () => ({
   SimpleMonacoEditor: ({ value }: { value: string }) => <>{value}</>,
-}));
-
-jest.mock('react-resize-observer');
-jest.mock('../libs/eventTracking');
-jest.mock('../helpers', () => ({
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  ...jest.requireActual('../helpers'),
-  trackClick: jest.fn(),
 }));
 
 const renderWrapper = setupRtl(Editor, {

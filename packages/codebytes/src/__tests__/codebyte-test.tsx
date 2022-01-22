@@ -1,3 +1,5 @@
+import './mocks';
+
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
@@ -9,7 +11,6 @@ import { trackUserImpression } from '../libs/eventTracking';
 
 const mockEditorTestId = 'mock-editor-test-id';
 
-jest.mock('react-resize-observer');
 // This is a super simplified mock capable of render value and trigger onChange.
 jest.mock('../MonacoEditor', () => ({
   SimpleMonacoEditor: ({
@@ -31,13 +32,6 @@ jest.mock('../MonacoEditor', () => ({
       />
     </>
   ),
-}));
-jest.mock('../libs/eventTracking');
-jest.mock('../helpers', () => ({
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  ...jest.requireActual('../helpers'),
-  trackClick: jest.fn(),
 }));
 
 const renderWrapper = setupRtl(CodeByteEditor, {});
