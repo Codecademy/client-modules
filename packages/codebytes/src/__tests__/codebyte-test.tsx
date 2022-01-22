@@ -2,12 +2,14 @@ import './mocks';
 
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
+import { encode } from 'js-base64';
 import React from 'react';
 
 import { CodeByteEditor } from '..';
 import { helloWorld, validLanguages } from '../consts';
 import { trackClick } from '../helpers';
 import { trackUserImpression } from '../libs/eventTracking';
+import { CodeByteEditorProps } from '../types';
 
 const mockEditorTestId = 'mock-editor-test-id';
 
@@ -35,6 +37,31 @@ jest.mock('../MonacoEditor', () => ({
 }));
 
 const renderWrapper = setupRtl(CodeByteEditor, {});
+
+type RenderWrapperWithProps = CodeByteEditorProps & { mode?: string };
+
+const renderWrapperWith = ({ mode, ...rest }: RenderWrapperWithProps) => {
+  const url = new URL(window.location.href);
+
+  const { text, language } = rest;
+  if (text) {
+    url.searchParams.set('text', encode(text));
+  }
+  if (language) {
+    url.searchParams.set('lang', language);
+  }
+  url.searchParams.set('client-name', 'forum');
+  url.searchParams.set(
+    'page',
+    'https://discuss.codecademy.com/some-interesting/post'
+  );
+  if (mode) {
+    url.searchParams.set('mode', mode);
+  }
+  window.history.replaceState({}, '', url.toString());
+
+  return renderWrapper(rest);
+};
 
 describe('CodeBytes', () => {
   const initialUrl = window.location.href;
@@ -118,6 +145,53 @@ describe('CodeBytes', () => {
       const logo = view.getByLabelText('visit codecademy.com');
       userEvent.click(logo);
       expect(trackClick).toHaveBeenCalledWith('logo');
+    });
+
+    it('triggers trackClick on language selection', () => {
+      const { view } = renderWrapper();
+      const selectedLanguage = view.getByRole('combobox') as Element;
+      userEvent.selectOptions(selectedLanguage, ['javascript']);
+      expect(trackClick).toHaveBeenCalledWith('lang_select');
+    });
+
+    it('triggers trackClick for the first edit in view mode', () => {
+      const testString = 'original-value';
+      const { view } = renderWrapper({
+        text: testString,
+        language: 'javascript',
+      });
+
+      const editor = view.getByTestId(mockEditorTestId);
+      userEvent.type(editor, 'd');
+
+      expect(trackClick).toHaveBeenCalledWith('edit');
+    });
+
+    it('triggers trackUserImpression for view mode', () => {
+      renderWrapperWith({
+        text: 'some-value',
+        language: 'javascript',
+      });
+
+      expect(trackUserImpression).toHaveBeenCalledWith({
+        page_name: 'forum',
+        context: 'https://discuss.codecademy.com/some-interesting/post',
+        target: 'codebyte',
+      });
+    });
+
+    it('triggers trackUserImpression for compose mode', () => {
+      renderWrapperWith({
+        text: 'some-value',
+        language: 'javascript',
+        mode: 'compose',
+      });
+
+      expect(trackUserImpression).toHaveBeenCalledWith({
+        page_name: 'forum_compose',
+        context: 'https://discuss.codecademy.com/some-interesting/post',
+        target: 'codebyte',
+      });
     });
   });
 });
