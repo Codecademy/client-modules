@@ -37,12 +37,17 @@ const EditorContainer = styled(Background)<EditorStyleProps>(
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language: initialLanguage,
-  hideCopyButton,
+  hideCopyButton = false,
   isIFrame = false,
   snippetsBaseUrl = process.env.CONTAINER_API_BASE,
+  onEdit,
+  onLanguageChange,
+  onCopy,
 }) => {
-  const [text, setText] = useState<string>(initialText);
-  const [language, setLanguage] = useState<LanguageOption>(initialLanguage);
+  const [text, setText] = useState<string>(initialText ?? '');
+  const [language, setLanguage] = useState<LanguageOption>(
+    initialLanguage ?? ''
+  );
   const [hasBeenEdited, setHasBeenEdited] = useState(false);
 
   useEffect(() => {
@@ -57,6 +62,12 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
       target: 'codebyte',
     });
   }, []);
+
+  useEffect(() => {
+    if (language) {
+      setText(initialText ?? (helloWorld[language] || ''));
+    }
+  }, [language, initialText]);
 
   return (
     <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
@@ -78,7 +89,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           hideCopyButton={hideCopyButton}
           onChange={(newText: string) => {
             setText(newText);
-
+            onEdit?.(newText, language);
             const { renderMode } = getOptions();
             if (!renderMode && hasBeenEdited === false) {
               setHasBeenEdited(true);
@@ -86,6 +97,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             }
           }}
           snippetsBaseUrl={snippetsBaseUrl}
+          onCopy={onCopy}
         />
       ) : (
         <LanguageSelection
@@ -94,6 +106,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
               text || (newLanguage ? helloWorld[newLanguage] : '');
             setLanguage(newLanguage);
             setText(newText);
+            onLanguageChange?.(newText, newLanguage);
             trackClick('lang_select');
           }}
         />
