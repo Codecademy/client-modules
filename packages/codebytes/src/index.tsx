@@ -108,6 +108,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             setText(newText);
             onLanguageChange?.(newText, newLanguage);
             trackClick('lang_select');
+            onLanguageChange?.(newText, newLanguage);
           }}
         />
       )}
