@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@0.3.0...@codecademy/styleguide@0.4.0) (2022-01-21)
+
+
+### Features
+
+* **Codebytes:** move language selection component disc 354 ([#17](https://github.com/Codecademy/client-modules/issues/17)) ([040553d](https://github.com/Codecademy/client-modules/commit/040553dcc7867b6e331712365bcc19ea2df306d5))
+
+
+
 ## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@0.2.0...@codecademy/styleguide@0.3.0) (2022-01-12)
 
 
