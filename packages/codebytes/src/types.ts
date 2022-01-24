@@ -1,4 +1,5 @@
 import { LanguageOption } from './consts';
+
 interface CodebytesChangeHandler {
   (text: string, language: LanguageOption): void;
 }
