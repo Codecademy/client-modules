@@ -40,6 +40,7 @@ type EditorProps = {
   language: LanguageOption;
   text: string;
   onChange: (text: string) => void;
+  onCopy?: (text: string, language: string) => void;
   snippetsBaseUrl?: string;
 };
 
@@ -48,6 +49,7 @@ export const Editor: React.FC<EditorProps> = ({
   text,
   hideCopyButton,
   onChange,
+  onCopy,
   snippetsBaseUrl,
 }) => {
   const [output, setOutput] = useState('');
@@ -59,6 +61,7 @@ export const Editor: React.FC<EditorProps> = ({
         .writeText(text)
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
+      onCopy?.(text, language);
       setIsCodeByteCopied(true);
       trackClick('copy');
     }
