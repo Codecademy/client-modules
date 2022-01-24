@@ -1,6 +1,7 @@
 import { LanguageOption } from './consts';
-
-type CodebytesChangeHandler = (text: string, language: LanguageOption) => void;
+interface CodebytesChangeHandler {
+  (text: string, language: LanguageOption): void;
+}
 export interface CodeByteEditorProps {
   text: string;
   language: LanguageOption;
