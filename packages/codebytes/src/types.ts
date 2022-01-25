@@ -9,7 +9,7 @@ export interface CodeByteEditorProps {
   language?: LanguageOption;
   hideCopyButton?: boolean;
   onCopy?: CodebytesChangeHandler;
-  isIFrame?: boolean;
+  isForums?: boolean;
   snippetsBaseUrl?: string;
   onEdit?: CodebytesChangeHandler;
   onLanguageChange?: CodebytesChangeHandler;

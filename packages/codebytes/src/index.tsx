@@ -13,7 +13,7 @@ import { trackUserImpression } from './libs/eventTracking';
 import { CodeByteEditorProps } from './types';
 
 const editorStates = states({
-  isIFrame: { height: '100vh' },
+  isForums: { height: '100vh' },
 });
 
 const editorBaseStyles = system.css({
@@ -38,7 +38,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language: initialLanguage,
   hideCopyButton = false,
-  isIFrame = false,
+  isForums = false,
   snippetsBaseUrl = process.env.CONTAINER_API_BASE,
   onEdit,
   onLanguageChange,
@@ -51,7 +51,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   const [hasBeenEdited, setHasBeenEdited] = useState(false);
 
   useEffect(() => {
-    if (isIFrame) {
+    if (isForums) {
       const options = getOptions();
       const page_name = options.renderMode
         ? `${options.clientName}_${options.renderMode}`
@@ -63,7 +63,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
         target: 'codebyte',
       });
     }
-  }, [isIFrame]);
+  }, [isForums]);
 
   useEffect(() => {
     if (language) {
@@ -72,7 +72,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, [language, initialText]);
 
   return (
-    <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
+    <EditorContainer bg="black" as="main" isForums={isForums}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}

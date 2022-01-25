@@ -171,7 +171,7 @@ describe('CodeBytes', () => {
       renderWrapperWith({
         text: 'some-value',
         language: 'javascript',
-        isIFrame: true,
+        isForums: true,
       });
 
       expect(trackUserImpression).toHaveBeenCalledWith({
@@ -186,7 +186,7 @@ describe('CodeBytes', () => {
         text: 'some-value',
         language: 'javascript',
         mode: 'compose',
-        isIFrame: true,
+        isForums: true,
       });
 
       expect(trackUserImpression).toHaveBeenCalledWith({
@@ -201,7 +201,7 @@ describe('CodeBytes', () => {
         text: 'some-value',
         language: 'javascript',
         mode: 'compose',
-        isIFrame: false,
+        isForums: false,
       });
 
       expect(trackUserImpression).not.toHaveBeenCalled();
