@@ -171,6 +171,7 @@ describe('CodeBytes', () => {
       renderWrapperWith({
         text: 'some-value',
         language: 'javascript',
+        isIFrame: true,
       });
 
       expect(trackUserImpression).toHaveBeenCalledWith({
@@ -185,6 +186,7 @@ describe('CodeBytes', () => {
         text: 'some-value',
         language: 'javascript',
         mode: 'compose',
+        isIFrame: true,
       });
 
       expect(trackUserImpression).toHaveBeenCalledWith({
@@ -192,6 +194,17 @@ describe('CodeBytes', () => {
         context: 'https://discuss.codecademy.com/some-interesting/post',
         target: 'codebyte',
       });
+    });
+
+    it('does not trigger a trackUserImpression when not isForum is false', () => {
+      renderWrapperWith({
+        text: 'some-value',
+        language: 'javascript',
+        mode: 'compose',
+        isIFrame: false,
+      });
+
+      expect(trackUserImpression).not.toHaveBeenCalled();
     });
   });
 });

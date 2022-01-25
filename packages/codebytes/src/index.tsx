@@ -51,17 +51,19 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   const [hasBeenEdited, setHasBeenEdited] = useState(false);
 
   useEffect(() => {
-    const options = getOptions();
-    const page_name = options.renderMode
-      ? `${options.clientName}_${options.renderMode}`
-      : options.clientName;
+    if (isIFrame) {
+      const options = getOptions();
+      const page_name = options.renderMode
+        ? `${options.clientName}_${options.renderMode}`
+        : options.clientName;
 
-    trackUserImpression({
-      page_name,
-      context: options.parentPage,
-      target: 'codebyte',
-    });
-  }, []);
+      trackUserImpression({
+        page_name,
+        context: options.parentPage,
+        target: 'codebyte',
+      });
+    }
+  }, [isIFrame]);
 
   useEffect(() => {
     if (language) {
