@@ -41,6 +41,7 @@ type EditorProps = {
   language: LanguageOption;
   text: string;
   onChange: (text: string) => void;
+  onCopy?: (text: string, language: string) => void;
   snippetsBaseUrl?: string;
   onCopy?: CodebytesChangeHandler;
 };
@@ -50,6 +51,7 @@ export const Editor: React.FC<EditorProps> = ({
   text,
   hideCopyButton,
   onChange,
+  onCopy,
   snippetsBaseUrl,
   onCopy,
 }) => {
