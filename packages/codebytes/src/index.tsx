@@ -60,7 +60,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
         target: 'codebyte',
       });
     }
-  }, []);
+  }, [isForums]);
 
   return (
     <EditorContainer bg="black" as="main" isForums={isForums}>
