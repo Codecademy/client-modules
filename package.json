@@ -23,7 +23,7 @@
     "build-all": "lerna run lernaBuildTask",
     "build-changed": "lerna run lernaBuildTask --since --include-dependencies",
     "start:storybook": "cd ./packages/styleguide && yarn start",
-    "install:codebytes": "cd ./packages/codebytes && yarn --focus",
+    "install:sibling-dependencies": "cd ./packages/codebytes && yarn --focus",
     "start": "yarn && yarn start:storybook"
   },
   "lint-staged": {
