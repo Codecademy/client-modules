@@ -1,5 +1,3 @@
-import Uri from 'jsuri';
-
 import { trackUserClick } from '../libs/eventTracking';
 
 export type CodebyteOptions = {
