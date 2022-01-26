@@ -18,14 +18,14 @@ export enum CodebytesParams {
 }
 
 export const getOptions = (): CodebyteOptions => {
-  const currentUri = new Uri(window.location.href);
+  const currentUri = new URL(window.location.href);
 
   return {
     clientName:
-      currentUri.getQueryParamValue(CodebytesParams.ClientName) || 'Unknown',
+      currentUri.searchParams.get(CodebytesParams.ClientName) || 'Unknown',
     parentPage:
-      currentUri.getQueryParamValue(CodebytesParams.Page) || document.referrer,
-    renderMode: currentUri.getQueryParamValue(CodebytesParams.Mode) || '',
+      currentUri.searchParams.get(CodebytesParams.Page) || document.referrer,
+    renderMode: currentUri.searchParams.get(CodebytesParams.Mode) || '',
   };
 };
 
