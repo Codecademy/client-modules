@@ -58,8 +58,10 @@ export const Editor: React.FC<EditorProps> = ({
   const [isCodeByteCopied, setIsCodeByteCopied] = useState(false);
   const onCopyClick = () => {
     if (!isCodeByteCopied) {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      navigator.clipboard.writeText(text);
+      navigator.clipboard
+        .writeText(text)
+        // eslint-disable-next-line no-console
+        .catch(() => console.error('Failed to copy'));
       setIsCodeByteCopied(true);
       trackClick('copy');
       onCopy?.(text, language);

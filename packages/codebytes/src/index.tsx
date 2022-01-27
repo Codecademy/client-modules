@@ -44,7 +44,12 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onLanguageChange,
   onCopy,
 }) => {
-  const [text, setText] = useState<string>(initialText ?? '');
+  const getInitialText = () => {
+    if (initialText !== undefined) return initialText;
+    return initialLanguage ? helloWorld[initialLanguage] : '';
+  };
+
+  const [text, setText] = useState<string>(getInitialText());
   const [language, setLanguage] = useState<LanguageOption>(
     initialLanguage ?? ''
   );
@@ -64,12 +69,6 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
       });
     }
   }, [isForums]);
-
-  useEffect(() => {
-    if (language) {
-      setText(initialText ?? (helloWorld[language] || ''));
-    }
-  }, [language, initialText]);
 
   return (
     <EditorContainer bg="black" as="main" isForums={isForums}>
@@ -110,7 +109,6 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             setText(newText);
             onLanguageChange?.(newText, newLanguage);
             trackClick('lang_select');
-            onLanguageChange?.(newText, newLanguage);
           }}
         />
       )}
