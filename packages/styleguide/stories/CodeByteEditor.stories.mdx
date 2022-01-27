@@ -22,10 +22,9 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   <Story
     name="Language and text provided"
     args={{
-      text:
-        'console.log("Welcome to the Codebytes Editor!");',
+      text: 'console.log("Welcome to the Codebytes Editor!");',
       snippetsBaseUrl: process.env.CONTAINER_API_BASE,
-      language: "javascript"
+      language: 'javascript',
     }}
   >
     {(args) => (
@@ -40,7 +39,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
       </GamutProvider>
     )}
   </Story>
-   <Story
+  <Story
     name="Language and text not provided"
     args={{
       snippetsBaseUrl: process.env.CONTAINER_API_BASE,

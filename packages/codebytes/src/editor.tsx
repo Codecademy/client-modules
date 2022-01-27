@@ -12,6 +12,7 @@ import React, { useState } from 'react';
 import { postSnippet } from './api';
 import type { LanguageOption } from './consts';
 import { Drawers } from './drawers';
+import { trackClick } from './helpers';
 import { SimpleMonacoEditor } from './MonacoEditor';
 
 const Output = styled.pre<{ hasError: boolean }>`
@@ -47,8 +48,8 @@ export const Editor: React.FC<EditorProps> = ({
   language,
   text,
   hideCopyButton,
-  onCopy,
   onChange,
+  onCopy,
   snippetsBaseUrl,
 }) => {
   const [output, setOutput] = useState('');
@@ -62,6 +63,7 @@ export const Editor: React.FC<EditorProps> = ({
         .catch(() => console.error('Failed to copy'));
       onCopy?.(text, language);
       setIsCodeByteCopied(true);
+      trackClick('copy');
     }
   };
 
@@ -80,6 +82,7 @@ export const Editor: React.FC<EditorProps> = ({
     };
     setStatus('waiting');
     setOutput('');
+    trackClick('run');
 
     try {
       const response = await postSnippet(data, snippetsBaseUrl);

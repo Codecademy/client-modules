@@ -3,27 +3,17 @@ import { FaviconIcon } from '@codecademy/gamut-icons';
 import { Background, states, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { helloWorld, LanguageOption } from './consts';
 import { Editor } from './editor';
+import { getOptions, trackClick } from './helpers';
 import { LanguageSelection } from './languageSelection';
-
-type CodebytesChangeHandler = (text: string, language: LanguageOption) => void;
-
-export interface CodeByteEditorProps {
-  text: string;
-  language: LanguageOption;
-  hideCopyButton: boolean;
-  onCopy?: CodebytesChangeHandler;
-  isIFrame?: boolean;
-  snippetsBaseUrl?: string;
-  onEdit?: CodebytesChangeHandler;
-  onLanguageChange?: CodebytesChangeHandler;
-}
+import { trackUserImpression } from './libs/eventTracking';
+import { CodeByteEditorProps } from './types';
 
 const editorStates = states({
-  isIFrame: { height: '100vh' },
+  isForums: { height: '100vh' },
 });
 
 const editorBaseStyles = system.css({
@@ -48,15 +38,30 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language: initialLanguage,
   hideCopyButton,
-  isIFrame = false,
-  snippetsBaseUrl = process.env.CONTAINER_API_BASE,
+  isForums = false,
+  snippetsBaseUrl,
   onEdit,
   onLanguageChange,
 }) => {
   const [text, setText] = useState<string>(initialText);
   const [language, setLanguage] = useState<LanguageOption>(initialLanguage);
+  const [hasBeenEdited, setHasBeenEdited] = useState(false);
+
+  useEffect(() => {
+    const options = getOptions();
+    const page_name = options.renderMode
+      ? `${options.clientName}_${options.renderMode}`
+      : options.clientName;
+
+    trackUserImpression({
+      page_name,
+      context: options.parentPage,
+      target: 'codebyte',
+    });
+  }, []);
+
   return (
-    <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
+    <EditorContainer bg="black" as="main" isForums={isForums}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}
@@ -65,6 +70,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           target="_blank"
           rel="noreferrer"
           aria-label="visit codecademy.com"
+          onClick={() => trackClick('logo')}
         />
       </Box>
       {language ? (
@@ -75,6 +81,12 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           onChange={(newText: string) => {
             setText(newText);
             onEdit?.(newText, language);
+
+            const { renderMode } = getOptions();
+            if (!renderMode && hasBeenEdited === false) {
+              setHasBeenEdited(true);
+              trackClick('edit');
+            }
           }}
           snippetsBaseUrl={snippetsBaseUrl}
         />
@@ -85,6 +97,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
               text || (newLanguage ? helloWorld[newLanguage] : '');
             setLanguage(newLanguage);
             setText(newText);
+            trackClick('lang_select');
             onLanguageChange?.(newText, newLanguage);
           }}
         />
