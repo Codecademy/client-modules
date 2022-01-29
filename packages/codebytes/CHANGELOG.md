@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.5.0...@codecademy/codebytes@0.5.1) (2022-01-29)
+
+
+### Reverts
+
+* Revert "add yarn build task for codebytes (#23)" (#24) ([209a493](https://github.com/Codecademy/client-modules/commit/209a4935066ed1cf7e6932281218338c67ab088b)), closes [#23](https://github.com/Codecademy/client-modules/issues/23) [#24](https://github.com/Codecademy/client-modules/issues/24)
+
+
+
 ## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.4.0...@codecademy/codebytes@0.5.0) (2022-01-27)
 
 
