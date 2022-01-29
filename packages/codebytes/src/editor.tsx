@@ -50,8 +50,8 @@ export const Editor: React.FC<EditorProps> = ({
   text,
   hideCopyButton,
   onChange,
-  snippetsBaseUrl,
   onCopy,
+  snippetsBaseUrl,
 }) => {
   const [output, setOutput] = useState('');
   const [status, setStatus] = useState<'ready' | 'waiting' | 'error'>('ready');
@@ -63,8 +63,8 @@ export const Editor: React.FC<EditorProps> = ({
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
       setIsCodeByteCopied(true);
-      trackClick('copy');
       onCopy?.(text, language);
+      trackClick('copy');
     }
   };
 

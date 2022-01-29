@@ -39,7 +39,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   language: initialLanguage,
   hideCopyButton = false,
   isForums = false,
-  snippetsBaseUrl = process.env.CONTAINER_API_BASE,
+  snippetsBaseUrl,
   onEdit,
   onLanguageChange,
   onCopy,
@@ -56,19 +56,17 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   const [hasBeenEdited, setHasBeenEdited] = useState(false);
 
   useEffect(() => {
-    if (isForums) {
-      const options = getOptions();
-      const page_name = options.renderMode
-        ? `${options.clientName}_${options.renderMode}`
-        : options.clientName;
+    const options = getOptions();
+    const page_name = options.renderMode
+      ? `${options.clientName}_${options.renderMode}`
+      : options.clientName;
 
-      trackUserImpression({
-        page_name,
-        context: options.parentPage,
-        target: 'codebyte',
-      });
-    }
-  }, [isForums]);
+    trackUserImpression({
+      page_name,
+      context: options.parentPage,
+      target: 'codebyte',
+    });
+  }, []);
 
   return (
     <EditorContainer bg="black" as="main" isForums={isForums}>
@@ -107,6 +105,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
               text || (newLanguage ? helloWorld[newLanguage] : '');
             setLanguage(newLanguage);
             setText(newText);
+            trackClick('lang_select');
             onLanguageChange?.(newText, newLanguage);
             trackClick('lang_select');
           }}

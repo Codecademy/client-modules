@@ -22,7 +22,7 @@ const renderWrapper = setupRtl(Editor, {
 
 Object.defineProperty(navigator, 'clipboard', {
   value: {
-    writeText: jest.fn(),
+    writeText: jest.fn().mockImplementation(() => Promise.resolve()),
   },
 });
 

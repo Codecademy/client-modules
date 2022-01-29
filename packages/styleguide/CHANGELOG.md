@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@0.4.0...@codecademy/styleguide@0.5.0) (2022-01-27)
+
+
+### Features
+
+* **Codebytes:** Refactor tracking in Codebytes ([#19](https://github.com/Codecademy/client-modules/issues/19)) ([494a944](https://github.com/Codecademy/client-modules/commit/494a94441cfbc1ea563f997607821131a7f1e007))
+
+
+
 ## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@0.3.0...@codecademy/styleguide@0.4.0) (2022-01-21)
 
 
