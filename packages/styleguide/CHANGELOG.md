@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@0.5.0...@codecademy/styleguide@0.6.0) (2022-01-31)
+
+
+### Features
+
+* **Codebytes:** add tests for codebytes package disc 399 ([#21](https://github.com/Codecademy/client-modules/issues/21)) ([df3f780](https://github.com/Codecademy/client-modules/commit/df3f780237cbe31b620f7d88870612e1109ffb5b))
+
+
+
 ## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@0.4.0...@codecademy/styleguide@0.5.0) (2022-01-27)
 
 
