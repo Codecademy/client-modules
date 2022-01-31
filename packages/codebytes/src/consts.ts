@@ -14,6 +14,10 @@ export const LanguageOptions = {
 
 export type LanguageOption = keyof typeof LanguageOptions;
 
+export const validLanguages = Object.keys(LanguageOptions).filter(
+  (option) => !!option
+) as Exclude<LanguageOption, ''>[];
+
 const cpp = `#include <iostream>
 int main() {
   std::cout << "Hello world!";

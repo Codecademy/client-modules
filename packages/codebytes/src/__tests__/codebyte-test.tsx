@@ -6,7 +6,7 @@ import { encode } from 'js-base64';
 import React from 'react';
 
 import { CodeByteEditor } from '..';
-import { helloWorld, validLanguages } from '../consts';
+import { helloWorld, LanguageOptions, validLanguages } from '../consts';
 import { trackClick } from '../helpers';
 import { trackUserImpression } from '../libs/eventTracking';
 import { CodeByteEditorProps } from '../types';
