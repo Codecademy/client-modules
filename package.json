@@ -17,11 +17,11 @@
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{js,ts,tsx,json}\"",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
-    "verify-all": "lerna run verify",
-    "verify-changed": "lerna run verify --since --include-dependencies",
+    "verify": "turbo run verify --concurrency=3",
+    "verify-all": "yarn verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
-    "build-all": "lerna run lernaBuildTask",
-    "build-changed": "lerna run lernaBuildTask --since --include-dependencies",
+    "build": "turbo run build --concurrency=3",
+    "build-all": "yarn build",
     "start:storybook": "cd ./packages/styleguide && yarn start",
     "start": "yarn && yarn start:storybook"
   },
@@ -47,10 +47,10 @@
     "lerna": "3.22.1"
   },
   "devDependencies": {
-    "@codecademy/webpack-config": "^6.0.0",
     "@babel/cli": "7.13.10",
     "@babel/core": "7.13.10",
     "@babel/preset-typescript": "^7.13.0",
+    "@codecademy/webpack-config": "^6.0.0",
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/jest": "^11.3.0",
     "@emotion/react": "^11.4.0",
