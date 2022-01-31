@@ -14,6 +14,7 @@ import type { LanguageOption } from './consts';
 import { Drawers } from './drawers';
 import { trackClick } from './helpers';
 import { SimpleMonacoEditor } from './MonacoEditor';
+import { CodebytesChangeHandler } from './types';
 
 const Output = styled.pre<{ hasError: boolean }>`
   width: 100%;
@@ -40,8 +41,8 @@ type EditorProps = {
   language: LanguageOption;
   text: string;
   onChange: (text: string) => void;
-  onCopy?: (text: string, language: string) => void;
   snippetsBaseUrl?: string;
+  onCopy?: CodebytesChangeHandler;
 };
 
 export const Editor: React.FC<EditorProps> = ({
@@ -61,8 +62,8 @@ export const Editor: React.FC<EditorProps> = ({
         .writeText(text)
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
-      onCopy?.(text, language);
       setIsCodeByteCopied(true);
+      onCopy?.(text, language);
       trackClick('copy');
     }
   };
@@ -133,15 +134,20 @@ export const Editor: React.FC<EditorProps> = ({
                 variant="secondary"
                 onClick={onCopyClick}
                 onBlur={() => setIsCodeByteCopied(false)}
+                data-testid="copy-codebyte-btn"
               >
                 <CopyIconStyled aria-hidden="true" /> Copy Codebyte
               </TextButton>
             }
           >
             {isCodeByteCopied ? (
-              <span role="alert">Copied!</span>
+              <span data-testid="copy-confirmation-tooltip" role="alert">
+                Copied!
+              </span>
             ) : (
-              <span>Copy to your clipboard</span>
+              <span data-testid="copy-prompt-tooltip">
+                Copy to your clipboard
+              </span>
             )}
           </ToolTip>
         ) : null}
