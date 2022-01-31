@@ -21,7 +21,9 @@
     "verify-changed": "lerna run verify --since --include-dependencies",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
     "build-all": "lerna run lernaBuildTask",
-    "build-changed": "lerna run lernaBuildTask --since --include-dependencies"
+    "build-changed": "lerna run lernaBuildTask --since --include-dependencies",
+    "start:storybook": "cd ./packages/styleguide && yarn start",
+    "start": "yarn && yarn start:storybook"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json}": [
@@ -45,6 +47,7 @@
     "lerna": "3.22.1"
   },
   "devDependencies": {
+    "@codecademy/webpack-config": "^6.0.0",
     "@babel/cli": "7.13.10",
     "@babel/core": "7.13.10",
     "@babel/preset-typescript": "^7.13.0",
