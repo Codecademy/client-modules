@@ -13,7 +13,7 @@ import { trackUserImpression } from './libs/eventTracking';
 import { CodeByteEditorProps } from './types';
 
 const editorStates = states({
-  isForums: { height: '100vh' },
+  isIFrame: { height: '100vh' },
 });
 
 const editorBaseStyles = system.css({
@@ -37,14 +37,22 @@ const EditorContainer = styled(Background)<EditorStyleProps>(
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language: initialLanguage,
-  hideCopyButton,
-  isForums = false,
+  hideCopyButton = false,
+  isIFrame = false,
   snippetsBaseUrl,
   onEdit,
   onLanguageChange,
+  onCopy,
 }) => {
-  const [text, setText] = useState<string>(initialText);
-  const [language, setLanguage] = useState<LanguageOption>(initialLanguage);
+  const getInitialText = () => {
+    if (initialText !== undefined) return initialText;
+    return initialLanguage ? helloWorld[initialLanguage] : '';
+  };
+
+  const [text, setText] = useState<string>(getInitialText());
+  const [language, setLanguage] = useState<LanguageOption>(
+    initialLanguage ?? ''
+  );
   const [hasBeenEdited, setHasBeenEdited] = useState(false);
 
   useEffect(() => {
@@ -61,7 +69,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, []);
 
   return (
-    <EditorContainer bg="black" as="main" isForums={isForums}>
+    <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}
@@ -81,7 +89,6 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           onChange={(newText: string) => {
             setText(newText);
             onEdit?.(newText, language);
-
             const { renderMode } = getOptions();
             if (!renderMode && hasBeenEdited === false) {
               setHasBeenEdited(true);
@@ -89,6 +96,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             }
           }}
           snippetsBaseUrl={snippetsBaseUrl}
+          onCopy={onCopy}
         />
       ) : (
         <LanguageSelection
@@ -99,6 +107,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             setText(newText);
             trackClick('lang_select');
             onLanguageChange?.(newText, newLanguage);
+            trackClick('lang_select');
           }}
         />
       )}
