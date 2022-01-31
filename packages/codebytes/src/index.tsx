@@ -13,7 +13,7 @@ import { trackUserImpression } from './libs/eventTracking';
 import { CodeByteEditorProps } from './types';
 
 const editorStates = states({
-  isForums: { height: '100vh' },
+  isIFrame: { height: '100vh' },
 });
 
 const editorBaseStyles = system.css({
@@ -38,7 +38,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language: initialLanguage,
   hideCopyButton = false,
-  isForums = false,
+  isIFrame = false,
   snippetsBaseUrl,
   onEdit,
   onLanguageChange,
@@ -69,7 +69,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, []);
 
   return (
-    <EditorContainer bg="black" as="main" isForums={isForums}>
+    <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}
