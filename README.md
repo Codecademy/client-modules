@@ -54,6 +54,14 @@ We do that using symlinks (the following instructions assume you have set up and
 1. Send a `feat` PR adding that package
 1. One merged, message out in our #frontend Slack channel to other client-modules developers to re-run `yarn lerna bootstrap` after they merge from `main`
 
+**Turborepo**
+
+This monorepo uses [Turborepo](https://turborepo.org/) to cache previous builds locally and in CI.
+
+The config for Turborepo is located at [/turbo.json](/turbo.json).
+
+To use Turborepo without extra configuration, if your package needs to be compiled, it should have a task called `build` that compiles it's files and puts them into a directory called `dist` inside the package directory. If you need a more complicated setup, you can read the docs and customize the configuration in `turbo.json`.
+
 ### PR Title Guide
 
 Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.
