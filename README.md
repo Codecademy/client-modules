@@ -11,7 +11,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 ## Local development
 
 1.  Run `yarn` in the root directory
-1.  Run `yarn build-all`
+1.  Run `yarn build`
 
 ### Publishing Modules
 
@@ -152,4 +152,3 @@ Optional extra description for your changes.
 This goes in the description for your PR, between the `<!--- CHANGELOG-DESCRIPTION -->` comment tags in the PR template.
 
 If you include the text `BREAKING CHANGE:` in your description it will trigger a major version bump. We prefer to use the `feat!:` syntax for breaking changes described above.
-
