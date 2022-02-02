@@ -13,7 +13,7 @@ import { trackUserImpression } from './libs/eventTracking';
 import { CodeByteEditorProps } from './types';
 
 const editorStates = states({
-  isIFrame: { height: '100vh' },
+  isIFrame: { height: '100vh', width: '100%' },
 });
 
 const editorBaseStyles = system.css({
