@@ -44,3 +44,6 @@ tmp
 
 # Automatic report....json files
 report*.json
+
+# Turborepo
+.turbo

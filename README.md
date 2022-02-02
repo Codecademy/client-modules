@@ -11,7 +11,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 ## Local development
 
 1.  Run `yarn` in the root directory
-1.  Run `yarn build-all`
+1.  Run `yarn build`
 
 ### Publishing Modules
 
@@ -53,6 +53,14 @@ We do that using symlinks (the following instructions assume you have set up and
 1. Run `yarn lerna bootstrap` from the repository root
 1. Send a `feat` PR adding that package
 1. One merged, message out in our #frontend Slack channel to other client-modules developers to re-run `yarn lerna bootstrap` after they merge from `main`
+
+**Turborepo**
+
+This monorepo uses [Turborepo](https://turborepo.org/) to cache previous builds locally and in CI.
+
+The config for Turborepo is located at [/turbo.json](/turbo.json).
+
+To use Turborepo without extra configuration, if your package needs to be compiled, it should have a task called `build` that compiles it's files and puts them into a directory called `dist` inside the package directory. If you need a more complicated setup, you can read the docs and customize the configuration in `turbo.json`.
 
 ### PR Title Guide
 
@@ -152,4 +160,3 @@ Optional extra description for your changes.
 This goes in the description for your PR, between the `<!--- CHANGELOG-DESCRIPTION -->` comment tags in the PR template.
 
 If you include the text `BREAKING CHANGE:` in your description it will trigger a major version bump. We prefer to use the `feat!:` syntax for breaking changes described above.
-
