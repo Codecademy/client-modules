@@ -6,6 +6,7 @@ import {
   ToolTip,
 } from '@codecademy/gamut';
 import { CopyIcon } from '@codecademy/gamut-icons';
+import { UserClickData } from '@codecademy/tracking';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
@@ -43,6 +44,7 @@ type EditorProps = {
   onChange: (text: string) => void;
   snippetsBaseUrl?: string;
   onCopy?: CodebytesChangeHandler;
+  trackingData: Omit<UserClickData, 'target'>;
 };
 
 export const Editor: React.FC<EditorProps> = ({
@@ -52,6 +54,7 @@ export const Editor: React.FC<EditorProps> = ({
   onChange,
   onCopy,
   snippetsBaseUrl,
+  trackingData,
 }) => {
   const [output, setOutput] = useState('');
   const [status, setStatus] = useState<'ready' | 'waiting' | 'error'>('ready');
@@ -64,7 +67,7 @@ export const Editor: React.FC<EditorProps> = ({
         .catch(() => console.error('Failed to copy'));
       setIsCodeByteCopied(true);
       onCopy?.(text, language);
-      trackClick('copy');
+      trackClick('copy', trackingData);
     }
   };
 
@@ -83,7 +86,7 @@ export const Editor: React.FC<EditorProps> = ({
     };
     setStatus('waiting');
     setOutput('');
-    trackClick('run');
+    trackClick('run', trackingData);
 
     try {
       const response = await postSnippet(data, snippetsBaseUrl);

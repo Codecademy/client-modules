@@ -1,3 +1,5 @@
+import { UserClickData } from '@codecademy/tracking';
+
 import { trackUserClick } from '../libs/eventTracking';
 
 export type CodebyteOptions = {
@@ -27,7 +29,16 @@ export const getOptions = (): CodebyteOptions => {
   };
 };
 
-export const trackClick = (target: string) => {
+export const trackClick = (
+  target: string,
+  trackingData: Omit<UserClickData, 'target'>
+) => {
+  if (trackingData) {
+    return trackUserClick({
+      ...trackingData,
+      target,
+    });
+  }
   const options = getOptions();
   const page_name = options.renderMode
     ? `${options.clientName}_${options.renderMode}`

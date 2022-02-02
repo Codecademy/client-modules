@@ -43,6 +43,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onEdit,
   onLanguageChange,
   onCopy,
+  trackingData,
 }) => {
   const getInitialText = () => {
     if (initialText !== undefined) return initialText;
@@ -78,7 +79,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           target="_blank"
           rel="noreferrer"
           aria-label="visit codecademy.com"
-          onClick={() => trackClick('logo')}
+          onClick={() => trackClick('logo', trackingData)}
         />
       </Box>
       {language ? (
@@ -92,11 +93,12 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
             const { renderMode } = getOptions();
             if (!renderMode && hasBeenEdited === false) {
               setHasBeenEdited(true);
-              trackClick('edit');
+              trackClick('edit', trackingData);
             }
           }}
           snippetsBaseUrl={snippetsBaseUrl}
           onCopy={onCopy}
+          trackingData={trackingData}
         />
       ) : (
         <LanguageSelection
@@ -105,9 +107,8 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
               text || (newLanguage ? helloWorld[newLanguage] : '');
             setLanguage(newLanguage);
             setText(newText);
-            trackClick('lang_select');
+            trackClick('lang_select', trackingData);
             onLanguageChange?.(newText, newLanguage);
-            trackClick('lang_select');
           }}
         />
       )}
