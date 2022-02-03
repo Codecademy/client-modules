@@ -14,5 +14,5 @@ export interface CodeByteEditorProps {
   snippetsBaseUrl?: string;
   onEdit?: CodebytesChangeHandler;
   onLanguageChange?: CodebytesChangeHandler;
-  trackingData: Omit<UserClickData, 'target'>;
+  trackingData?: Omit<UserClickData, 'target'>;
 }
