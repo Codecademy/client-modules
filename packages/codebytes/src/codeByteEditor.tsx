@@ -70,7 +70,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, []);
 
   return (
-    <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
+    <EditorContainer bg="black" isIFrame={isIFrame}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}
