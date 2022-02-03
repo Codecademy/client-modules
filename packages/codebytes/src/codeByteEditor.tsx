@@ -1,7 +1,6 @@
 import { Box, IconButton } from '@codecademy/gamut';
 import { FaviconIcon } from '@codecademy/gamut-icons';
-import { Background, states, system } from '@codecademy/gamut-styles';
-import { StyleProps } from '@codecademy/variance';
+import { Background } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 
@@ -13,12 +12,8 @@ import { trackUserImpression } from './libs/eventTracking';
 import { CodeByteEditorProps } from './types';
 
 const EditorContainer = styled(Background)`
-  border: 1;
-  border-color: 'gray-900';
   display: 'flex';
   flex-direction: 'column';
-  height: '25rem';
-  width: '43rem';
   overflow: 'hidden';
 `;
 
@@ -58,7 +53,14 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, []);
 
   return (
-    <EditorContainer bg="black" {...rest}>
+    <EditorContainer
+      bg="black"
+      width={43}
+      height={25}
+      border={1}
+      borderColor="gray-900"
+      {...rest}
+    >
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}
