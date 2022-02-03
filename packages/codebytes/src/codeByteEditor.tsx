@@ -60,7 +60,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, []);
 
   return (
-    <EditorContainer bg="black" mt={64} height="25rem" width="43rem" {...rest}>
+    <EditorContainer bg="black" height="25rem" width="43rem" {...rest}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}
