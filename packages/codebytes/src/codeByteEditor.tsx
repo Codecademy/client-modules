@@ -44,6 +44,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onLanguageChange,
   onCopy,
   trackingData,
+  ...rest
 }) => {
   const getInitialText = () => {
     if (initialText !== undefined) return initialText;
@@ -70,7 +71,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, []);
 
   return (
-    <EditorContainer bg="black" isIFrame={isIFrame}>
+    <EditorContainer bg="black" isIFrame={isIFrame} {...rest}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}
