@@ -1,3 +1,5 @@
+import { UserClickData } from '@codecademy/tracking';
+
 import { LanguageOption } from './consts';
 
 export interface CodebytesChangeHandler {
@@ -12,4 +14,5 @@ export interface CodeByteEditorProps {
   snippetsBaseUrl?: string;
   onEdit?: CodebytesChangeHandler;
   onLanguageChange?: CodebytesChangeHandler;
+  trackingData?: Omit<UserClickData, 'target'>;
 }

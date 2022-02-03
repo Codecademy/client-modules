@@ -94,7 +94,7 @@ describe('Editor', () => {
         userEvent.click(runButton);
       });
 
-      expect(trackClick).toHaveBeenCalledWith('run');
+      expect(trackClick).toHaveBeenCalledWith('run', undefined);
     });
 
     it('tracks clicks on the copy codebyte button', () => {
@@ -107,7 +107,7 @@ describe('Editor', () => {
       const copyButton = view.getByTestId('copy-codebyte-btn');
       userEvent.click(copyButton);
 
-      expect(trackClick).toHaveBeenCalledWith('copy');
+      expect(trackClick).toHaveBeenCalledWith('copy', undefined);
     });
   });
 });
