@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.5](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.4...@codecademy/codebytes@0.6.5) (2022-02-03)
+
+
+### Bug Fixes
+
+* **Codebytes:** tracking tweaks for monolith ([#31](https://github.com/Codecademy/client-modules/issues/31)) ([4d309d0](https://github.com/Codecademy/client-modules/commit/4d309d0f57c7c30bf672d8ed02193e9d5b2a27a9))
+
+
+
 ### [0.6.4](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.3...@codecademy/codebytes@0.6.4) (2022-02-02)
 
 **Note:** Version bump only for package @codecademy/codebytes
