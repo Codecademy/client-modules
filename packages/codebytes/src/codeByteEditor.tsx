@@ -1,6 +1,7 @@
 import { Box, IconButton } from '@codecademy/gamut';
 import { FaviconIcon } from '@codecademy/gamut-icons';
-import { Background } from '@codecademy/gamut-styles';
+import { Background, states, system } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 
@@ -11,11 +12,17 @@ import { LanguageSelection } from './languageSelection';
 import { trackUserImpression } from './libs/eventTracking';
 import { CodeByteEditorProps } from './types';
 
-const EditorContainer = styled(Background)`
-  display: 'flex';
-  flex-direction: 'column';
-  overflow: 'hidden';
-`;
+const editorBaseStyles = system.css({
+  border: 1,
+  borderColor: 'gray-900',
+  display: 'flex',
+  flexDirection: 'column',
+  overflow: 'hidden',
+});
+
+const EditorContainer = styled(Background)<StyleProps<typeof editorBaseStyles>>(
+  editorBaseStyles
+);
 
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
@@ -53,14 +60,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, []);
 
   return (
-    <EditorContainer
-      bg="black"
-      width={43}
-      height={25}
-      border={1}
-      borderColor="gray-900"
-      {...rest}
-    >
+    <EditorContainer bg="black" mt={64} height="25rem" width="43rem" {...rest}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}
