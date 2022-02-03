@@ -31,7 +31,7 @@ export const getOptions = (): CodebyteOptions => {
 
 export const trackClick = (
   target: string,
-  trackingData: Omit<UserClickData, 'target'>
+  trackingData?: Omit<UserClickData, 'target'>
 ) => {
   if (trackingData) {
     return trackUserClick({
