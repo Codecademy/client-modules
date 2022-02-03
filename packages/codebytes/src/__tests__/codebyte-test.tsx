@@ -144,14 +144,14 @@ describe('CodeBytes', () => {
       const { view } = renderWrapper({});
       const logo = view.getByLabelText('visit codecademy.com');
       userEvent.click(logo);
-      expect(trackClick).toHaveBeenCalledWith('logo');
+      expect(trackClick).toHaveBeenCalledWith('logo', undefined);
     });
 
     it('triggers trackClick on language selection', () => {
       const { view } = renderWrapper();
       const selectedLanguage = view.getByRole('combobox') as Element;
       userEvent.selectOptions(selectedLanguage, ['javascript']);
-      expect(trackClick).toHaveBeenCalledWith('lang_select');
+      expect(trackClick).toHaveBeenCalledWith('lang_select', undefined);
     });
 
     it('triggers trackClick for the first edit in view mode', () => {
@@ -164,7 +164,7 @@ describe('CodeBytes', () => {
       const editor = view.getByTestId(mockEditorTestId);
       userEvent.type(editor, 'd');
 
-      expect(trackClick).toHaveBeenCalledWith('edit');
+      expect(trackClick).toHaveBeenCalledWith('edit', undefined);
     });
 
     it('triggers trackUserImpression for view mode', () => {
