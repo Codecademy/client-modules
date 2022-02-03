@@ -1,6 +1,6 @@
 import { Box, IconButton } from '@codecademy/gamut';
 import { FaviconIcon } from '@codecademy/gamut-icons';
-import { Background, states, system } from '@codecademy/gamut-styles';
+import { Background, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
