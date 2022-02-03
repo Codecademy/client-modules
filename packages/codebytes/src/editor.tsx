@@ -44,7 +44,7 @@ type EditorProps = {
   onChange: (text: string) => void;
   snippetsBaseUrl?: string;
   onCopy?: CodebytesChangeHandler;
-  trackingData: Omit<UserClickData, 'target'>;
+  trackingData?: Omit<UserClickData, 'target'>;
 };
 
 export const Editor: React.FC<EditorProps> = ({
