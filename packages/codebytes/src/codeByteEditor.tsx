@@ -12,33 +12,20 @@ import { LanguageSelection } from './languageSelection';
 import { trackUserImpression } from './libs/eventTracking';
 import { CodeByteEditorProps } from './types';
 
-const editorStates = states({
-  isIFrame: { height: '100vh' },
-});
-
-const editorBaseStyles = system.css({
-  border: 1,
-  borderColor: 'gray-900',
-  display: 'flex',
-  flexDirection: 'column',
-  height: '25rem',
-  width: '43rem',
-  overflow: 'hidden',
-});
-export interface EditorStyleProps
-  extends StyleProps<typeof editorBaseStyles>,
-    StyleProps<typeof editorStates> {}
-
-const EditorContainer = styled(Background)<EditorStyleProps>(
-  editorBaseStyles,
-  editorStates
-);
+const EditorContainer = styled(Background)`
+  border: 1;
+  border-color: 'gray-900';
+  display: 'flex';
+  flex-direction: 'column';
+  height: '25rem';
+  width: '43rem';
+  overflow: 'hidden';
+`;
 
 export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   text: initialText,
   language: initialLanguage,
   hideCopyButton = false,
-  isIFrame = false,
   snippetsBaseUrl,
   onEdit,
   onLanguageChange,
@@ -71,7 +58,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, []);
 
   return (
-    <EditorContainer bg="black" isIFrame={isIFrame} {...rest}>
+    <EditorContainer bg="black" {...rest}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}

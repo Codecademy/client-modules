@@ -12,7 +12,6 @@ export interface CodeByteEditorProps
   language?: LanguageOption;
   hideCopyButton?: boolean;
   onCopy?: CodebytesChangeHandler;
-  isIFrame?: boolean;
   snippetsBaseUrl?: string;
   onEdit?: CodebytesChangeHandler;
   onLanguageChange?: CodebytesChangeHandler;
