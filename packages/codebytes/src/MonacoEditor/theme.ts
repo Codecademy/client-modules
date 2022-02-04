@@ -58,7 +58,7 @@ const theme = ({
     'editorIndentGuide.background': ui.indent.inactive,
     'editorIndentGuide.activeBackground': ui.indent.active,
     'editorWhitespace.foreground': syntax.comment,
-    'editorLineNumber.foreground': syntax.lineNumber,
+    'editorLineNumber.foreground': '9FA2AC',
   },
 });
 
