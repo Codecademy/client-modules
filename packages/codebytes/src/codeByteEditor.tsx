@@ -17,8 +17,8 @@ const editorBaseStyles = system.css({
   borderColor: 'gray-900',
   display: 'flex',
   flexDirection: 'column',
-  overflow: 'hidden',
   minHeight: '25rem',
+  maxWidth: '43rem',
 });
 
 const EditorContainer = styled(Background)<StyleProps<typeof editorBaseStyles>>(
