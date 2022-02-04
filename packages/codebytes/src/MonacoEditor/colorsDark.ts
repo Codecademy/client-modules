@@ -3,7 +3,7 @@
 // We are working on a monaco package in client-modules that has more configuration around themes and languages
 // Monaco as a shared package RFC https://www.notion.so/codecademy/Monaco-editor-as-a-shared-package-1f4484db165b4abc8394c3556451ef6a
 
-import { colors, editorColors, theme } from '@codecademy/gamut-styles';
+import { colors, editorColors } from '@codecademy/gamut-styles';
 
 const darkTheme = {
   blue: editorColors.blue,
@@ -15,7 +15,6 @@ const darkTheme = {
   red: editorColors.red,
   white: colors.white,
   yellow: editorColors.yellow,
-  lightGray: theme.colors['navy-400'],
 };
 
 export const syntax = {
@@ -39,7 +38,6 @@ export const syntax = {
   text: darkTheme.orange,
   value: darkTheme.yellow,
   variable: darkTheme.green,
-  lineNumber: darkTheme.lightGray,
 };
 
 export const ui = {
