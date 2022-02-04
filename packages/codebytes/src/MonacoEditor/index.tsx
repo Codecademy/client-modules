@@ -4,9 +4,9 @@
 // Monaco as a shared package RFC https://www.notion.so/codecademy/Monaco-editor-as-a-shared-package-1f4484db165b4abc8394c3556451ef6a
 
 import { Box } from '@codecademy/gamut';
+import { editor } from '@emotion/styled';
 import styled from '@emotion/styled/types/base';
 import ReactMonacoEditor, { OnMount } from '@monaco-editor/react';
-import { editor } from 'monaco-editor/esm/vs/editor/editor.api';
 import React, { useCallback, useRef } from 'react';
 import ResizeObserver from 'react-resize-observer';
 
