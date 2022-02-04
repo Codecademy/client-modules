@@ -24,7 +24,6 @@ const Output = styled.pre<{ hasError: boolean }>`
   padding: 0 1rem;
   font-family: Monaco;
   font-size: 0.875rem;
-  overflow: auto;
   ${({ hasError, theme }) => `
   color: ${hasError ? theme.colors.orange : theme.colors.white};
   background-color: ${theme.colors['navy-900']};

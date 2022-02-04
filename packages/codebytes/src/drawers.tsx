@@ -17,6 +17,7 @@ const RightDrawerIcon = LeftDrawerIcon.withComponent(ArrowChevronRightIcon);
 
 const Drawer = styled(FlexBox)<{ open?: boolean; hideOnClose?: boolean }>`
   position: relative;
+  width: 50%;
   ${({ open, hideOnClose }) => `
     flex-basis: ${open ? '100%' : '0%'};
     visibility: ${!open && hideOnClose ? 'hidden' : 'visible'};
@@ -123,7 +124,6 @@ export const Drawers: React.FC<DrawersProps> = ({ leftChild, rightChild }) => {
           aria-labelledby="output-drawer-label"
           role="region"
           open={!isLeftOpen}
-          overflow="hidden"
         >
           {rightChild}
         </Drawer>
