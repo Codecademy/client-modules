@@ -103,7 +103,6 @@ export const Drawers: React.FC<DrawersProps> = ({ leftChild, rightChild }) => {
         borderY={1}
         borderColor="gray-900"
         alignItems="stretch"
-        overflow="hidden"
       >
         <Drawer
           hideOnClose
@@ -111,7 +110,6 @@ export const Drawers: React.FC<DrawersProps> = ({ leftChild, rightChild }) => {
           aria-labelledby="code-drawer-label"
           open={!isRightOpen}
           flexGrow={0}
-          overflow="hidden"
           borderColor="gray-900"
           borderStyleRight="solid"
           borderWidthRight="thin"
