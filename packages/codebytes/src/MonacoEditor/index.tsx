@@ -36,14 +36,14 @@ export const SimpleMonacoEditor: React.FC<SimpleMonacoEditorProps> = ({
     <>
       <ResizeObserver
         onResize={({ height, width }) => {
-          editorRef.current?.layout({
+          editorRef.current?.editor?.layout({
             height,
             width,
           });
         }}
       />
       <ReactMonacoEditor
-        onMount={editorWillMount}
+        editorWillMount={editorWillMount}
         onChange={onChange}
         options={{ minimap: { enabled: false } }}
         theme="vs-dark"
