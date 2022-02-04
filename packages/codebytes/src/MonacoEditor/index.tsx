@@ -4,7 +4,6 @@
 // Monaco as a shared package RFC https://www.notion.so/codecademy/Monaco-editor-as-a-shared-package-1f4484db165b4abc8394c3556451ef6a
 
 import loadable from '@loadable/component';
-import { editor } from 'monaco-editor/esm/vs/editor/editor.api';
 import React, { useCallback, useRef } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 import ResizeObserver from 'react-resize-observer';
