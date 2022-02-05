@@ -120,7 +120,6 @@ export const Drawers: React.FC<DrawersProps> = ({ leftChild, rightChild }) => {
         <Drawer
           hideOnClose
           id="output-drawer"
-          aria-labelledby="output-drawer-label"
           open={!isLeftOpen}
           overflow="hidden"
         >
