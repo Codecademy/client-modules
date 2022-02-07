@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.8](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.7...@codecademy/codebytes@0.6.8) (2022-02-05)
+
+**Note:** Version bump only for package @codecademy/codebytes
+
+
+
+
+
+### [0.6.7](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.6...@codecademy/codebytes@0.6.7) (2022-02-05)
+
+
+### Bug Fixes
+
+* **codebytes:** semantic text color ([8c5e59b](https://github.com/Codecademy/client-modules/commit/8c5e59b25af3e7f92e4bf3f6bb9de198eec5a3e0))
+
+
+
 ### [0.6.6](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.5...@codecademy/codebytes@0.6.6) (2022-02-03)
 
 **Note:** Version bump only for package @codecademy/codebytes
