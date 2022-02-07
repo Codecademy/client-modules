@@ -15,4 +15,5 @@ export interface CodeByteEditorProps {
   onEdit?: CodebytesChangeHandler;
   onLanguageChange?: CodebytesChangeHandler;
   trackingData?: Omit<UserClickData, 'target'>;
+  renderMode?: string;
 }

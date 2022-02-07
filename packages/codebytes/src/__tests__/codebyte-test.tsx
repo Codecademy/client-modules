@@ -167,24 +167,15 @@ describe('CodeBytes', () => {
       expect(trackClick).toHaveBeenCalledWith('edit', undefined);
     });
 
-    it('triggers trackUserImpression for view mode', () => {
-      renderWrapperWith({
+    it('triggers trackUserImpression', () => {
+      renderWrapper({
         text: 'some-value',
         language: 'javascript',
-      });
-
-      expect(trackUserImpression).toHaveBeenCalledWith({
-        page_name: 'forum',
-        context: 'https://discuss.codecademy.com/some-interesting/post',
-        target: 'codebyte',
-      });
-    });
-
-    it('triggers trackUserImpression for compose mode', () => {
-      renderWrapperWith({
-        text: 'some-value',
-        language: 'javascript',
-        mode: 'compose',
+        trackingData: {
+          page_name: 'forum_compose',
+          context: 'https://discuss.codecademy.com/some-interesting/post',
+        },
+        renderMode: 'compose',
       });
 
       expect(trackUserImpression).toHaveBeenCalledWith({

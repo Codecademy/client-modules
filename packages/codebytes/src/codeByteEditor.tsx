@@ -4,6 +4,7 @@ import { Background, states, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
+import { renderIntoDocument } from 'react-dom/test-utils';
 
 import { helloWorld, LanguageOption } from './consts';
 import { Editor } from './editor';
@@ -44,6 +45,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onLanguageChange,
   onCopy,
   trackingData,
+  renderMode,
 }) => {
   const getInitialText = () => {
     if (initialText !== undefined) return initialText;
@@ -57,17 +59,12 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   const [hasBeenEdited, setHasBeenEdited] = useState(false);
 
   useEffect(() => {
-    const options = getOptions();
-    const page_name = options.renderMode
-      ? `${options.clientName}_${options.renderMode}`
-      : options.clientName;
-
     trackUserImpression({
-      page_name,
-      context: options.parentPage,
+      page_name: trackingData?.page_name ?? 'Unknown',
+      context: trackingData?.context ?? document.referrer,
       target: 'codebyte',
     });
-  }, []);
+  }, [trackingData]);
 
   return (
     <EditorContainer bg="black" as="main" isIFrame={isIFrame}>
@@ -90,7 +87,6 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           onChange={(newText: string) => {
             setText(newText);
             onEdit?.(newText, language);
-            const { renderMode } = getOptions();
             if (!renderMode && hasBeenEdited === false) {
               setHasBeenEdited(true);
               trackClick('edit', trackingData);
