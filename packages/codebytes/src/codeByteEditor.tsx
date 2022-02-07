@@ -4,11 +4,10 @@ import { Background, system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
-import { renderIntoDocument } from 'react-dom/test-utils';
 
 import { helloWorld, LanguageOption } from './consts';
 import { Editor } from './editor';
-import { getOptions, trackClick } from './helpers';
+import { trackClick } from './helpers';
 import { LanguageSelection } from './languageSelection';
 import { trackUserImpression } from './libs/eventTracking';
 import { CodeByteEditorProps } from './types';
