@@ -17,6 +17,11 @@ const RightDrawerIcon = LeftDrawerIcon.withComponent(ArrowChevronRightIcon);
 
 const Drawer = styled(FlexBox)<{ open?: boolean; hideOnClose?: boolean }>`
   position: relative;
+  // A hidden overflowing element causes accessibility errors
+  // The background of the overflowing element causes triggers color contrast errors
+  & .lines-content {
+    height: 100% !important;
+  }
   ${({ open, hideOnClose }) => `
     flex-basis: ${open ? '100%' : '0%'};
     visibility: ${!open && hideOnClose ? 'hidden' : 'visible'};
@@ -120,6 +125,8 @@ export const Drawers: React.FC<DrawersProps> = ({ leftChild, rightChild }) => {
         <Drawer
           hideOnClose
           id="output-drawer"
+          aria-labelledby="output-drawer-label"
+          role="region"
           open={!isLeftOpen}
           overflow="hidden"
         >
