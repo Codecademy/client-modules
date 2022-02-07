@@ -18,7 +18,6 @@ const editorBaseStyles = system.css({
   display: 'flex',
   flexDirection: 'column',
   minHeight: '25rem',
-  maxWidth: '43rem',
 });
 
 const EditorContainer = styled(Background)<StyleProps<typeof editorBaseStyles>>(
@@ -61,7 +60,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, []);
 
   return (
-    <EditorContainer bg="black" {...rest}>
+    <EditorContainer bg="black" maxWidth="43rem" {...rest}>
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}
