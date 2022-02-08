@@ -132,6 +132,7 @@ describe('CodeBytes', () => {
       const { view } = renderWrapper({
         text: testString,
         language: 'javascript',
+        trackFirstEdit: true,
       });
 
       const editor = view.getByTestId(mockEditorTestId);
@@ -148,7 +149,6 @@ describe('CodeBytes', () => {
           page_name: 'forum_compose',
           context: 'https://discuss.codecademy.com/some-interesting/post',
         },
-        renderMode: 'compose',
       });
 
       expect(trackUserImpression).toHaveBeenCalledWith({
