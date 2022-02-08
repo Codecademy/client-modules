@@ -33,7 +33,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onLanguageChange,
   onCopy,
   trackingData,
-  renderMode,
+  trackFirstEdit = false,
   ...rest
 }) => {
   const getInitialText = () => {
@@ -76,7 +76,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           onChange={(newText: string) => {
             setText(newText);
             onEdit?.(newText, language);
-            if (!renderMode && hasBeenEdited === false) {
+            if (trackFirstEdit && hasBeenEdited === false) {
               setHasBeenEdited(true);
               trackClick('edit', trackingData);
             }
