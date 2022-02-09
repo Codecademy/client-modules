@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 
 import { helloWorld, LanguageOption } from './consts';
 import { Editor } from './editor';
-import { getOptions, trackClick } from './helpers';
+import { trackClick } from './helpers';
 import { LanguageSelection } from './languageSelection';
 import { trackUserImpression } from './libs/eventTracking';
 import { CodeByteEditorProps } from './types';
@@ -33,6 +33,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onLanguageChange,
   onCopy,
   trackingData,
+  trackFirstEdit = false,
   ...rest
 }) => {
   const getInitialText = () => {
@@ -47,17 +48,12 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   const [hasBeenEdited, setHasBeenEdited] = useState(false);
 
   useEffect(() => {
-    const options = getOptions();
-    const page_name = options.renderMode
-      ? `${options.clientName}_${options.renderMode}`
-      : options.clientName;
-
     trackUserImpression({
-      page_name,
-      context: options.parentPage,
+      page_name: trackingData?.page_name ?? 'Unknown',
+      context: trackingData?.context ?? document.referrer,
       target: 'codebyte',
     });
-  }, []);
+  }, [trackingData]);
 
   return (
     <EditorContainer bg="black" maxWidth="43rem" {...rest}>
@@ -80,8 +76,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           onChange={(newText: string) => {
             setText(newText);
             onEdit?.(newText, language);
-            const { renderMode } = getOptions();
-            if (!renderMode && hasBeenEdited === false) {
+            if (trackFirstEdit && hasBeenEdited === false) {
               setHasBeenEdited(true);
               trackClick('edit', trackingData);
             }
