@@ -127,7 +127,7 @@ describe('CodeBytes', () => {
       expect(trackClick).toHaveBeenCalledWith('lang_select', undefined);
     });
 
-    it('triggers trackClick for the first edit in view mode', () => {
+    it('triggers trackClick for the first edit', () => {
       const testString = 'original-value';
       const { view } = renderWrapper({
         text: testString,
