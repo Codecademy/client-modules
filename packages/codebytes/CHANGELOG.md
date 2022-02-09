@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.10](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.9...@codecademy/codebytes@0.6.10) (2022-02-09)
+
+
+### Bug Fixes
+
+* remove get options from client modules ([6bf7b94](https://github.com/Codecademy/client-modules/commit/6bf7b94876f1c6c1e15b0da2b5393bc1f8151535))
+
+
+
 ### [0.6.9](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.8...@codecademy/codebytes@0.6.9) (2022-02-07)
 
 
