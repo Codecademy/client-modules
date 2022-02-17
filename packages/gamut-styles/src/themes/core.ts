@@ -33,7 +33,7 @@ export const coreTheme = createTheme({
       feedback: {
         error: 'red-600',
         success: 'green-700',
-        warning: 'yellow',
+        warning: 'yellow-0',
       },
       background: {
         _: 'white',
@@ -73,7 +73,7 @@ export const coreTheme = createTheme({
         primary: 'navy-900',
         selected: 'navy-700',
         disabled: 'navy-500',
-        hover: 'navy-900',
+        hover: 'navy-600',
       },
       shadow: {
         opaque: 'shadow-black-heavy',
