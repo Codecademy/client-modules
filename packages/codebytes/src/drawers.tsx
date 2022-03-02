@@ -17,8 +17,6 @@ const RightDrawerIcon = LeftDrawerIcon.withComponent(ArrowChevronRightIcon);
 
 const Drawer = styled(FlexBox)<{ open?: boolean; hideOnClose?: boolean }>`
   position: relative;
-  // A hidden overflowing element causes accessibility errors
-  // The background of the overflowing element causes triggers color contrast errors
   ${({ open, hideOnClose }) => `
     flex-basis: ${open ? '100%' : '0%'};
     visibility: ${!open && hideOnClose ? 'hidden' : 'visible'};
