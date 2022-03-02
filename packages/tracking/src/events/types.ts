@@ -51,6 +51,10 @@ export type EventDataTypes = {
     query: BaseEventAnyData;
     result: BaseEventAnyData;
   };
+  // events for tracking experiments in optimizely
+  experiment: {
+    test_experiment_click: BaseEventAnyData;
+  };
   // page events for email marketing
   // potentially to be removed once we clean up user_visit event
   page: {
