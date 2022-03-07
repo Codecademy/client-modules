@@ -56,7 +56,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   }, [trackingData]);
 
   return (
-    <EditorContainer bg="black" maxWidth="43rem" {...rest}>
+    <EditorContainer bg="black" maxWidth="43rem" {...rest} overflow="hidden">
       <Box borderBottom={1} borderColor="gray-900" py={4} pl={8}>
         <IconButton
           icon={FaviconIcon}
