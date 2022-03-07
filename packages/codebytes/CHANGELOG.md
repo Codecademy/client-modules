@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.11](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.10...@codecademy/codebytes@0.6.11) (2022-03-07)
+
+
+### Bug Fixes
+
+* fixes a monaco editor display bug for lines below 14-17 ([9780410](https://github.com/Codecademy/client-modules/commit/97804100dea13fe92b6e4d58bfbec4667af5d96c))
+
+
+
 ### [0.6.10](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.9...@codecademy/codebytes@0.6.10) (2022-02-09)
 
 
