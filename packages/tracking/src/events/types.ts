@@ -183,6 +183,7 @@ export type UserClickData = UserSharedData & {
   assessment_id?: string;
   container_slugs?: string[];
   search_id?: string;
+  is_ugc?: boolean;
 };
 
 /**
@@ -216,6 +217,7 @@ export type UserVisitData = UserSharedData & {
   story_slug?: string;
   unit?: string;
   lesson?: string;
+  is_ugc?: boolean;
 };
 
 export type UserImpressionData = {
@@ -227,6 +229,7 @@ export type UserImpressionData = {
   track_slug?: string;
   module_slug?: string;
   source_codebase?: string;
+  is_ugc?: boolean;
 };
 
 export type EventAnswerData = BaseEventData & {
