@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.18.1...@codecademy/tracking@0.19.0) (2022-03-10)
+
+
+### Features
+
+* **Tracking:** add is_ugc attribute to tracking types ([2fe9c08](https://github.com/Codecademy/client-modules/commit/2fe9c083d0205e6af8dd928e9c291ebbeeeb6cbb))
+
+
+
 ### [0.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.18.0...@codecademy/tracking@0.18.1) (2022-02-02)
 
 **Note:** Version bump only for package @codecademy/tracking
