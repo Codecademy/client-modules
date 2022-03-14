@@ -52,9 +52,7 @@ export type EventDataTypes = {
     result: BaseEventAnyData;
   };
   // events for tracking experiments in optimizely
-  experiment: {
-    experiment_test_event: BaseEventAnyData;
-  };
+  experiment: {};
   // page events for email marketing
   // potentially to be removed once we clean up user_visit event
   page: {
