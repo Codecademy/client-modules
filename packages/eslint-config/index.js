@@ -65,6 +65,7 @@ module.exports = {
     'react',
     'react-hooks',
     'simple-import-sort',
+    '@codecademy',
   ],
 
   rules: {
@@ -91,6 +92,7 @@ module.exports = {
     'react/no-danger': 'error',
     'react/no-unused-state': 'error',
     'simple-import-sort/imports': 'error',
+    '@codecademy/react-component-props': 'error',
 
     // These functional rules are annoying and we generally don't want them on
     // Note that these are only the rules we don't want in *any* consuming repository
