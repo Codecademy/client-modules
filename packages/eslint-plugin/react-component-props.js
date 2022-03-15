@@ -22,11 +22,13 @@ module.exports.default = ESLintUtils.RuleCreator.withoutDocs({
           return;
         }
 
-        // if React.FC does not take in any parameters, return
+        // if React.FC does not take in any type parameters, return
+        // ex. const component: React.FC = () => {}
         const ReactFCParameters = ReactFCAnnotation.typeParameters;
         if (!ReactFCParameters) return;
 
         // if React.FC<> does not take in props, return
+        // ex. const component: React.FC<> = () => {}
         const ReactFCProps = ReactFCParameters.params[0];
         if (!ReactFCProps) return;
         if (ReactFCProps.type !== 'TSTypeReference') {
