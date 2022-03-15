@@ -16,13 +16,17 @@ module.exports.default = ESLintUtils.RuleCreator.withoutDocs({
         node
       ) {
         console.log('checking react prop names...');
+
         const ReactFCAnnotation = node.id.typeAnnotation.typeAnnotation;
         if (ReactFCAnnotation.type !== AST_NODE_TYPES.TSTypeReference) {
           return;
         }
+
+        // if React.FC does not take in any parameters, return
         const ReactFCParameters = ReactFCAnnotation.typeParameters;
         if (!ReactFCParameters) return;
 
+        // if React.FC<> does not take in props, return
         const ReactFCProps = ReactFCParameters.params[0];
         if (!ReactFCProps) return;
         if (ReactFCProps.type !== 'TSTypeReference') {
@@ -33,12 +37,12 @@ module.exports.default = ESLintUtils.RuleCreator.withoutDocs({
           return;
         }
 
+        // use the TS API to get the node where the props are declared
         const parserServices = ESLintUtils.getParserServices(context);
         const checker = parserServices.program.getTypeChecker();
         const tsNode = parserServices.esTreeNodeToTSNodeMap.get(
           ReactFCProps.typeName
         );
-        const nodeType = checker.getTypeAtLocation(tsNode);
         const symbol = checker.getSymbolAtLocation(tsNode);
         const declaration = symbol.declarations[0];
 
@@ -49,28 +53,21 @@ module.exports.default = ESLintUtils.RuleCreator.withoutDocs({
           return;
         }
 
-        // const symbol = nodeType.getSymbol();
-        // nodeType
-        //   .getSymbol()
-        //   .getDeclarations()
-        //   .forEach((d) => console.log(d.getText()));
-        // const { symbol } = tsNode;
-        // const declarationFile = symbol?.valueDeclaration?.getSourceFile();
-        // const declarationFileName = declarationFile?.fileName;
-        // console.log(declarationFileName);
-
         const componentNodeId = node.id;
         if (componentNodeId.type !== AST_NODE_TYPES.Identifier) {
           return;
         }
+
         const componentName = componentNodeId.name;
         const propsTypeName = ReactFCProps.typeName;
         if (propsTypeName.type !== AST_NODE_TYPES.Identifier) {
           return;
         }
+
         const propsName = propsTypeName.name;
         const expectedPropsName = `${componentName}Props`;
 
+        // if the props name does not match the component name, trigger an error
         if (propsName !== expectedPropsName) {
           context.report({
             messageId: 'ShouldMatch',
