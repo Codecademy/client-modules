@@ -82,14 +82,14 @@ module.exports = {
         array: false,
       },
     ],
-    '@typescript-eslint/no-misused-promises': [
-    "error",
-    {
-      "checksVoidReturn": {
-        "attributes": false
-      }
-    }
-  ],
+    //   '@typescript-eslint/no-misused-promises': [
+    //   "error",
+    //   {
+    //     "checksVoidReturn": {
+    //       "attributes": false
+    //     }
+    //   }
+    // ],
     'prefer-promise-reject-errors': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
@@ -110,6 +110,7 @@ module.exports = {
     '@typescript-eslint/no-magic-numbers': 'off',
     '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/typedef': 'off',
+    '@typescript-eslint/no-misused-promises': 'off',
 
     'arrow-body-style': 'off',
     camelcase: 'off',
