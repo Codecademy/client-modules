@@ -54,7 +54,7 @@ module.exports = {
         '@typescript-eslint/unbound-method': 'off',
       },
     },
-    // These rules need type information so can only be run on .ts* files.
+    // These rules need type information so can only be run on .ts* files. These will be enabled in follow-up tickets
     {
       files: ['*.ts', '*.tsx'],
       rules: {
