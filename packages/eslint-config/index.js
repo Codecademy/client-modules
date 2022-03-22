@@ -54,6 +54,21 @@ module.exports = {
         '@typescript-eslint/unbound-method': 'off',
       },
     },
+    // These rules need type information so can only be run on .ts* files. These will be enabled in follow-up ticket WEB-1937
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        '@typescript-eslint/no-misused-promises': [
+          'error',
+          {
+            checksVoidReturn: {
+              attributes: false,
+              properties: false,
+            },
+          },
+        ],
+      },
+    },
   ],
 
   plugins: [
@@ -102,6 +117,7 @@ module.exports = {
     '@typescript-eslint/no-magic-numbers': 'off',
     '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/typedef': 'off',
+
     'arrow-body-style': 'off',
     camelcase: 'off',
     'class-methods-use-this': 'off',

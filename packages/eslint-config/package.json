@@ -20,11 +20,11 @@
   },
   "homepage": "https://github.com/Codecademy/client-modules/client-modules/packages/eslint-config",
   "peerDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^8.11.0"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.3.1",
-    "@typescript-eslint/parser": "^5.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-mdx": "^1.15.0",
@@ -40,7 +40,7 @@
     "yargs": "^17.1.1"
   },
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^8.11.0"
   },
   "publishConfig": {
     "access": "public"
