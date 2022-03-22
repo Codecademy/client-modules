@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](http://github.com///compare/@codecademy/eslint-config@7.0.2...@codecademy/eslint-config@8.0.0) (2022-03-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint:** update eslint + ts-lint pkgs
+
+### Miscellaneous Chores
+
+* **eslint:** update eslint + ts-lint pkgs ([501e1a1](http://github.com///commit/501e1a180aca16c0bd3709026a8dc49f514d4ea5))
+
+
+
 ### [7.0.2](http://github.com///compare/@codecademy/eslint-config@7.0.1...@codecademy/eslint-config@7.0.2) (2021-12-01)
 
 
