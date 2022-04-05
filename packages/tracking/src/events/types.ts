@@ -42,6 +42,10 @@ export type EventDataTypes = {
   exercise: {
     force_pass: BaseEventAnyData;
   };
+  // events for tracking experiments in optimizely
+  experiment: {
+    contentful_experiment_assignment_event: BaseEventAnyData;
+  };
   payments: {
     cancel_survey: BaseEventAnyData;
   };
