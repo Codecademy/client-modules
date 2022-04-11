@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.19.0...@codecademy/tracking@0.20.0) (2022-04-11)
+
+
+### Features
+
+* **tracking:** add experiment category to tracking types ([4fa1528](https://github.com/Codecademy/client-modules/commit/4fa1528e719df904b88953edb8a625aa06610206))
+
+
+
 ## [0.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.18.1...@codecademy/tracking@0.19.0) (2022-03-10)
 
 
