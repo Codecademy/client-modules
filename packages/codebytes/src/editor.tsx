@@ -7,17 +7,17 @@ import {
   TextButton,
   ToolTip,
 } from '@codecademy/gamut';
-import { CopyIcon, ShareIcon } from '@codecademy/gamut-icons';
+import { CopyIcon, EditorIcon, ShareIcon } from '@codecademy/gamut-icons';
 import { UserClickData } from '@codecademy/tracking';
 import styled from '@emotion/styled';
-import { encode } from 'js-base64';
 import React, { useState } from 'react';
 
 import { postSnippet } from './api';
 import { BetterSocialMediaSharing } from './BetterSocialSharing/betterSocialSharing';
 import type { LanguageOption } from './consts';
 import { Drawers } from './drawers';
-import { trackClick } from './helpers';
+import { EmbedCodebyteModal } from './EmbedModal';
+import { getCodebyteUrl, trackClick } from './helpers';
 import { SimpleMonacoEditor } from './MonacoEditor';
 import { CodebytesChangeHandler } from './types';
 
@@ -43,6 +43,10 @@ const ShareIconStyled = styled(ShareIcon)`
   margin-right: 0.5rem;
 `;
 
+const EditorIconStyled = styled(EditorIcon)`
+  margin-right: 0.5rem;
+`;
+
 const DOCKER_SIGTERM = 143;
 
 type EditorProps = {
@@ -53,10 +57,6 @@ type EditorProps = {
   snippetsBaseUrl?: string;
   onCopy?: CodebytesChangeHandler;
   trackingData?: Omit<UserClickData, 'target'>;
-};
-
-export const getCodebyteUrl = (language: string, text: string) => {
-  return `https://codecademy.com/codebyte-editor?lang=${language}&text=${encode(text)}`;
 };
 
 export const Editor: React.FC<EditorProps> = ({
@@ -74,6 +74,7 @@ export const Editor: React.FC<EditorProps> = ({
   const [isLinkCopied, setIsLinkCopied] = useState(false);
 
   const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [embedModalOpen, setEmbedModalOpen] = useState(false);
 
   const onCopyClick = () => {
     if (!isCodeByteCopied) {
@@ -212,6 +213,13 @@ export const Editor: React.FC<EditorProps> = ({
             </ToolTip>
           </Box>
         </Modal>
+        <TextButton
+          variant="secondary"
+          onClick={() => setEmbedModalOpen(true)}
+        >
+          <EditorIconStyled aria-hidden="true" /> Embed
+        </TextButton>
+        <EmbedCodebyteModal isModalOpen={embedModalOpen} setIsModalOpen={setEmbedModalOpen} language={language} text={text}/>
         <FillButton onClick={handleSubmit}>
           {status === 'waiting' ? <Spinner /> : 'Run'}
         </FillButton>
