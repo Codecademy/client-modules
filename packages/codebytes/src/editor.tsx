@@ -1,16 +1,20 @@
 import {
+  Box,
   FillButton,
   FlexBox,
+  Modal,
   Spinner,
   TextButton,
   ToolTip,
 } from '@codecademy/gamut';
-import { CopyIcon } from '@codecademy/gamut-icons';
+import { CopyIcon, ShareIcon } from '@codecademy/gamut-icons';
 import { UserClickData } from '@codecademy/tracking';
 import styled from '@emotion/styled';
+import { encode } from 'js-base64';
 import React, { useState } from 'react';
 
 import { postSnippet } from './api';
+import { BetterSocialMediaSharing } from './BetterSocialSharing/betterSocialSharing';
 import type { LanguageOption } from './consts';
 import { Drawers } from './drawers';
 import { trackClick } from './helpers';
@@ -35,6 +39,10 @@ const CopyIconStyled = styled(CopyIcon)`
   margin-right: 0.5rem;
 `;
 
+const ShareIconStyled = styled(ShareIcon)`
+  margin-right: 0.5rem;
+`;
+
 const DOCKER_SIGTERM = 143;
 
 type EditorProps = {
@@ -45,6 +53,10 @@ type EditorProps = {
   snippetsBaseUrl?: string;
   onCopy?: CodebytesChangeHandler;
   trackingData?: Omit<UserClickData, 'target'>;
+};
+
+export const getCodebyteUrl = (language: string, text: string) => {
+  return `https://codecademy.com/codebyte-editor?lang=${language}&text=${encode(text)}`;
 };
 
 export const Editor: React.FC<EditorProps> = ({
@@ -59,6 +71,10 @@ export const Editor: React.FC<EditorProps> = ({
   const [output, setOutput] = useState('');
   const [status, setStatus] = useState<'ready' | 'waiting' | 'error'>('ready');
   const [isCodeByteCopied, setIsCodeByteCopied] = useState(false);
+  const [isLinkCopied, setIsLinkCopied] = useState(false);
+
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+
   const onCopyClick = () => {
     if (!isCodeByteCopied) {
       navigator.clipboard
@@ -69,6 +85,13 @@ export const Editor: React.FC<EditorProps> = ({
       onCopy?.(text, language);
       trackClick('copy', trackingData);
     }
+  };
+
+  const onCopyLinkClick = () => {
+    navigator.clipboard.writeText(getCodebyteUrl(language, text))
+    .then(() => setIsLinkCopied(true))
+    // eslint-disable-next-line no-console
+    .catch(() => console.error('Failed to copy link'));
   };
 
   const setErrorStatusAndOutput = (message: string) => {
@@ -139,7 +162,7 @@ export const Editor: React.FC<EditorProps> = ({
                 onBlur={() => setIsCodeByteCopied(false)}
                 data-testid="copy-codebyte-btn"
               >
-                <CopyIconStyled aria-hidden="true" /> Copy Codebyte
+                <CopyIconStyled aria-hidden="true" /> Copy
               </TextButton>
             }
           >
@@ -154,6 +177,41 @@ export const Editor: React.FC<EditorProps> = ({
             )}
           </ToolTip>
         ) : null}
+        <TextButton
+          variant="secondary"
+          onClick={() => setShareModalOpen(true)}
+        >
+          <ShareIconStyled aria-hidden="true" /> Share
+        </TextButton>
+        <Modal
+          isOpen={shareModalOpen}
+          onRequestClose={() => setShareModalOpen(false)}
+          title="Share your Codebyte with the world!"
+        >
+          <BetterSocialMediaSharing
+            url={getCodebyteUrl(language, text)}
+            message={`Check out this ${language} code I wrote!`}
+            hashtags={["codebytes", language]}
+          />
+          <Box display="block" alignItems="center" p={8}>
+            <input type="text" size={30} value={getCodebyteUrl(language, text)}/>
+            <ToolTip
+            id="link-copied"
+            alignment="top-right"
+            mode="dark"
+            target={
+              <TextButton
+                  variant="secondary"
+                  onClick={onCopyLinkClick}
+                  onBlur={() => setIsLinkCopied(false)}
+                >
+                  <CopyIconStyled aria-hidden="true" /> Copy Link
+                </TextButton>
+            }>
+              {isLinkCopied ? (<span role="alert">Copied!</span>) : <span role="alert">Click to copy</span>}
+            </ToolTip>
+          </Box>
+        </Modal>
         <FillButton onClick={handleSubmit}>
           {status === 'waiting' ? <Spinner /> : 'Run'}
         </FillButton>
