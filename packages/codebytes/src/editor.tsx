@@ -7,7 +7,12 @@ import {
   TextButton,
   ToolTip,
 } from '@codecademy/gamut';
-import { CopyIcon, EditorIcon, ShareIcon } from '@codecademy/gamut-icons';
+import {
+  CopyIcon,
+  EditorIcon,
+  ShareIcon,
+  TagIcon,
+} from '@codecademy/gamut-icons';
 import { UserClickData } from '@codecademy/tracking';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
@@ -42,6 +47,9 @@ const CustomIcon = styled(Image)`
   margin-right: 0.5rem;
 `;
 
+const TagIconStyled = styled(TagIcon)`
+  margin-right: 0.5rem;
+`;
 
 const CopyIconStyled = styled(CopyIcon)`
   margin-right: 0.5rem;
@@ -145,49 +153,54 @@ export const Editor: React.FC<EditorProps> = ({
 
   const createQrCode = async () => {
     try {
-      const response = await fetch("https://qrcode-monkey.p.rapidapi.com/qr/custom", {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          'X-RapidAPI-Host': 'qrcode-monkey.p.rapidapi.com',
-          'X-RapidAPI-Key': '31920734efmsh5d6fdb0ce6b7572p1f4ebdjsneeeaea02fe1d'
-        },
-        body: JSON.stringify({
-          "data": getCodebyteUrl(language, text),
-          "config": {
-              "body": "circle",
-              "eye": "frame0",
-              "eyeBall": "ball15",
-              "erf1": [],
-              "erf2": [],
-              "erf3": [],
-              "brf1": [],
-              "brf2": [],
-              "brf3": [],
-              "bodyColor": "#3A10E5",
-              "bgColor": "#FFF0E5",
-              "eye1Color": "10162F",
-              "eye2Color": "10162F",
-              "eye3Color": "10162F",
-              "eyeBall1Color": "#3A10E5",
-              "eyeBall2Color": "#3A10E5",
-              "eyeBall3Color": "#3A10E5",
-              "gradientColor1": null,
-              "gradientColor2": null,
-              "gradientType": "linear",
-              "gradientOnEyes": false,
-              "logo": "a8473f5aa50795e6d3d50a7aca1c162ccc63c9c8.svg",
-              "logoMode": "clean"
+      const response = await fetch(
+        'https://qrcode-monkey.p.rapidapi.com/qr/custom',
+        {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'X-RapidAPI-Host': 'qrcode-monkey.p.rapidapi.com',
+            'X-RapidAPI-Key':
+              '31920734efmsh5d6fdb0ce6b7572p1f4ebdjsneeeaea02fe1d',
           },
-          "size": 2000,
-          "download": "imageUrl",
-          "file": "svg"
-        }),
-      }).then(response => response.json())
-      .catch(err => console.error(err));
+          body: JSON.stringify({
+            data: getCodebyteUrl(language, text),
+            config: {
+              body: 'circle',
+              eye: 'frame0',
+              eyeBall: 'ball15',
+              erf1: [],
+              erf2: [],
+              erf3: [],
+              brf1: [],
+              brf2: [],
+              brf3: [],
+              bodyColor: '#3A10E5',
+              bgColor: '#FFF0E5',
+              eye1Color: '10162F',
+              eye2Color: '10162F',
+              eye3Color: '10162F',
+              eyeBall1Color: '#3A10E5',
+              eyeBall2Color: '#3A10E5',
+              eyeBall3Color: '#3A10E5',
+              gradientColor1: null,
+              gradientColor2: null,
+              gradientType: 'linear',
+              gradientOnEyes: false,
+              logo: 'a8473f5aa50795e6d3d50a7aca1c162ccc63c9c8.svg',
+              logoMode: 'clean',
+            },
+            size: 2000,
+            download: 'imageUrl',
+            file: 'svg',
+          }),
+        }
+      )
+        .then((response) => response.json())
+        // eslint-disable-next-line no-console
+        .catch((err) => console.error(err));
 
       setQrCode(response.imageUrl as string);
-      // console.log("response.imageUrl", response.imageUrl);
     } catch (error) {
       setErrorStatusAndOutput('Error: ' + error);
     }
@@ -303,15 +316,26 @@ export const Editor: React.FC<EditorProps> = ({
           text={text}
         />
         <TextButton variant="secondary" onClick={handleQrClick}>
-          <CustomIcon width="24" height="24" src={qrcodeIcon} alt=''/> QR Code
+          <CustomIcon width="24" height="24" src={qrcodeIcon} alt="" /> QR Code
         </TextButton>
         <Modal
           isOpen={qrModalOpen}
           onRequestClose={() => setQrModalOpen(false)}
           title="Share your Codebyte with the world!"
         >
-          {qrCode ? <Image src={qrCode} width="200" height="200" alt=''/> : <Spinner />}
+          {qrCode ? (
+            <Image src={qrCode} width="200" height="200" alt="" />
+          ) : (
+            <Spinner />
+          )}
         </Modal>
+        <TextButton
+          variant="secondary"
+          href="https://tengu.codecademy.com/fake-shop?PR_ENV=portal-app-pr-1891"
+          target="_blank"
+        >
+          <TagIconStyled aria-hidden="true" /> Shop
+        </TextButton>
         <FillButton onClick={handleSubmit}>
           {status === 'waiting' ? <Spinner /> : 'Run'}
         </FillButton>
@@ -319,7 +343,3 @@ export const Editor: React.FC<EditorProps> = ({
     </>
   );
 };
-
-// ToDo:
-// - Add Shop option, hook up to some printify API using the QR code image
-// - Mint NFT
