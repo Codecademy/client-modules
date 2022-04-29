@@ -9,5 +9,7 @@ export const trackClick = (
 ) => trackUserClick({ ...trackingData, target });
 
 export const getCodebyteUrl = (language: string, text: string) => {
-  return `https://codecademy.com/codebyte-editor?lang=${language}&text=${encode(text)}`;
+  return `https://codecademy.com/codebyte-editor?lang=${language}&text=${encode(
+    text
+  )}`;
 };

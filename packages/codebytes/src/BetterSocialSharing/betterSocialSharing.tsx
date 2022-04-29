@@ -1,12 +1,11 @@
 import { Box, GridBox, Text } from '@codecademy/gamut';
-import {
-  FacebookIcon,
-  RedditIcon,
-  TwitterIcon,
-} from '@codecademy/gamut-icons';
+import { FacebookIcon, RedditIcon, TwitterIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
-import { BaseSocialShareProps , SocialShareIconLink } from './SocialShareIconLink';
+import {
+  BaseSocialShareProps,
+  SocialShareIconLink,
+} from './SocialShareIconLink';
 
 /*
   The SocialMediaSharing component in gamut-labs has some issues.
@@ -65,7 +64,7 @@ export const SOCIAL_SHARING_PLATFORMS = [
     id: 'reddit',
     icon: RedditIcon,
     baseUrl: 'https://reddit.com/submit',
-    formatShare: ({ url, message}: SocialMediaShare) => ({
+    formatShare: ({ url, message }: SocialMediaShare) => ({
       ...(url && { url }),
       ...(message && { title: message }),
     }),

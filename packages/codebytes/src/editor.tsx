@@ -89,10 +89,11 @@ export const Editor: React.FC<EditorProps> = ({
   };
 
   const onCopyLinkClick = () => {
-    navigator.clipboard.writeText(getCodebyteUrl(language, text))
-    .then(() => setIsLinkCopied(true))
-    // eslint-disable-next-line no-console
-    .catch(() => console.error('Failed to copy link'));
+    navigator.clipboard
+      .writeText(getCodebyteUrl(language, text))
+      .then(() => setIsLinkCopied(true))
+      // eslint-disable-next-line no-console
+      .catch(() => console.error('Failed to copy link'));
   };
 
   const setErrorStatusAndOutput = (message: string) => {
@@ -178,10 +179,7 @@ export const Editor: React.FC<EditorProps> = ({
             )}
           </ToolTip>
         ) : null}
-        <TextButton
-          variant="secondary"
-          onClick={() => setShareModalOpen(true)}
-        >
+        <TextButton variant="secondary" onClick={() => setShareModalOpen(true)}>
           <ShareIconStyled aria-hidden="true" /> Share
         </TextButton>
         <Modal
@@ -192,34 +190,45 @@ export const Editor: React.FC<EditorProps> = ({
           <BetterSocialMediaSharing
             url={getCodebyteUrl(language, text)}
             message={`Check out this ${language} code I wrote!`}
-            hashtags={["codebytes", language]}
+            hashtags={['codebytes', language]}
           />
           <Box display="block" alignItems="center" p={8}>
-            <input type="text" size={30} value={getCodebyteUrl(language, text)}/>
+            <input
+              type="text"
+              size={30}
+              value={getCodebyteUrl(language, text)}
+            />
             <ToolTip
-            id="link-copied"
-            alignment="top-right"
-            mode="dark"
-            target={
-              <TextButton
+              id="link-copied"
+              alignment="top-right"
+              mode="dark"
+              target={
+                <TextButton
                   variant="secondary"
                   onClick={onCopyLinkClick}
                   onBlur={() => setIsLinkCopied(false)}
                 >
                   <CopyIconStyled aria-hidden="true" /> Copy Link
                 </TextButton>
-            }>
-              {isLinkCopied ? (<span role="alert">Copied!</span>) : <span role="alert">Click to copy</span>}
+              }
+            >
+              {isLinkCopied ? (
+                <span role="alert">Copied!</span>
+              ) : (
+                <span role="alert">Click to copy</span>
+              )}
             </ToolTip>
           </Box>
         </Modal>
-        <TextButton
-          variant="secondary"
-          onClick={() => setEmbedModalOpen(true)}
-        >
+        <TextButton variant="secondary" onClick={() => setEmbedModalOpen(true)}>
           <EditorIconStyled aria-hidden="true" /> Embed
         </TextButton>
-        <EmbedCodebyteModal isModalOpen={embedModalOpen} setIsModalOpen={setEmbedModalOpen} language={language} text={text}/>
+        <EmbedCodebyteModal
+          isModalOpen={embedModalOpen}
+          setIsModalOpen={setEmbedModalOpen}
+          language={language}
+          text={text}
+        />
         <FillButton onClick={handleSubmit}>
           {status === 'waiting' ? <Spinner /> : 'Run'}
         </FillButton>
@@ -227,3 +236,8 @@ export const Editor: React.FC<EditorProps> = ({
     </>
   );
 };
+
+// ToDo:
+// - Make codebytes work in Articles markdown renderer
+// - Add QR code option, hook up to QR code API
+// - Add Shop option, hook up to some printify API using the QR code image

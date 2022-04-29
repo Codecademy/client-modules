@@ -1,4 +1,3 @@
-
 import { Anchor, Box } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
