@@ -219,6 +219,7 @@ export type UserVisitData = UserSharedData & {
   lesson?: string;
   is_ugc?: boolean;
   experimentInfo?: Record<string, string>;
+  userAttributes?: UserAttributes;
 };
 
 export type UserImpressionData = {
@@ -278,4 +279,18 @@ export type BusinessFilterData = BaseEventData & {
 
 export type BusinessSearchData = BaseEventData & {
   search_query: string;
+};
+
+type UserAttributes = {
+  active_subscription: boolean;
+  admin: boolean;
+  anonymous: boolean;
+  chapter_leader: boolean;
+  country_code: string;
+  forum_moderator: boolean;
+  free: boolean;
+  id: string;
+  pro: boolean;
+  student: boolean;
+  trial: boolean;
 };
