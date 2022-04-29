@@ -42,10 +42,6 @@ export type EventDataTypes = {
   exercise: {
     force_pass: BaseEventAnyData;
   };
-  // events for tracking experiments in optimizely
-  experiment: {
-    contentful_experiment_viewed: BaseEventAnyData;
-  };
   payments: {
     cancel_survey: BaseEventAnyData;
   };
@@ -222,6 +218,7 @@ export type UserVisitData = UserSharedData & {
   unit?: string;
   lesson?: string;
   is_ugc?: boolean;
+  experimentInfo?: Record<string, string>;
 };
 
 export type UserImpressionData = {
