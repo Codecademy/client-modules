@@ -44,7 +44,7 @@ export type EventDataTypes = {
   };
   // events for tracking experiments in optimizely
   experiment: {
-    contentful_experiment_assignment_event: BaseEventAnyData;
+    contentful_experiment_viewed: BaseEventAnyData;
   };
   payments: {
     cancel_survey: BaseEventAnyData;
