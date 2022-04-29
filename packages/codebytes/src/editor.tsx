@@ -18,6 +18,7 @@ import type { LanguageOption } from './consts';
 import { Drawers } from './drawers';
 import { EmbedCodebyteModal } from './EmbedModal';
 import { getCodebyteUrl, trackClick } from './helpers';
+import qrcodeIcon from './Icons/qr-code-white.png';
 import { SimpleMonacoEditor } from './MonacoEditor';
 import { CodebytesChangeHandler } from './types';
 
@@ -34,6 +35,13 @@ const Output = styled.pre<{ hasError: boolean }>`
   background-color: ${theme.colors['navy-900']};
 `}
 `;
+
+const Image = Box.withComponent('img');
+
+const CustomIcon = styled(Image)`
+  margin-right: 0.5rem;
+`;
+
 
 const CopyIconStyled = styled(CopyIcon)`
   margin-right: 0.5rem;
@@ -75,6 +83,9 @@ export const Editor: React.FC<EditorProps> = ({
 
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [embedModalOpen, setEmbedModalOpen] = useState(false);
+  const [qrModalOpen, setQrModalOpen] = useState(false);
+
+  const [qrCode, setQrCode] = useState('');
 
   const onCopyClick = () => {
     if (!isCodeByteCopied) {
@@ -129,6 +140,68 @@ export const Editor: React.FC<EditorProps> = ({
       }
     } catch (error) {
       setErrorStatusAndOutput('Error: ' + error);
+    }
+  };
+
+  const createQrCode = async () => {
+    try {
+      const response = await fetch("https://qrcode-monkey.p.rapidapi.com/qr/custom", {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'X-RapidAPI-Host': 'qrcode-monkey.p.rapidapi.com',
+          'X-RapidAPI-Key': '31920734efmsh5d6fdb0ce6b7572p1f4ebdjsneeeaea02fe1d'
+        },
+        body: JSON.stringify({
+          "data": getCodebyteUrl(language, text),
+          "config": {
+              "body": "circle",
+              "eye": "frame0",
+              "eyeBall": "ball15",
+              "erf1": [],
+              "erf2": [],
+              "erf3": [],
+              "brf1": [],
+              "brf2": [],
+              "brf3": [],
+              "bodyColor": "#3A10E5",
+              "bgColor": "#FFF0E5",
+              "eye1Color": "10162F",
+              "eye2Color": "10162F",
+              "eye3Color": "10162F",
+              "eyeBall1Color": "#3A10E5",
+              "eyeBall2Color": "#3A10E5",
+              "eyeBall3Color": "#3A10E5",
+              "gradientColor1": null,
+              "gradientColor2": null,
+              "gradientType": "linear",
+              "gradientOnEyes": false,
+              "logo": "a8473f5aa50795e6d3d50a7aca1c162ccc63c9c8.svg",
+              "logoMode": "clean"
+          },
+          "size": 2000,
+          "download": "imageUrl",
+          "file": "svg"
+        }),
+      }).then(response => response.json())
+      .catch(err => console.error(err));
+
+      setQrCode(response.imageUrl as string);
+      // console.log("response.imageUrl", response.imageUrl);
+    } catch (error) {
+      setErrorStatusAndOutput('Error: ' + error);
+    }
+  };
+
+  const handleQrClick = async () => {
+    setQrModalOpen(true);
+    // I'm paying for these API calls out of pocket, so only generate the code once.
+    // This means if you change the text of the codebyte, you'll need to refresh the page
+    // in order to get a fresh QR code
+    // In a real implementation (i.e. not a hackathon), we can use the onChange from the editor
+    // to clear this only when the codebyte is modified.
+    if (!qrCode) {
+      await createQrCode();
     }
   };
 
@@ -229,6 +302,16 @@ export const Editor: React.FC<EditorProps> = ({
           language={language}
           text={text}
         />
+        <TextButton variant="secondary" onClick={handleQrClick}>
+          <CustomIcon width="24" height="24" src={qrcodeIcon} alt=''/> QR Code
+        </TextButton>
+        <Modal
+          isOpen={qrModalOpen}
+          onRequestClose={() => setQrModalOpen(false)}
+          title="Share your Codebyte with the world!"
+        >
+          {qrCode ? <Image src={qrCode} width="200" height="200" alt=''/> : <Spinner />}
+        </Modal>
         <FillButton onClick={handleSubmit}>
           {status === 'waiting' ? <Spinner /> : 'Run'}
         </FillButton>
@@ -238,6 +321,5 @@ export const Editor: React.FC<EditorProps> = ({
 };
 
 // ToDo:
-// - Make codebytes work in Articles markdown renderer
-// - Add QR code option, hook up to QR code API
 // - Add Shop option, hook up to some printify API using the QR code image
+// - Mint NFT
