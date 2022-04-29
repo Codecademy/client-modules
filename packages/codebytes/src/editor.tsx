@@ -331,7 +331,7 @@ export const Editor: React.FC<EditorProps> = ({
         </Modal>
         <TextButton
           variant="secondary"
-          href="https://tengu.codecademy.com/fake-shop?PR_ENV=portal-app-pr-1891"
+          href="https://pr-30517-monolith.dev-eks.codecademy.com/fake-shop"
           target="_blank"
         >
           <TagIconStyled aria-hidden="true" /> Shop
