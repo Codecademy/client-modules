@@ -188,7 +188,7 @@ export type UserClickData = UserSharedData & {
   container_slugs?: string[];
   search_id?: string;
   is_ugc?: boolean;
-  business_user?: BusinessUserData;
+  business_seat?: BusinessSeatData;
 };
 
 /**
@@ -280,25 +280,12 @@ export type BusinessFilterData = BaseEventData & {
   filter_value: FilterType;
 };
 
-export type BusinessUserData = BaseEventData & {
-  plan?: BusinessPlanData;
-  seat?: BusinessSeatData;
-};
-
-export type BusinessPlanData = BaseEventData & {
-  plan_name: string;
-  plan_type: string;
-  plan_num_seats: number;
-  primary_plan: boolean;
-  plan_start_date: Date;
-  plan_end_date: string;
-  currency: string;
-  plan_tier: string;
-};
-
 export type BusinessSeatData = BaseEventData & {
   role: string;
-  created_at: string;
+  seat_id: string;
+  created_at?: string;
+  email?: string;
+  full_name?: string;
 };
 
 export type BusinessSearchData = BaseEventData & {
