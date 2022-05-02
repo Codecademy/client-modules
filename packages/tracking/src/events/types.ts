@@ -188,7 +188,7 @@ export type UserClickData = UserSharedData & {
   container_slugs?: string[];
   search_id?: string;
   is_ugc?: boolean;
-  business_seat?: BusinessSeatData;
+  business_seat?: BaseEventAnyData;
 };
 
 /**
@@ -278,14 +278,6 @@ export type FilterType = string | string[] | number | boolean;
 export type BusinessFilterData = BaseEventData & {
   filter_key: string;
   filter_value: FilterType;
-};
-
-export type BusinessSeatData = BaseEventData & {
-  role: string;
-  seat_id: string;
-  created_at?: string;
-  email?: string;
-  full_name?: string;
 };
 
 export type BusinessSearchData = BaseEventData & {
