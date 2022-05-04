@@ -189,6 +189,7 @@ export type UserClickData = UserSharedData & {
   search_id?: string;
   is_ugc?: boolean;
   business_seat?: BaseEventAnyData;
+  business_plan?: BaseEventAnyData;
 };
 
 /**
