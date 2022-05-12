@@ -99,3 +99,18 @@ export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
     },
   };
 };
+
+/**
+ * The `misc` field for click and visit tracking takes the form of an arbitrary
+ * number of key=value pairs delimited by commas.
+ *
+ * This helper function will take a flat javascript object and spit out the string in the correct form.
+ */
+export const exportMiscTrackingData = <
+  T extends Record<string, string | number | boolean>
+>(
+  data: T
+): string =>
+  Object.entries(data)
+    .map(([key, value]) => `${key}=${value}`)
+    .join(',');
