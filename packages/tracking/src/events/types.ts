@@ -136,7 +136,7 @@ export type UserSharedData = BaseEventData & {
   content_ids?: TrackingContentIds;
   /** the repo that this event is being fired from */
   source_codebase?: string;
-  /** Should be used for arbitrary comma delimited key=value pairs. (use `exportMiscTrackingData` to format the string) */
+  /** Should be used for arbitrary JSON that has been passed through JSON.stringify. */
   misc?: string;
 };
 
