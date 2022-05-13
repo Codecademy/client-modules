@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.21.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.21.0...@codecademy/tracking@0.21.1) (2022-05-13)
+
+
+### Bug Fixes
+
+* **tracking:** pick content_ids ([bd8b0a6](https://github.com/Codecademy/client-modules/commit/bd8b0a63eb6d8cfda2c0471fddcb7954898fbc75))
+
+
+
 ## [0.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.20.0...@codecademy/tracking@0.21.0) (2022-05-13)
 
 
