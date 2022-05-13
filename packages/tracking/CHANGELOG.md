@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.20.0...@codecademy/tracking@0.21.0) (2022-05-13)
+
+
+### Features
+
+* **tracking:** add UserSharedData to user impressions ([6378ec2](https://github.com/Codecademy/client-modules/commit/6378ec2cb4f076210fa842dcfb07b43717afd1f9))
+
+
+
 ## [0.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.19.0...@codecademy/tracking@0.20.0) (2022-04-11)
 
 
