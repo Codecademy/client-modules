@@ -224,15 +224,13 @@ export type UserVisitData = UserSharedData & {
   is_ugc?: boolean;
 };
 
-export type UserImpressionData = {
+export type UserImpressionData = Pick<
+  UserSharedData,
+  'context' | 'source_codebase'
+> & {
   page_name: string;
-  slug?: string;
   target: string;
-  context?: string;
-  path_slug?: string;
-  track_slug?: string;
-  module_slug?: string;
-  source_codebase?: string;
+  slug?: string;
   is_ugc?: boolean;
 };
 
