@@ -226,7 +226,7 @@ export type UserVisitData = UserSharedData & {
 
 export type UserImpressionData = Pick<
   UserSharedData,
-  'context' | 'source_codebase'
+  'context' | 'source_codebase' | 'content_ids'
 > & {
   page_name: string;
   target: string;
