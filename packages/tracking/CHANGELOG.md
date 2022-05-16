@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.21.1...@codecademy/tracking@0.22.0) (2022-05-16)
+
+
+### Features
+
+* **tracking:** Adding misc field for click and visit events ([57ae584](https://github.com/Codecademy/client-modules/commit/57ae584d3519db2d40b9a4c021fbee309df59d75))
+
+
+
 ### [0.21.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.21.0...@codecademy/tracking@0.21.1) (2022-05-13)
 
 
