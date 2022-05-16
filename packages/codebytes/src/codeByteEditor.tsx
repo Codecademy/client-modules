@@ -32,6 +32,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
   onEdit,
   onLanguageChange,
   onCopy,
+  copyFormatter,
   trackingData,
   trackFirstEdit = false,
   ...rest
@@ -83,6 +84,7 @@ export const CodeByteEditor: React.FC<CodeByteEditorProps> = ({
           }}
           snippetsBaseUrl={snippetsBaseUrl}
           onCopy={onCopy}
+          copyFormatter={copyFormatter}
           trackingData={trackingData}
         />
       ) : (

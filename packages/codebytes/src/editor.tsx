@@ -15,7 +15,7 @@ import type { LanguageOption } from './consts';
 import { Drawers } from './drawers';
 import { trackClick } from './helpers';
 import { SimpleMonacoEditor } from './MonacoEditor';
-import { CodebytesChangeHandler } from './types';
+import { CodebytesChangeHandler, CodebytesCopyFormatter } from './types';
 
 const Output = styled.pre<{ hasError: boolean }>`
   width: 100%;
@@ -44,6 +44,7 @@ type EditorProps = {
   onChange: (text: string) => void;
   snippetsBaseUrl?: string;
   onCopy?: CodebytesChangeHandler;
+  copyFormatter?: CodebytesCopyFormatter;
   trackingData?: Omit<UserClickData, 'target'>;
 };
 
@@ -53,6 +54,7 @@ export const Editor: React.FC<EditorProps> = ({
   hideCopyButton,
   onChange,
   onCopy,
+  copyFormatter,
   snippetsBaseUrl,
   trackingData,
 }) => {
@@ -62,7 +64,7 @@ export const Editor: React.FC<EditorProps> = ({
   const onCopyClick = () => {
     if (!isCodeByteCopied) {
       navigator.clipboard
-        .writeText(text)
+        .writeText(copyFormatter ? copyFormatter(text, language) : text)
         // eslint-disable-next-line no-console
         .catch(() => console.error('Failed to copy'));
       setIsCodeByteCopied(true);
