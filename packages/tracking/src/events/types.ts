@@ -188,8 +188,26 @@ export type UserClickData = UserSharedData & {
   container_slugs?: string[];
   search_id?: string;
   is_ugc?: boolean;
-  business_seat?: BaseEventAnyData;
-  business_plan?: BaseEventAnyData;
+
+  /* additional business properties */
+  account_manager_user_id?: string;
+  removed_user_id?: string;
+  plan_id?: string;
+  plan_name?: string;
+  business_seat_id?: string;
+  business_seat_role?: string;
+  business_seat_created_at?: string;
+  plan_tier?: string;
+  plan_start_date?: string;
+  plan_end_date?: string;
+  primary_plan?: string;
+  plan_num_seats?: string;
+  business_plan_type?: string;
+  business_plan_tier?: string;
+  business_organization_id?: string;
+  business_organization_name?: string;
+  business_plan_source?: string;
+  business_plan_verified?: string;
 };
 
 /**
