@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.16](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.15...@codecademy/codebytes@0.6.16) (2022-05-16)
+
+**Note:** Version bump only for package @codecademy/codebytes
+
+
+
+
+
 ### [0.6.15](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.14...@codecademy/codebytes@0.6.15) (2022-05-13)
 
 **Note:** Version bump only for package @codecademy/codebytes
