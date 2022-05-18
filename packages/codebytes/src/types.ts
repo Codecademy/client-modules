@@ -12,11 +12,12 @@ export interface CodebytesCopyFormatterParams {
   language: LanguageOption;
 }
 
-export type CodebytesCopyFormatter =
-  ({text, language}: CodebytesCopyFormatterParams) => string;
+export type CodebytesCopyFormatter = ({
+  text,
+  language,
+}: CodebytesCopyFormatterParams) => string;
 
-export interface CodeByteEditorProps
-  extends Omit<BackgroundProps, 'bg'> {
+export interface CodeByteEditorProps extends Omit<BackgroundProps, 'bg'> {
   text?: string;
   language?: LanguageOption;
   hideCopyButton?: boolean;
