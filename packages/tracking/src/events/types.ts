@@ -200,14 +200,14 @@ export type UserClickData = UserSharedData & {
   plan_tier?: string;
   plan_start_date?: string;
   plan_end_date?: string;
-  primary_plan?: string;
-  plan_num_seats?: string;
+  primary_plan?: boolean;
+  plan_num_seats?: number;
   business_plan_type?: string;
   business_plan_tier?: string;
   business_organization_id?: string;
   business_organization_name?: string;
   business_plan_source?: string;
-  business_plan_verified?: string;
+  business_plan_verified?: boolean;
 };
 
 /**
