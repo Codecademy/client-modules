@@ -136,6 +136,8 @@ export type UserSharedData = BaseEventData & {
   content_ids?: TrackingContentIds;
   /** the repo that this event is being fired from */
   source_codebase?: string;
+  /** Should be used for arbitrary JSON that has been passed through JSON.stringify. */
+  misc?: string;
 };
 
 /**
@@ -244,15 +246,13 @@ export type UserVisitData = UserSharedData & {
   is_ugc?: boolean;
 };
 
-export type UserImpressionData = {
+export type UserImpressionData = Pick<
+  UserSharedData,
+  'context' | 'source_codebase' | 'content_ids'
+> & {
   page_name: string;
-  slug?: string;
   target: string;
-  context?: string;
-  path_slug?: string;
-  track_slug?: string;
-  module_slug?: string;
-  source_codebase?: string;
+  slug?: string;
   is_ugc?: boolean;
 };
 

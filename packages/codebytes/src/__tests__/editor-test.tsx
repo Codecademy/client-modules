@@ -59,20 +59,6 @@ describe('Editor', () => {
     view.getByTestId('copy-codebyte-btn');
   });
 
-  describe('Change Handlers', () => {
-    it('triggers onCopy upon clicking the copy button', () => {
-      const onCopy = jest.fn();
-      const { view } = renderWrapper({
-        onCopy,
-      });
-
-      const copyButton = view.getByTestId('copy-codebyte-btn');
-      userEvent.click(copyButton);
-
-      expect(onCopy).toHaveBeenCalled();
-    });
-  });
-
   describe('Tracking', () => {
     it('tracks clicks on the run button', async () => {
       (global as any).fetch.mockResolvedValue({

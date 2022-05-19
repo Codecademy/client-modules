@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/codebytes",
   "description": "Codebytes Code Editor",
-  "version": "0.6.13",
+  "version": "0.7.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -47,7 +47,7 @@
     "@codecademy/gamut-icons": "*",
     "@codecademy/gamut-styles": "*",
     "@codecademy/gamut-tests": "*",
-    "@codecademy/tracking": "^0.20.0",
+    "@codecademy/tracking": "^0.22.0",
     "@codecademy/variance": "*",
     "@emotion/jest": "^11.3.0",
     "@testing-library/dom": "^7.31.2",
