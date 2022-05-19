@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.16...@codecademy/codebytes@0.7.0) (2022-05-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **CodeByteEditor:** Add copyFormatter prop (#51)
+
+### Features
+
+* **CodeByteEditor:** Add copyFormatter prop ([#51](https://github.com/Codecademy/client-modules/issues/51)) ([39b5229](https://github.com/Codecademy/client-modules/commit/39b52291c3db6307203100bb216b852e7e07bc9e))
+
+
+
 ### [0.6.16](https://github.com/Codecademy/client-modules/compare/@codecademy/codebytes@0.6.15...@codecademy/codebytes@0.6.16) (2022-05-16)
 
 **Note:** Version bump only for package @codecademy/codebytes
