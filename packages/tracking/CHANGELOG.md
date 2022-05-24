@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.22.0...@codecademy/tracking@0.23.0) (2022-05-24)
+
+
+### Features
+
+* **tracking:** :sparkles: Including field to track business seat data  ([#46](https://github.com/Codecademy/client-modules/issues/46)) ([331893d](https://github.com/Codecademy/client-modules/commit/331893dd50b5bdbe861330b16744ae9f58d719be))
+
+
+
 ## [0.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.21.1...@codecademy/tracking@0.22.0) (2022-05-16)
 
 
