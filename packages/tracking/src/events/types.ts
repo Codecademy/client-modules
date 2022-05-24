@@ -190,6 +190,9 @@ export type UserClickData = UserSharedData & {
   container_slugs?: string[];
   search_id?: string;
   is_ugc?: boolean;
+
+  /* additional business properties */
+  business_user?: BaseEventAnyData;
 };
 
 /**
