@@ -1,6 +1,7 @@
 import { getClientType } from '../integrations/device';
 /* eslint-disable no-console */
 import type {
+  BaseEventData,
   EventDataTypes,
   TrackingOptions,
   UserClickData,
@@ -48,7 +49,7 @@ export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
   const event = <
     Category extends keyof EventDataTypes,
     Event extends string & keyof EventDataTypes[Category],
-    Data extends EventDataTypes[Category][Event]
+    Data extends EventDataTypes[Category][Event] & BaseEventData
   >(
     category: Category,
     event: Event,
@@ -62,7 +63,7 @@ export const createTracker = ({ apiBaseUrl, verbose }: TrackerOptions) => {
       path: window.location.pathname,
       title: window.document.title,
       url: window.location.href,
-      referrer: window.document.referrer,
+      referrer: userData.referrer || window.document.referrer,
       client: getClientType(),
     };
 
