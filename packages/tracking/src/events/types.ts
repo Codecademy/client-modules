@@ -79,7 +79,7 @@ export type BaseEventData = {
   path?: null;
   title?: null;
   url?: null;
-  referrer?: null;
+  referrer?: string | null;
 
   // properties set in the backend
   id?: null; // maps to user id
