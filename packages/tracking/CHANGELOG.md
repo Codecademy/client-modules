@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.23.0...@codecademy/tracking@0.24.0) (2022-08-24)
+
+
+### Features
+
+* **tracking:** changing referrer type and allowing it into be set via a parameter for tracking purposes ([28b7a19](https://github.com/Codecademy/client-modules/commit/28b7a19f12f0bce0fadad4a94ce38363afa689da))
+
+
+
 ## [0.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.22.0...@codecademy/tracking@0.23.0) (2022-05-24)
 
 
