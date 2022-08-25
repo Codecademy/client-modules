@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.1.0 (2022-08-25)
+
+
+### Features
+
+* re-add webpack-config so we can update dependencies ([6a8c957](http://github.com///commit/6a8c957edd99b05fd512139ded436992bae423fb))
+
+
+
 ## [6.0.0](http://github.com///compare/@codecademy/webpack-config@5.2.3...@codecademy/webpack-config@6.0.0) (2021-02-12)
 
 
