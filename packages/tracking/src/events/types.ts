@@ -116,6 +116,7 @@ export type TrackingContentIds = {
   program_unit_id?: string;
   review_card_id?: string;
   track_id?: string;
+  journey_id?: string;
 };
 
 /**
