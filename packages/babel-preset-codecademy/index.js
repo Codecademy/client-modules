@@ -44,9 +44,12 @@ module.exports = (api, { type = PACKAGE_LIBRARY } = {}) => {
           corejs: 2,
         },
       ],
-       [require('@babel/preset-react').default,{
-        'runtime': 'automatic'
-      }]
+      [
+        require('@babel/preset-react').default,
+        {
+          runtime: 'automatic',
+        },
+      ],
     ].filter(Boolean),
     plugins: [
       require('@babel/plugin-transform-destructuring').default,
