@@ -3,6 +3,7 @@ import { Consent } from './consent';
 export interface UserIntegrationSummary {
   email: string;
   id: string;
+  opted_out_external_tracking: boolean;
 }
 
 export interface SegmentAnalytics {

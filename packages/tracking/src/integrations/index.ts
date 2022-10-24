@@ -1,4 +1,5 @@
 import { conditionallyLoadAnalytics } from './conditionallyLoadAnalytics';
+import { Consent } from './consent';
 import { fetchDestinationsForWriteKey } from './fetchDestinationsForWriteKey';
 import { mapDestinations } from './mapDestinations';
 import { initializeOneTrust } from './onetrust';
@@ -42,11 +43,20 @@ export const initializeTrackingIntegrations = async ({
   user,
   writeKey,
 }: TrackingIntegrationsSettings) => {
+  const optedOut = user?.opted_out_external_tracking;
+
   // 1. Wait 1000ms to allow any other post-hydration logic to run first
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // 2. Load in OneTrust's banner and wait for its `OptanonWrapper` callback
   await initializeOneTrust({ scope, production });
+
+  if (optedOut) {
+    scope.OnetrustActiveGroups = [
+      Consent.StrictlyNecessary,
+      Consent.Functional,
+    ];
+  }
 
   // 3. Segment's copy-and-paste snippet is run to load the Segment global library
   runSegmentSnippet();
@@ -56,6 +66,7 @@ export const initializeTrackingIntegrations = async ({
     onError,
     writeKey,
   });
+
   if (!destinations) {
     return;
   }
