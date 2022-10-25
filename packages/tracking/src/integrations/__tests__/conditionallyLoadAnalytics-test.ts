@@ -73,7 +73,6 @@ describe('conditionallyLoadAnalytics', () => {
     const user = {
       email: 'test@test.com',
       id: 'abc123',
-      opted_out_external_tracking: false,
     };
     const options = createMockOptions({ user });
     mockClientType.mockReturnValue('default');
@@ -93,7 +92,6 @@ describe('conditionallyLoadAnalytics', () => {
     const user = {
       email: 'test@test.com',
       id: 'abc123',
-      opted_out_external_tracking: false,
     };
     const options = createMockOptions({ user });
     mockClientType.mockReturnValue('pwa');

@@ -28,6 +28,11 @@ export type TrackingIntegrationsSettings = {
   user?: UserIntegrationSummary;
 
   /**
+   * Whether user has opted out or is excluded from external tracking
+   */
+  optedOutExternalTracking: boolean;
+
+  /**
    * Segment write key.
    */
   writeKey: string;
@@ -41,17 +46,16 @@ export const initializeTrackingIntegrations = async ({
   production,
   scope,
   user,
+  optedOutExternalTracking,
   writeKey,
 }: TrackingIntegrationsSettings) => {
-  const optedOut = user?.opted_out_external_tracking;
-
   // 1. Wait 1000ms to allow any other post-hydration logic to run first
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // 2. Load in OneTrust's banner and wait for its `OptanonWrapper` callback
   await initializeOneTrust({ scope, production });
 
-  if (optedOut) {
+  if (optedOutExternalTracking) {
     scope.OnetrustActiveGroups = [
       Consent.StrictlyNecessary,
       Consent.Functional,
