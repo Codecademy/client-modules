@@ -48,7 +48,6 @@ const updateConsentForOptedOutUsers = (scope: TrackingWindow) => {
   scope.OneTrust?.UpdateConsent?.('Category', 'C0003:1');
   scope.dataLayer ??= [];
   scope.dataLayer.push({ user_opted_out_external_tracking: 'true' });
-  scope.dataLayer.push({ event: 'OneTrustGroupsUpdated' });
 };
 
 // For now, these three values duplicate theme colors from gamut-styles

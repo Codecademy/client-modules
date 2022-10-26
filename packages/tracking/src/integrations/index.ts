@@ -70,11 +70,21 @@ export const initializeTrackingIntegrations = async ({
     return;
   }
 
+  let consentDecision: Consent[] = [];
+
+  if (optedOutExternalTracking) {
+    consentDecision = optedOutActiveGroups;
+  } else if (typeof scope.OnetrustActiveGroups === 'string') {
+    consentDecision = scope.OnetrustActiveGroups.split(',').filter(
+      Boolean
+    ) as Consent[];
+  } else if (scope.OnetrustActiveGroups) {
+    consentDecision = scope.OnetrustActiveGroups;
+  }
+
   // 5. Those integrations are compared against the user's consent decisions into a list of allowed destinations
   const { destinationPreferences, identifyPreferences } = mapDestinations({
-    consentDecision: optedOutExternalTracking
-      ? optedOutActiveGroups
-      : scope.OnetrustActiveGroups,
+    consentDecision,
     destinations,
   });
 
