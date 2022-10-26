@@ -25,9 +25,15 @@ export interface SegmentAnalyticsOptions {
   integrations: Record<string, boolean>;
 }
 
+export interface OneTrustSDK {
+  RejectAll: () => void;
+  UpdateConsent?: (category: string, code: string) => void;
+}
+
 export interface TrackingWindow {
   analytics?: SegmentAnalytics;
   dataLayer?: unknown[];
   OnetrustActiveGroups?: Consent[];
   OptanonWrapper?: () => void;
+  OneTrust?: OneTrustSDK;
 }

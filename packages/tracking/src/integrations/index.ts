@@ -30,13 +30,15 @@ export type TrackingIntegrationsSettings = {
   /**
    * Whether user has opted out or is excluded from external tracking
    */
-  optedOutExternalTracking: boolean;
+  optedOutExternalTracking?: boolean;
 
   /**
    * Segment write key.
    */
   writeKey: string;
 };
+
+const optedOutActiveGroups = [Consent.StrictlyNecessary, Consent.Functional];
 
 /**
  * @see README.md for details and usage.
@@ -53,14 +55,7 @@ export const initializeTrackingIntegrations = async ({
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // 2. Load in OneTrust's banner and wait for its `OptanonWrapper` callback
-  await initializeOneTrust({ scope, production });
-
-  if (optedOutExternalTracking) {
-    scope.OnetrustActiveGroups = [
-      Consent.StrictlyNecessary,
-      Consent.Functional,
-    ];
-  }
+  await initializeOneTrust({ scope, production, optedOutExternalTracking });
 
   // 3. Segment's copy-and-paste snippet is run to load the Segment global library
   runSegmentSnippet();
@@ -77,7 +72,9 @@ export const initializeTrackingIntegrations = async ({
 
   // 5. Those integrations are compared against the user's consent decisions into a list of allowed destinations
   const { destinationPreferences, identifyPreferences } = mapDestinations({
-    consentDecision: scope.OnetrustActiveGroups,
+    consentDecision: optedOutExternalTracking
+      ? optedOutActiveGroups
+      : scope.OnetrustActiveGroups,
     destinations,
   });
 
