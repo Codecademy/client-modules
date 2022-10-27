@@ -72,16 +72,24 @@ export const initializeTrackingIntegrations = async ({
 
   let consentDecision: Consent[] = [];
 
-  if (optedOutExternalTracking) {
-    consentDecision = optedOutActiveGroups;
-    scope.dataLayer ??= [];
-    scope.dataLayer.push({ user_opted_out_external_tracking: 'true' });
-  } else if (typeof scope.OnetrustActiveGroups === 'string') {
+  if (typeof scope.OnetrustActiveGroups === 'string') {
     consentDecision = scope.OnetrustActiveGroups.split(',').filter(
       Boolean
     ) as Consent[];
   } else if (scope.OnetrustActiveGroups) {
     consentDecision = scope.OnetrustActiveGroups;
+  }
+
+  if (optedOutExternalTracking) {
+    /**
+     * If user has already opted out of everything but the essentials
+     * don't force them to consent to Functional trackers
+     */
+    if (consentDecision.length > 1) {
+      consentDecision = optedOutActiveGroups;
+    }
+    scope.dataLayer ??= [];
+    scope.dataLayer.push({ user_opted_out_external_tracking: true });
   }
 
   // 5. Those integrations are compared against the user's consent decisions into a list of allowed destinations
