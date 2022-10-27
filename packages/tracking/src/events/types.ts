@@ -85,7 +85,7 @@ export type BaseEventData = {
   id?: null; // maps to user id
 };
 
-/**
+/**packages/tracking/src/integrations/types.ts
  * Generic type to use for event data not typed yet
  */
 export type BaseEventAnyData = BaseEventData & {
