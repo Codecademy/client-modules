@@ -28,6 +28,6 @@ export interface SegmentAnalyticsOptions {
 export interface TrackingWindow {
   analytics?: SegmentAnalytics;
   dataLayer?: unknown[];
-  OnetrustActiveGroups?: Consent[];
+  OnetrustActiveGroups?: Consent[] | string;
   OptanonWrapper?: () => void;
 }

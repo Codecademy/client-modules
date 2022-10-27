@@ -1,5 +1,6 @@
 import { conditionallyLoadAnalytics } from './conditionallyLoadAnalytics';
 import { fetchDestinationsForWriteKey } from './fetchDestinationsForWriteKey';
+import { getConsentDecision } from './getConsentDecision';
 import { mapDestinations } from './mapDestinations';
 import { initializeOneTrust } from './onetrust';
 import { runSegmentSnippet } from './runSegmentSnippet';
@@ -27,6 +28,11 @@ export type TrackingIntegrationsSettings = {
   user?: UserIntegrationSummary;
 
   /**
+   * Whether user has opted out or is excluded from external tracking
+   */
+  optedOutExternalTracking?: boolean;
+
+  /**
    * Segment write key.
    */
   writeKey: string;
@@ -40,6 +46,7 @@ export const initializeTrackingIntegrations = async ({
   production,
   scope,
   user,
+  optedOutExternalTracking,
   writeKey,
 }: TrackingIntegrationsSettings) => {
   // 1. Wait 1000ms to allow any other post-hydration logic to run first
@@ -56,13 +63,19 @@ export const initializeTrackingIntegrations = async ({
     onError,
     writeKey,
   });
+
   if (!destinations) {
     return;
   }
 
+  const consentDecision = getConsentDecision({
+    scope,
+    optedOutExternalTracking,
+  });
+
   // 5. Those integrations are compared against the user's consent decisions into a list of allowed destinations
   const { destinationPreferences, identifyPreferences } = mapDestinations({
-    consentDecision: scope.OnetrustActiveGroups,
+    consentDecision,
     destinations,
   });
 

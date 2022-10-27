@@ -17,6 +17,7 @@
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{js,ts,tsx,json}\"",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
+    "compile": "yarn verify",
     "verify": "turbo run verify --concurrency=3",
     "verify-all": "yarn verify",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
