@@ -36,7 +36,7 @@ describe('getConsentDecision', () => {
   });
 
   describe('optedOutExternalTracking', () => {
-    it('Reduces the consent decision to necessary and functional for opted out users', () => {
+    it('reduces the consent decision to necessary and functional for opted out users', () => {
       const result = getConsentDecision({
         scope: {
           OnetrustActiveGroups: FULL_CONSENT,
@@ -46,7 +46,7 @@ describe('getConsentDecision', () => {
       expect(result).toEqual([Consent.StrictlyNecessary, Consent.Functional]);
     });
 
-    it('Does not add Functional tracking if the user has opted out of it', () => {
+    it('does not add Functional tracking if the user has opted out of it', () => {
       const result = getConsentDecision({
         scope: {
           OnetrustActiveGroups: MINIMUM_CONSENT,
@@ -55,6 +55,7 @@ describe('getConsentDecision', () => {
       });
       expect(result).toEqual(MINIMUM_CONSENT);
     });
+
     it('triggers the opt out datalayer variable', () => {
       const scope: TrackingWindow = {
         OnetrustActiveGroups: FULL_CONSENT,
