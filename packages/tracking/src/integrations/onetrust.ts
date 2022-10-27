@@ -32,7 +32,7 @@ export const initializeOneTrust = async ({
       scope.dataLayer ??= [];
       scope.dataLayer.push({ event: 'OneTrustGroupsUpdated' });
       resolve();
-      // script.parentNode?.removeChild(script);
+      script.parentNode?.removeChild(script);
     };
   });
 };
