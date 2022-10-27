@@ -2,7 +2,7 @@ import { conditionallyLoadAnalytics } from './conditionallyLoadAnalytics';
 import { Consent } from './consent';
 import { fetchDestinationsForWriteKey } from './fetchDestinationsForWriteKey';
 import { mapDestinations } from './mapDestinations';
-import { initializeOneTrust, updateConsentForOptedOutUsers } from './onetrust';
+import { initializeOneTrust } from './onetrust';
 import { runSegmentSnippet } from './runSegmentSnippet';
 import { TrackingWindow, UserIntegrationSummary } from './types';
 
@@ -57,8 +57,6 @@ export const initializeTrackingIntegrations = async ({
   // 2. Load in OneTrust's banner and wait for its `OptanonWrapper` callback
   await initializeOneTrust({ scope, production });
 
-  if (optedOutExternalTracking) updateConsentForOptedOutUsers(scope);
-
   // 3. Segment's copy-and-paste snippet is run to load the Segment global library
   runSegmentSnippet();
 
@@ -76,6 +74,8 @@ export const initializeTrackingIntegrations = async ({
 
   if (optedOutExternalTracking) {
     consentDecision = optedOutActiveGroups;
+    scope.dataLayer ??= [];
+    scope.dataLayer.push({ user_opted_out_external_tracking: 'true' });
   } else if (typeof scope.OnetrustActiveGroups === 'string') {
     consentDecision = scope.OnetrustActiveGroups.split(',').filter(
       Boolean
