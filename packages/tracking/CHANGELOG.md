@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.25.0...@codecademy/tracking@0.26.0) (2022-10-27)
+
+
+### Features
+
+* check user opt-out when blocking trackers ([64e4be8](https://github.com/Codecademy/client-modules/commit/64e4be8bf5d7f17e4d32affa6246c94fbb08eee6))
+
+
+
 ## [0.25.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.24.0...@codecademy/tracking@0.25.0) (2022-09-16)
 
 
