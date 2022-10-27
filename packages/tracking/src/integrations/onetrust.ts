@@ -42,8 +42,11 @@ export const initializeOneTrust = async ({
  */
 export const updateConsentForOptedOutUsers = (scope: TrackingWindow) => {
   scope.dataLayer ??= [];
+  // Disable all consent options except StrictlyNecessary
   scope.OneTrust?.RejectAll();
+  // Enable Functional trackers
   scope.OneTrust?.UpdateConsent?.('Category', 'C0003:1');
+  // Indicate to GTM that this user has opted out
   scope.dataLayer.push({ user_opted_out_external_tracking: 'true' });
 };
 
