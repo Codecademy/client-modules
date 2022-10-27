@@ -1,5 +1,4 @@
 import { conditionallyLoadAnalytics } from './conditionallyLoadAnalytics';
-import { Consent } from './consent';
 import { fetchDestinationsForWriteKey } from './fetchDestinationsForWriteKey';
 import { getConsentDecision } from './getConsentDecision';
 import { mapDestinations } from './mapDestinations';
