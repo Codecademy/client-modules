@@ -1,6 +1,7 @@
 import { conditionallyLoadAnalytics } from './conditionallyLoadAnalytics';
 import { Consent } from './consent';
 import { fetchDestinationsForWriteKey } from './fetchDestinationsForWriteKey';
+import { getConsentDecision } from './getConsentDecision';
 import { mapDestinations } from './mapDestinations';
 import { initializeOneTrust } from './onetrust';
 import { runSegmentSnippet } from './runSegmentSnippet';
@@ -38,8 +39,6 @@ export type TrackingIntegrationsSettings = {
   writeKey: string;
 };
 
-const optedOutActiveGroups = [Consent.StrictlyNecessary, Consent.Functional];
-
 /**
  * @see README.md for details and usage.
  */
@@ -70,27 +69,10 @@ export const initializeTrackingIntegrations = async ({
     return;
   }
 
-  let consentDecision: Consent[] = [];
-
-  if (typeof scope.OnetrustActiveGroups === 'string') {
-    consentDecision = scope.OnetrustActiveGroups.split(',').filter(
-      Boolean
-    ) as Consent[];
-  } else if (scope.OnetrustActiveGroups) {
-    consentDecision = scope.OnetrustActiveGroups;
-  }
-
-  if (optedOutExternalTracking) {
-    /**
-     * If user has already opted out of everything but the essentials
-     * don't force them to consent to Functional trackers
-     */
-    if (consentDecision.length > 1) {
-      consentDecision = optedOutActiveGroups;
-    }
-    scope.dataLayer ??= [];
-    scope.dataLayer.push({ user_opted_out_external_tracking: true });
-  }
+  const consentDecision = getConsentDecision({
+    scope,
+    optedOutExternalTracking,
+  });
 
   // 5. Those integrations are compared against the user's consent decisions into a list of allowed destinations
   const { destinationPreferences, identifyPreferences } = mapDestinations({
