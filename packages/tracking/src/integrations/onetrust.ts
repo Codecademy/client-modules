@@ -3,13 +3,11 @@ import { TrackingWindow } from './types';
 export type OneTrustSettings = {
   production: boolean;
   scope: TrackingWindow;
-  optedOutExternalTracking?: boolean;
 };
 
 export const initializeOneTrust = async ({
   production,
   scope,
-  optedOutExternalTracking,
 }: OneTrustSettings) => {
   const script = document.createElement('script');
   script.setAttribute('async', 'true');
@@ -32,7 +30,6 @@ export const initializeOneTrust = async ({
   return new Promise<void>((resolve) => {
     scope.OptanonWrapper = () => {
       scope.dataLayer ??= [];
-      if (optedOutExternalTracking) updateConsentForOptedOutUsers(scope);
       scope.dataLayer.push({ event: 'OneTrustGroupsUpdated' });
       resolve();
       script.parentNode?.removeChild(script);
@@ -41,12 +38,12 @@ export const initializeOneTrust = async ({
 };
 
 /**
- *
+ * update OneTrust constent for
  */
-const updateConsentForOptedOutUsers = (scope: TrackingWindow) => {
+export const updateConsentForOptedOutUsers = (scope: TrackingWindow) => {
+  scope.dataLayer ??= [];
   scope.OneTrust?.RejectAll();
   scope.OneTrust?.UpdateConsent?.('Category', 'C0003:1');
-  scope.dataLayer ??= [];
   scope.dataLayer.push({ user_opted_out_external_tracking: 'true' });
 };
 
