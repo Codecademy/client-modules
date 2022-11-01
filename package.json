@@ -24,7 +24,6 @@
     "build": "turbo run build --concurrency=3",
     "build-all": "yarn build",
     "start:storybook": "cd ./packages/styleguide && yarn start",
-    "install:sibling-dependencies": "cd ./packages/codebytes && yarn --focus",
     "start": "yarn && yarn start:storybook"
   },
   "lint-staged": {

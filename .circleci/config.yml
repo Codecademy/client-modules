@@ -114,7 +114,6 @@ jobs:
       - *set_npm_token
       - *restore_yarn_cache
       - run: yarn --production=false --frozen-lockfile
-      - run: yarn run install:sibling-dependencies
       - *save_yarn_cache
       - *save_node_modules
 
