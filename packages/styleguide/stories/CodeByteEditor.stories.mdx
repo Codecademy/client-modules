@@ -1,0 +1,60 @@
+import { CodeByteEditor } from '@codecademy/codebytes/src';
+import { AppWrapper } from '@codecademy/gamut';
+import {
+  createEmotionCache,
+  GamutProvider,
+  theme,
+} from '@codecademy/gamut-styles';
+import { AssetProvider } from '@codecademy/gamut-styles/dist/AssetProvider';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="CodeByteEditor"
+  component={CodeByteEditor}
+  parameters={{
+    subtitle: 'Dummy',
+    status: 'updating',
+    source: 'client-modules',
+  }}
+/>
+
+<Canvas>
+  <Story
+    name="Language and text provided"
+    args={{
+      text: 'console.log("Welcome to the Codebytes Editor!");',
+      snippetsBaseUrl: process.env.CONTAINER_API_BASE,
+      language: 'javascript',
+    }}
+  >
+    {(args) => (
+      <GamutProvider
+        cache={createEmotionCache({ container: document.head })}
+        theme={theme}
+      >
+        <AssetProvider />
+        <AppWrapper>
+          <CodeByteEditor {...args} />
+        </AppWrapper>
+      </GamutProvider>
+    )}
+  </Story>
+  <Story
+    name="Language and text not provided"
+    args={{
+      snippetsBaseUrl: process.env.CONTAINER_API_BASE,
+    }}
+  >
+    {(args) => (
+      <GamutProvider
+        cache={createEmotionCache({ container: document.head })}
+        theme={theme}
+      >
+        <AssetProvider />
+        <AppWrapper>
+          <CodeByteEditor {...args} />
+        </AppWrapper>
+      </GamutProvider>
+    )}
+  </Story>
+</Canvas>
