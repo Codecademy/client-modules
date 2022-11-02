@@ -1,8 +1,0 @@
-{
-  "extends": "../../tsconfig.json",
-  "include": ["../../typings/*.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
-  "compilerOptions": {
-    "allowJs": true,
-    "outDir": "./dist"
-  }
-}

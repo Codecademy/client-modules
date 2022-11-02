@@ -37,10 +37,10 @@ Every PR that changes files in a package publishes alpha releases that you can u
 For quicker development cycles, it's possible to run a pre-published version of a client-modules package in another project.
 We do that using symlinks (the following instructions assume you have set up and built client-modules):
 
-1. `cd /path/to/client-modules/packages/tracking`
+1. `cd /path/to/client-modules/packages/eslint-config`
 1. `yarn link`
 1. `cd path/to/other/repo`
-1. `yarn link @codecademy/tracking`
+1. `yarn link @codecademy/eslint-config`
 1. `yarn install`
 
 ### Adding a New Package
