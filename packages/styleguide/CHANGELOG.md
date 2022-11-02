@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@0.6.2...@codecademy/styleguide@0.6.3) (2022-11-02)
+
+
+### Bug Fixes
+
+* **tracking:** remove tracking and codebytes ([0021c1d](https://github.com/Codecademy/client-modules/commit/0021c1d8ad3089e99e76b1f2b6d19145afca98ec))
+
+
+
 ### [0.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@0.6.1...@codecademy/styleguide@0.6.2) (2022-08-29)
 
 **Note:** Version bump only for package @codecademy/styleguide

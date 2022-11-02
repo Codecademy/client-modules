@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide for Client Modules",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
