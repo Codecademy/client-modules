@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/Codecademy/client-modules/compare/babel-preset-codecademy@6.0.0...babel-preset-codecademy@7.0.0) (2022-12-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* update babel for react jsx transform
+
+### Features
+
+* update babel for react jsx transform ([a8a589c](https://github.com/Codecademy/client-modules/commit/a8a589cdc02b85135f7bd81da2085966db9404e5))
+
+
+
 ## 6.0.0 (2021-11-10)
 
 
