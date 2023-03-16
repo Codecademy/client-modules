@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.0](http://github.com///compare/@codecademy/webpack-config@6.2.0...@codecademy/webpack-config@6.3.0) (2023-03-16)
+
+
+### Features
+
+* **webpack-config:** upgrade node-sass to 8.0.0 ([5a91a8b](http://github.com///commit/5a91a8b66f9ba425abfb0b9b5cd9b7643f8ac632))
+
+
+
 ## [6.2.0](http://github.com///compare/@codecademy/webpack-config@6.1.0...@codecademy/webpack-config@6.2.0) (2022-08-29)
 
 
