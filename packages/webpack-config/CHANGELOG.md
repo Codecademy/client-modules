@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.0](http://github.com///compare/@codecademy/webpack-config@6.3.0...@codecademy/webpack-config@6.4.0) (2023-04-03)
+
+
+### Features
+
+* **sass:** switch from node to dart sass ([#60](http://github.com//undefined/issues/60)) ([87c0b54](http://github.com///commit/87c0b54c5f26bce7478a8fdcb3829a1e50df0cf5))
+
+
+
 ## [6.3.0](http://github.com///compare/@codecademy/webpack-config@6.2.0...@codecademy/webpack-config@6.3.0) (2023-03-16)
 
 
