@@ -1,0 +1,25 @@
+name: 'Restore Yarn Cache'
+description: 'Setup a NodeJS environment and restore cache if any, given a node version'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version-file: .nvmrc
+    - name: Custom Cypress Cache Folder
+      shell: bash
+      run: |
+        mkdir -p $RUNNER_TEMP/cypress
+        echo "CYPRESS_CACHE_FOLDER=$RUNNER_TEMP/cypress" >> $GITHUB_ENV
+    - uses: actions/cache@v3
+      with:
+        path: |
+          **/node_modules
+          ${{ env.CYPRESS_CACHE_FOLDER }}
+        key: v1-yarn-${{ runner.os }}-${{ hashFiles('.nvmrc') }}-${{ hashFiles('**/yarn.lock') }}
+
+    - name: Install Dependencies If Not Cached
+      run: \[ -d node_modules \] || yarn install --frozen-lockfile
+      shell: bash

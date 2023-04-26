@@ -9,16 +9,9 @@ const npmOptions: INpmConfig = {
 export default function rc(): AutoRc {
   return {
     author: 'Release Bot <dev@codecademy.com>',
-    baseBranch: 'develop',
+    baseBranch: 'main',
     plugins: [
       'all-contributors',
-      // [
-      //   'protected-branch',
-      //   {
-      //     releaseTemporaryBranchPrefix: 'protected-release-',
-      //     requiredStatusChecks: ['WIP', 'build', 'test', 'lint'],
-      //   },
-      // ],
       ['npm', npmOptions],
       'released',
       'first-time-contributor',
