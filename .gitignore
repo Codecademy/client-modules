@@ -47,3 +47,6 @@ report*.json
 
 # Turborepo
 .turbo
+
+# Publishing
+/.github/bin
