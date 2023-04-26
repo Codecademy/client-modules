@@ -1,12 +1,9 @@
-import { INpmConfig } from '@auto-it/npm';
-import { AutoRc } from 'auto';
-
-const npmOptions: INpmConfig = {
+const npmOptions = {
   exact: true,
 };
 
 /** Auto configuration */
-export default function rc(): AutoRc {
+export default function rc() {
   return {
     author: 'Release Bot <dev@codecademy.com>',
     baseBranch: 'main',
