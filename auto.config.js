@@ -3,7 +3,7 @@ const npmOptions = {
 };
 
 /** Auto configuration */
-export default function rc() {
+module.exports = function rc() {
   return {
     author: 'Release Bot <dev@codecademy.com>',
     baseBranch: 'main',
@@ -14,4 +14,4 @@ export default function rc() {
       'first-time-contributor',
     ],
   };
-}
+};
