@@ -27,8 +27,8 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
 
-      - name: Set NPM Registry
-        run: echo "//registry.npmjs.org/:_authToken=\${{ secrets.NPM_TOKEN }}" > .npmrc
+      # - name: Set NPM Registry
+      #   run: echo "//registry.npmjs.org/:_authToken=\${{ secrets.NPM_TOKEN }}" > .npmrc
 
       - name: Set git user
         run: |
