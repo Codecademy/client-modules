@@ -1,5 +1,6 @@
 const npmOptions = {
   exact: true,
+  setRcToken: false,
 };
 
 /** Auto configuration */
