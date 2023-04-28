@@ -35,11 +35,6 @@ jobs:
 
       - uses: ./.github/actions/yarn
 
-      - run: npx auto pr-check --url "https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}"
-        env:
-          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - run: yarn turbo run build --concurrency=3
 
       - name: Publish
@@ -48,3 +43,13 @@ jobs:
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx auto shipit
+
+  publish-check:
+    runs-on: ubuntu-22.04
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - uses: actions/checkout@v3
+      - run: npx auto pr-check --url "https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}"
+        env:
+          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
