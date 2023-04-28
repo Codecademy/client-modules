@@ -64,23 +64,23 @@ The config for Turborepo is located at [/turbo.json](/turbo.json).
 
 To use Turborepo without extra configuration, if your package needs to be compiled, it should have a task called `build` that compiles it's files and puts them into a directory called `dist` inside the package directory. If you need a more complicated setup, you can read the docs and customize the configuration in `turbo.json`.
 
-**Type**
+**Release Labels**
 
-The `type` determines what kind of version bump is needed. A `fix` will create a `patch` release, while a `feat` will create a `minor` release. Major version updates require a special syntax that is described below.
+These labels will mark your PR as ready for release. They will trigger a release of the package(s) you changed once your PR is merged.
 
-`type` must be one of the following options:
+- **release/major**: Increments the major version number of the package(s) you changed
+- **release/minor**: Increments the minor version number of the package(s) you changed
+- **release/patch**: Increments the patch version number of the package(s) you changed
+- **release/skip**: Skips the release process for the package(s) you changed
+- **release/performance**: Increments the patch version number of the package(s) you changed
 
-Type labels:
+**Change Labels**
 
-- **feat**: A new feature
-- **fix**: A bug fix
-- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- **docs**: Documentation only changes
-- **perf**: A code change that improves performance
-- **refactor**: A code change that neither fixes a bug nor adds a feature
-- **test**: Adding missing tests or correcting existing tests
-- **ci**: Changes to our CI configuration files and scripts
-- **build**: Changes that affect the build system or external dependencies
+These labels describe the type of change the PR contains. They should be combined with one of the Release Labels.
+
+- **changes/dependencies**: Changes to dependencies
+- **changes/internal**: Changes to internal code
+- **changes/tests**: Changes to tests
 
 **Scope**
 
