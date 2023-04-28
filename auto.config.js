@@ -8,9 +8,19 @@ module.exports = function rc() {
     author: 'Release Bot <dev@codecademy.com>',
     baseBranch: 'main',
     plugins: [
-      'all-contributors',
+      [
+        'all-contributors',
+        {
+          exclude: ['dependabot', 'codecademydev'],
+        },
+      ],
       ['npm', npmOptions],
-      'released',
+      [
+        'released',
+        {
+          label: ':shipit:',
+        },
+      ],
       'first-time-contributor',
     ],
     noDefaultLabels: true,
@@ -49,31 +59,31 @@ module.exports = function rc() {
         color: '#007f70',
       },
       {
-        name: 'changes/internal',
+        name: 'release/internal',
         changelogTitle: '🏠 Internal',
         description: 'Changes only affect the internal API',
         releaseType: 'none',
         color: '#696969',
       },
       {
-        name: 'changes/documentation',
+        name: 'release/documentation',
         changelogTitle: '📝 Documentation',
         description: 'Changes only affect the documentation',
         releaseType: 'none',
         color: '#cfd3d7',
       },
       {
-        name: 'changes/tests',
+        name: 'release/tests',
         changelogTitle: '🧪 Tests',
         description: 'Add or improve existing tests',
         releaseType: 'none',
         color: '#ffd3cc',
       },
       {
-        name: 'changes/dependencies',
+        name: 'release/dependencies',
         changelogTitle: '🔩 Dependency Updates',
         description: 'Update one or more dependencies version',
-        releaseType: 'none',
+        releaseType: 'patch',
         color: '#8732bc',
       },
       {
