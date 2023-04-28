@@ -27,12 +27,6 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
 
-      - name: Set npm token
-        run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Set git user
         run: |
           git config --global user.email "dev@codecademy.com"
