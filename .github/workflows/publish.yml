@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/yarn
-      - run: npx auto pr-check
+      - run: npx auto pr-check --url "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}/jobs/${{github.job_id}}?pr=${{github.event.pull_request.number}}"
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
