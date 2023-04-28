@@ -16,10 +16,13 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 ### Publishing Modules
 
 1.  Make your changes in a feature branch, and get another engineer to review your code
+1.  At this time, determine what kind of version bump your changes will require and add the appropriate label to your PR
+    - If your changes are backwards compatible, you can use a `release/patch` or `release/minor` version label
+    - If your changes are not backwards compatible, you will need to use a `release/major` version label
 1.  After your code has been reviewed and tested, you can merge your branch into main.
-1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/client-modules#pr-title-guide))
-1.  To merge your changes, add the `Ship It` label to your Pull Request.
-1.  Once your branch is merged into main, it will be published automatically by CircleCI.
+1.  Make sure to update the release notes section in your PR description, this will end up in the changelog
+1.  You can now merge your changes
+1.  Once your branch is merged into main, it will be published automatically by Github Actions
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
 ### Publishing an alpha version of a module
@@ -28,8 +31,7 @@ Every PR that changes files in a package publishes alpha releases that you can u
 
 1.  Create a PR or Draft PR.
     - This will kickoff a Circle-CI workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
-1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages. <br/>
-    <img width="290" height="auto" src="https://user-images.githubusercontent.com/4298857/114948632-3fa88a80-9e04-11eb-89ef-d016a1c9c572.png">
+1.  After the alpha build is published, the description of your PR should update with the latest versions of the packages that were published.
 1.  Install this version of the package in your application you wish to test your changes on.
 
 ### Working with pre-published changes
@@ -62,55 +64,13 @@ The config for Turborepo is located at [/turbo.json](/turbo.json).
 
 To use Turborepo without extra configuration, if your package needs to be compiled, it should have a task called `build` that compiles it's files and puts them into a directory called `dist` inside the package directory. If you need a more complicated setup, you can read the docs and customize the configuration in `turbo.json`.
 
-### PR Title Guide
-
-Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.
-
-Because we automatically squash merge Pull Requests, you'll need to format your PR title to match these guidelines since the title will become the commit message.
-
-Your individual commits will affect the `alpha` version number, but not the final version once you merge to main.
-
-This Title format will be linted in the `conventional-pr-title` status check and prevent merging if you do not follow the correct format.
-
-### PR Title Format
-
-When you click squash and merge, the title should follow this format:
-
-```
-type(scope): message
-```
-
-Examples:
-
-```
-fix: fixes a bug in some component
-```
-
-```
-test: adds test to component
-```
-
-With a scope:
-
-```
-feat(Button): :sparkles: An awesome feature for the Button component
-```
-
-Breaking change:
-
-```
-feat(Button)!: :fire: Deleted the Button component
-```
-
-Check out the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) page for more detailed options
-
 **Type**
 
 The `type` determines what kind of version bump is needed. A `fix` will create a `patch` release, while a `feat` will create a `minor` release. Major version updates require a special syntax that is described below.
 
 `type` must be one of the following options:
 
-Standard types:
+Type labels:
 
 - **feat**: A new feature
 - **fix**: A bug fix

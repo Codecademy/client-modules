@@ -16,15 +16,6 @@ module.exports = {
       },
     },
     {
-      files: ['auto.config.ts'],
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
-      },
-    },
-    {
       files: ['**/jest/*', '**/*.stories.mdx'],
       rules: {
         'import/no-extraneous-dependencies': [

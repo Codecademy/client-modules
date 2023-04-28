@@ -35,6 +35,8 @@ jobs:
 
       - uses: ./.github/actions/yarn
 
+      - run: npx auto pr-check --url "https://github.com/${{github.repository}}/commit/${{github.sha}}/checks/${{github.run_id}}"
+
       - run: yarn turbo run build --concurrency=3
 
       - name: lerna publish
