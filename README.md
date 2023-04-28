@@ -30,7 +30,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 Every PR that changes files in a package publishes alpha releases that you can use to test your changes across applications.
 
 1.  Create a PR or Draft PR.
-    - This will kickoff a Circle-CI workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
+    - This will kickoff a Github Actions workflow which will publish an alpha build.
 1.  After the alpha build is published, the description of your PR should update with the latest versions of the packages that were published.
 1.  Install this version of the package in your application you wish to test your changes on.
 
