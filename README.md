@@ -71,16 +71,17 @@ These labels will mark your PR as ready for release. They will trigger a release
 - **release/major**: Increments the major version number of the package(s) you changed
 - **release/minor**: Increments the minor version number of the package(s) you changed
 - **release/patch**: Increments the patch version number of the package(s) you changed
-- **release/skip**: Skips the release process for the package(s) you changed
 - **release/performance**: Increments the patch version number of the package(s) you changed
 
-**Change Labels**
+These labels will not create a release by default, but will if combined with one of the above labels:
 
-These labels describe the type of change the PR contains. They should be combined with one of the Release Labels.
+- **release/dependencies**: Changes to dependencies
+- **release/internal**: Changes to internal code
+- **release/tests**: Changes to tests
 
-- **changes/dependencies**: Changes to dependencies
-- **changes/internal**: Changes to internal code
-- **changes/tests**: Changes to tests
+The skip label will prevent a release from being created. You can merge multiple PRs with this label, and then merge a PR without it to create a release from all of them at once.
+
+- **release/skip**: Skips the release process for the package(s) you changed
 
 **Scope**
 
@@ -88,15 +89,8 @@ A scope is optional and consists of a noun describing a section of the codebase 
 
 **Breaking Changes**
 
-Adding an exclamation point after your type, before the colon, will indicate that your PR contains a breaking change, and increment the major version number of the modules you changed.
+Using the **release/major** label will bump the major version number of the package(s) you changed, which indicates that your changes are not backwards compatible with previous versions of the package(s).
 
-Examples:
-
-`feat!: made a breaking change in the Button component`
-
-`feat(Button)!: made a breaking change in the Button component`
-
-You should do this if your changes introduce any incompatibilities with previous versions of the module.
 This will indicate to package consumers that they need to refactor their usage of the module to upgrade.
 
 #### Breaking Changes Release Process
@@ -113,10 +107,6 @@ If your changes will require changes in any downstream repositories:
 
 This process minimizes the likelihood of accidental breaking changes in client-modules negatively affecting development on our other repositories.
 
-**Body**
+**Release Notes**
 
-Optional extra description for your changes.
-
-This goes in the description for your PR, between the `<!--- CHANGELOG-DESCRIPTION -->` comment tags in the PR template.
-
-If you include the text `BREAKING CHANGE:` in your description it will trigger a major version bump. We prefer to use the `feat!:` syntax for breaking changes described above.
+This section of the PR description will be used to generate the changelog for the package(s) you changed.
