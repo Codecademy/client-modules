@@ -1,8 +1,4 @@
-### Overview
-
-<!--- CHANGELOG-DESCRIPTION -->
-
-<!--- END-CHANGELOG-DESCRIPTION -->
+## Release Notes
 
 ### PR Checklist
 
@@ -13,11 +9,8 @@
 <!--
 Merging your changes
 
-1. Follow the [PR Title Guide](https://github.com/Codecademy/client-modules#pr-title-guide), the title (which becomes the commit message) determines the version bump for the packages you changed.
+The "Release Notes" section of the PR description is what will be used in the changelog. Please make sure it describes the changes in a way that is useful to the end users.
 
-2. Wrap the text describing your change in more detail in the "CHANGELOG-DESCRIPTION" comment tags above, this is what will show up in the changelog!
+Add the correct `releases/*` label to the PR. If you are unsure which label to use, please refer to the README or ask a Web Platform engineer.
 
-3. DO NOT MERGE MANUALLY! When you are ready to merge and publish your changes, add the "Ship It" label to your Pull Request. This will trigger the merge process as long as all checks have completed, if the checks haven't completed the branch will be merged when they all pass.
-
-**IMPORTANT:** If your PR contains breaking changes, please remember to follow the instructions for breaking changes!
 -->
