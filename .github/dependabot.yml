@@ -6,7 +6,7 @@ updates:
     interval: weekly
     time: "10:00"
   open-pull-requests-limit: 10
-  target-branch: dependencies
+  target-branch: main
   labels:
   - dependencies
   versioning-strategy: increase-if-necessary
