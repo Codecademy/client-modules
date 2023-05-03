@@ -1,0 +1,56 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    on: [opened, synchronize, reopened, labeled, unlabeled]
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-22.04
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+
+      - name: Set git user
+        run: |
+          git config --global user.email "dev@codecademy.com"
+          git config --global user.name "codecademydev"
+          git config --global push.default current
+
+      - uses: ./.github/actions/yarn
+
+      - run: yarn turbo run build --concurrency=3
+
+      - name: Publish
+        env:
+          HUSKY_ENABLED: true
+          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx auto shipit
+
+  publish-check:
+    runs-on: ubuntu-22.04
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/yarn
+      - run: npx auto pr-check --url "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}?pr=${{github.event.pull_request.number}}"
+        env:
+          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

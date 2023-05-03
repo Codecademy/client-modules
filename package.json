@@ -6,11 +6,12 @@
   "license": "MIT",
   "author": "Codecademy Engineers <dev@codecademy.com>",
   "engines": {
-    "node": "^14.7",
-    "yarn": "^1.21.1"
+    "node": "^16.17",
+    "yarn": "^1.22"
   },
   "scripts": {
     "test": "jest",
+    "test:ci": "yarn test --ci --runInBand --coverage --reporters='default' --reporters='jest-junit'",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\" --max-warnings 0",
     "lint:fix": "yarn lint --fix",
     "lerna": "lerna",
@@ -48,6 +49,11 @@
     "lerna": "3.22.1"
   },
   "devDependencies": {
+    "auto": "^10.46.0",
+    "@auto-it/all-contributors": "^10.46.0",
+    "@auto-it/first-time-contributor": "^10.46.0",
+    "@auto-it/npm": "^10.46.0",
+    "@auto-it/released": "^10.46.0",
     "@babel/cli": "7.13.10",
     "@babel/core": "7.19.6",
     "@babel/preset-typescript": "^7.13.0",

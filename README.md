@@ -16,10 +16,13 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 ### Publishing Modules
 
 1.  Make your changes in a feature branch, and get another engineer to review your code
+1.  At this time, determine what kind of version bump your changes will require and add the appropriate label to your PR
+    - If your changes are backwards compatible, you can use a `release/patch` or `release/minor` version label
+    - If your changes are not backwards compatible, you will need to use a `release/major` version label
 1.  After your code has been reviewed and tested, you can merge your branch into main.
-1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/client-modules#pr-title-guide))
-1.  To merge your changes, add the `Ship It` label to your Pull Request.
-1.  Once your branch is merged into main, it will be published automatically by CircleCI.
+1.  Make sure to update the release notes section in your PR description, this will end up in the changelog
+1.  You can now merge your changes
+1.  Once your branch is merged into main, it will be published automatically by Github Actions
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
 ### Publishing an alpha version of a module
@@ -27,9 +30,8 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 Every PR that changes files in a package publishes alpha releases that you can use to test your changes across applications.
 
 1.  Create a PR or Draft PR.
-    - This will kickoff a Circle-CI workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
-1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages. <br/>
-    <img width="290" height="auto" src="https://user-images.githubusercontent.com/4298857/114948632-3fa88a80-9e04-11eb-89ef-d016a1c9c572.png">
+    - This will kickoff a Github Actions workflow which will publish an alpha build.
+1.  After the alpha build is published, the description of your PR should update with the latest versions of the packages that were published.
 1.  Install this version of the package in your application you wish to test your changes on.
 
 ### Working with pre-published changes
@@ -62,65 +64,24 @@ The config for Turborepo is located at [/turbo.json](/turbo.json).
 
 To use Turborepo without extra configuration, if your package needs to be compiled, it should have a task called `build` that compiles it's files and puts them into a directory called `dist` inside the package directory. If you need a more complicated setup, you can read the docs and customize the configuration in `turbo.json`.
 
-### PR Title Guide
+**Release Labels**
 
-Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.
+These labels will mark your PR as ready for release. They will trigger a release of the package(s) you changed once your PR is merged.
 
-Because we automatically squash merge Pull Requests, you'll need to format your PR title to match these guidelines since the title will become the commit message.
+- **release/major**: Increments the major version number of the package(s) you changed
+- **release/minor**: Increments the minor version number of the package(s) you changed
+- **release/patch**: Increments the patch version number of the package(s) you changed
+- **release/performance**: Increments the patch version number of the package(s) you changed
 
-Your individual commits will affect the `alpha` version number, but not the final version once you merge to main.
+These labels will not create a release by default, but will if combined with one of the above labels:
 
-This Title format will be linted in the `conventional-pr-title` status check and prevent merging if you do not follow the correct format.
+- **release/dependencies**: Changes to dependencies
+- **release/internal**: Changes to internal code
+- **release/tests**: Changes to tests
 
-### PR Title Format
+The skip label will prevent a release from being created. You can merge multiple PRs with this label, and then merge a PR without it to create a release from all of them at once.
 
-When you click squash and merge, the title should follow this format:
-
-```
-type(scope): message
-```
-
-Examples:
-
-```
-fix: fixes a bug in some component
-```
-
-```
-test: adds test to component
-```
-
-With a scope:
-
-```
-feat(Button): :sparkles: An awesome feature for the Button component
-```
-
-Breaking change:
-
-```
-feat(Button)!: :fire: Deleted the Button component
-```
-
-Check out the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) page for more detailed options
-
-**Type**
-
-The `type` determines what kind of version bump is needed. A `fix` will create a `patch` release, while a `feat` will create a `minor` release. Major version updates require a special syntax that is described below.
-
-`type` must be one of the following options:
-
-Standard types:
-
-- **feat**: A new feature
-- **fix**: A bug fix
-- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- **docs**: Documentation only changes
-- **perf**: A code change that improves performance
-- **refactor**: A code change that neither fixes a bug nor adds a feature
-- **test**: Adding missing tests or correcting existing tests
-- **ci**: Changes to our CI configuration files and scripts
-- **build**: Changes that affect the build system or external dependencies
+- **release/skip**: Skips the release process for the package(s) you changed
 
 **Scope**
 
@@ -128,15 +89,8 @@ A scope is optional and consists of a noun describing a section of the codebase 
 
 **Breaking Changes**
 
-Adding an exclamation point after your type, before the colon, will indicate that your PR contains a breaking change, and increment the major version number of the modules you changed.
+Using the **release/major** label will bump the major version number of the package(s) you changed, which indicates that your changes are not backwards compatible with previous versions of the package(s).
 
-Examples:
-
-`feat!: made a breaking change in the Button component`
-
-`feat(Button)!: made a breaking change in the Button component`
-
-You should do this if your changes introduce any incompatibilities with previous versions of the module.
 This will indicate to package consumers that they need to refactor their usage of the module to upgrade.
 
 #### Breaking Changes Release Process
@@ -153,10 +107,6 @@ If your changes will require changes in any downstream repositories:
 
 This process minimizes the likelihood of accidental breaking changes in client-modules negatively affecting development on our other repositories.
 
-**Body**
+**Release Notes**
 
-Optional extra description for your changes.
-
-This goes in the description for your PR, between the `<!--- CHANGELOG-DESCRIPTION -->` comment tags in the PR template.
-
-If you include the text `BREAKING CHANGE:` in your description it will trigger a major version bump. We prefer to use the `feat!:` syntax for breaking changes described above.
+This section of the PR description will be used to generate the changelog for the package(s) you changed.

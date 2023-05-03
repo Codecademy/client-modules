@@ -4,13 +4,13 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: Codecademy/run-on-yarn@v1
+      - uses: Codecademy/run-on-yarn@v2
         with:
           command: ${{ matrix.command }}
 
     strategy:
       fail-fast: false
       matrix:
-        command: ["format:verify", "lint"]
+        command: ['format:verify', 'lint', 'verify']
 
 on: push
