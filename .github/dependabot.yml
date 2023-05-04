@@ -5,10 +5,11 @@ updates:
   schedule:
     interval: weekly
     time: "10:00"
-  open-pull-requests-limit: 10
-  target-branch: dependencies
+  open-pull-requests-limit: 0
+  target-branch: main
   labels:
   - dependencies
+  - release/dependencies
   versioning-strategy: increase-if-necessary
   ignore:
   - dependency-name: marked
