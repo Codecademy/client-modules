@@ -3,8 +3,9 @@ updates:
 - package-ecosystem: npm
   directory: "/"
   schedule:
-    interval: weekly
-    time: "10:00"
+    interval: "daily"
+    time: "13:00"
+    timezone: "America/New_York"    
   open-pull-requests-limit: 0
   target-branch: main
   labels:
