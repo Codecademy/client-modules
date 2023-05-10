@@ -5714,6 +5714,11 @@ babel-plugin-react-anonymous-display-name@0.0.1:
   resolved "https://registry.npmjs.org/babel-plugin-react-anonymous-display-name/-/babel-plugin-react-anonymous-display-name-0.0.1.tgz#1ead71540b71d4024bd26c214b7a3a3d0d67bb93"
   integrity sha512-VDPjkWaKY94V3tDPfHCCI/16MBeuMjiPH0cIihS+LVl53jGo1zF/pOkiqfXcxn8D44mGw2om+sIzlsLBUEMQnA==
 
+babel-plugin-react-anonymous-display-name@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/babel-plugin-react-anonymous-display-name/-/babel-plugin-react-anonymous-display-name-0.1.0.tgz#4335bc6f82c407553ecef38b3e08b05248829a77"
+  integrity sha512-RwkaBHoMEHQGj+n9vVsAeRVD3z/5R0cs9KgMgOatKTiZhow8HdN/xqhJXq7qraeeSQT3eFBoY9ZPVwYigVUFzw==
+
 babel-plugin-react-docgen@^4.2.1:
   version "4.2.1"
   resolved "https://registry.npmjs.org/babel-plugin-react-docgen/-/babel-plugin-react-docgen-4.2.1.tgz#7cc8e2f94e8dc057a06e953162f0810e4e72257b"
