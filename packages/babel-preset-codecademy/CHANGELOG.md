@@ -1,3 +1,38 @@
+# v7.0.1 (Thu May 11 2023)
+
+### Release Notes
+
+#### bump babel-plugin-react-anonymous-display-name ([#71](https://github.com/Codecademy/client-modules/pull/71))
+
+updates `babel-plugin-react-anonymous-display-name` dependency
+
+### PR Checklist
+
+- [ ] Related to JIRA ticket: ABC-123
+- [ ] I have run this code to verify it works
+- [ ] This PR includes unit tests for the code change
+
+<!--
+Merging your changes
+
+The "Release Notes" section of the PR description is what will be used in the changelog. Please make sure it describes the changes in a way that is useful to the end users.
+
+Add the correct `releases/*` label to the PR. If you are unsure which label to use, please refer to the README or ask a Web Platform engineer.
+
+-->
+
+---
+
+#### 🐛 Bug Fix
+
+- bump babel-plugin-react-anonymous-display-name [#71](https://github.com/Codecademy/client-modules/pull/71) ([@jakemhiller](https://github.com/jakemhiller))
+
+#### Authors: 1
+
+- Jake Hiller ([@jakemhiller](https://github.com/jakemhiller))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
