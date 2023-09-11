@@ -21,12 +21,12 @@
     "@jridgewell/trace-mapping" "^0.3.9"
 
 "@auto-it/all-contributors@^11.0.1":
-  version "11.0.2"
-  resolved "https://registry.npmjs.org/@auto-it/all-contributors/-/all-contributors-11.0.2.tgz#bfaf6ad0a45796344bee12394e27da61c6360ed6"
-  integrity sha512-Xpqn/aBv9AgTzPbrv3+E2B4/x0jMFFwNwHys2MAz4fxXjqAvhlu1dgnS2LWg/4HttHVzef57/nfEopA+G/5VFg==
+  version "11.0.4"
+  resolved "https://registry.npmjs.org/@auto-it/all-contributors/-/all-contributors-11.0.4.tgz#e60f40bbf12aa2047e384989312654822b9723f6"
+  integrity sha512-6KSomxyNOe7HNq1BX6IV8TK8E+V4h2DDlpMnk4ksyJC0PbS+OkUACEG5z85p6EAhsahTg9rj3YLPXIysGf85hw==
   dependencies:
-    "@auto-it/bot-list" "11.0.2"
-    "@auto-it/core" "11.0.2"
+    "@auto-it/bot-list" "11.0.4"
+    "@auto-it/core" "11.0.4"
     "@octokit/rest" "^18.12.0"
     all-contributors-cli "6.19.0"
     anymatch "^3.1.1"
@@ -38,17 +38,17 @@
     io-ts "^2.1.2"
     tslib "2.1.0"
 
-"@auto-it/bot-list@11.0.2":
-  version "11.0.2"
-  resolved "https://registry.npmjs.org/@auto-it/bot-list/-/bot-list-11.0.2.tgz#6609536fe7b992cb017f742db6699416a75a7a28"
-  integrity sha512-G/jAdpxdlSCmIEuunyAuzK/kPj+Xk2Tv8iWNik3A8Mtsuisi0DJrV+d4BuQBhtxzcZkeW11ZNh5hUHQp8eiDwQ==
+"@auto-it/bot-list@11.0.4":
+  version "11.0.4"
+  resolved "https://registry.npmjs.org/@auto-it/bot-list/-/bot-list-11.0.4.tgz#a247281531bc4ee4bde791515fd6ad98bc48afe0"
+  integrity sha512-f3w9UZ655MLiELUQP28K9Gceptf2vvKdKVRzh2b2ST+PG/srmoxCnHgE/TO9afW7NiuUA1h+hQVyIb0eQ9VSfQ==
 
-"@auto-it/core@11.0.2":
-  version "11.0.2"
-  resolved "https://registry.npmjs.org/@auto-it/core/-/core-11.0.2.tgz#0e5b861e2f28cae277b9e43524b5040b93516f7c"
-  integrity sha512-FOwb4vQsdZwBiWM+5R9UITkfCxXHl8wvlAEnna0Y8v7AGX6Frk9nRjzOP2StrZkjInYFZq3LOdgak86VS57WJA==
+"@auto-it/core@11.0.4":
+  version "11.0.4"
+  resolved "https://registry.npmjs.org/@auto-it/core/-/core-11.0.4.tgz#2a030c4eb58d70a8e74480e1d92b72b5cc824d9c"
+  integrity sha512-oYIByeGeuiM0MhWibbj3Y4Vj8p5Kt1n4g0hKL7Zu7oFlKmAjsZlwbH4z0wEjVTdK2+Eqg2/I1Dj/GgkiSriXgg==
   dependencies:
-    "@auto-it/bot-list" "11.0.2"
+    "@auto-it/bot-list" "11.0.4"
     "@endemolshinegroup/cosmiconfig-typescript-loader" "^3.0.2"
     "@octokit/core" "^3.5.1"
     "@octokit/plugin-enterprise-compatibility" "1.3.0"
@@ -90,24 +90,24 @@
     url-join "^4.0.0"
 
 "@auto-it/first-time-contributor@^11.0.1":
-  version "11.0.2"
-  resolved "https://registry.npmjs.org/@auto-it/first-time-contributor/-/first-time-contributor-11.0.2.tgz#ea45d70e58e55e638e945d605248278bd0161ced"
-  integrity sha512-HnnCyfhdkIP+ZpcyZnzrY7j4aLfmUcocSqPv5Kusi3uAMZ1U+VjK7M24EPP4llQ92RLrwwWpzb+7YgnCqQJf0Q==
+  version "11.0.4"
+  resolved "https://registry.npmjs.org/@auto-it/first-time-contributor/-/first-time-contributor-11.0.4.tgz#cbc20719730be1f808b6b49811684c5a6ce967f7"
+  integrity sha512-pb8tVecwKxN5nUJiKn4NjdRvCuPdqlC4IDhVxxprsvUpmb+pxiGK9fXh/nAHHFCaIrkEWm1FyYmkq3rwfrf3eA==
   dependencies:
-    "@auto-it/bot-list" "11.0.2"
-    "@auto-it/core" "11.0.2"
+    "@auto-it/bot-list" "11.0.4"
+    "@auto-it/core" "11.0.4"
     array.prototype.flatmap "^1.2.2"
     endent "^2.1.0"
     tslib "2.1.0"
     url-join "^4.0.0"
 
-"@auto-it/npm@11.0.2", "@auto-it/npm@^11.0.1":
-  version "11.0.2"
-  resolved "https://registry.npmjs.org/@auto-it/npm/-/npm-11.0.2.tgz#998387ae2424de734a8238f935ef7f0529b83138"
-  integrity sha512-HBXv7xB+N8Fy1TnduHkrLdsZkuZggm4RbzvauL9MGMshpzH2Kz0WixkL8NxNM6//cW9PjuOolt77MNrDwfIS0g==
+"@auto-it/npm@11.0.4", "@auto-it/npm@^11.0.1":
+  version "11.0.4"
+  resolved "https://registry.npmjs.org/@auto-it/npm/-/npm-11.0.4.tgz#67b6bf78fb6d3f814365796f15541b014db73fcb"
+  integrity sha512-7sKGswdhQZ0/EryFhMU8DZV/hKZSZTOhJnNTXBtCGRk7oLjRHjt6XVOWCMOMOCNO/wVn5k5r52DbhAy5V4i0GQ==
   dependencies:
-    "@auto-it/core" "11.0.2"
-    "@auto-it/package-json-utils" "11.0.2"
+    "@auto-it/core" "11.0.4"
+    "@auto-it/package-json-utils" "11.0.4"
     await-to-js "^3.0.0"
     endent "^2.1.0"
     env-ci "^5.0.1"
@@ -121,32 +121,32 @@
     url-join "^4.0.0"
     user-home "^2.0.0"
 
-"@auto-it/package-json-utils@11.0.2":
-  version "11.0.2"
-  resolved "https://registry.npmjs.org/@auto-it/package-json-utils/-/package-json-utils-11.0.2.tgz#cd3b6cb2b19b99607eb77d56cabd10c4819da8bd"
-  integrity sha512-essjpowla4TPWucL80La+H2cEfg+AvEyEJpnAAR7oFDkPQw9q6j3W2LqAYiBUEedU0KEesohgYt7anWwuEmTZA==
+"@auto-it/package-json-utils@11.0.4":
+  version "11.0.4"
+  resolved "https://registry.npmjs.org/@auto-it/package-json-utils/-/package-json-utils-11.0.4.tgz#a3660f28ff8df5111d893d37d60af7058514079a"
+  integrity sha512-Y84CW2QSL1TXkc4cVajODhRFFixDhOGX4JBS/ic3TgeJ94h6QH0Q8so+FxzPwBDWGXmUdLsj8fY/A3n0X09lqA==
   dependencies:
     parse-author "^2.0.0"
     parse-github-url "1.0.2"
 
-"@auto-it/released@11.0.2", "@auto-it/released@^11.0.1":
-  version "11.0.2"
-  resolved "https://registry.npmjs.org/@auto-it/released/-/released-11.0.2.tgz#d4ac680172b71948fcfefb20704dab5f56ddab8a"
-  integrity sha512-RvcHLk9aBJYV+nGwj/orWB/Ztq+1pddCkuXt6126r7fvwe82JwR6NC0ynJh0ZYNRiiA9FNwqNQfINQ7K675bIw==
+"@auto-it/released@11.0.4", "@auto-it/released@^11.0.1":
+  version "11.0.4"
+  resolved "https://registry.npmjs.org/@auto-it/released/-/released-11.0.4.tgz#1c1a4b6c4ce2def28ae10418f848bceacf834685"
+  integrity sha512-BfzCr+rJvONgw5EtsmTfoPtjm7C6Yo+vKDiXtI82EctLfUuADV/wCE/zj5e1nACsELpqhqWfgLySvDu1n6bn6g==
   dependencies:
-    "@auto-it/bot-list" "11.0.2"
-    "@auto-it/core" "11.0.2"
+    "@auto-it/bot-list" "11.0.4"
+    "@auto-it/core" "11.0.4"
     deepmerge "^4.0.0"
     fp-ts "^2.5.3"
     io-ts "^2.1.2"
     tslib "2.1.0"
 
-"@auto-it/version-file@11.0.2":
-  version "11.0.2"
-  resolved "https://registry.npmjs.org/@auto-it/version-file/-/version-file-11.0.2.tgz#5f760bf52481cfd723a068e3461ae2eedba5b9cb"
-  integrity sha512-2vjbqCGV/VNzb5qBern8hzHXIyG0CLSpv6R6P846iuQDEhoM6AEs8YRvLrPW31Z9/eZ0tPp7GVb0xHAKMtGC9w==
+"@auto-it/version-file@11.0.4":
+  version "11.0.4"
+  resolved "https://registry.npmjs.org/@auto-it/version-file/-/version-file-11.0.4.tgz#7281768daef5760add4f9ac3ffeb416791165ac5"
+  integrity sha512-esKwslQPsPjFC96m0lI/MJI12OFjH92KXtVaQEguGIIXAhs7iop9+y5vLXjOtgNOFVBvk/FKTFItq2mV587aiA==
   dependencies:
-    "@auto-it/core" "11.0.2"
+    "@auto-it/core" "11.0.4"
     fp-ts "^2.5.3"
     io-ts "^2.1.2"
     semver "^7.0.0"
@@ -1733,10 +1733,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@eslint/js@8.48.0":
-  version "8.48.0"
-  resolved "https://registry.npmjs.org/@eslint/js/-/js-8.48.0.tgz#642633964e217905436033a2bd08bf322849b7fb"
-  integrity sha512-ZSjtmelB7IJfWD2Fvb7+Z+ChTIKWq6kjda95fLcQKNS5aheVHn4IkfgRQE3sIIzTcSLwLcLZUD9UBt+V7+h+Pw==
+"@eslint/js@8.49.0":
+  version "8.49.0"
+  resolved "https://registry.npmjs.org/@eslint/js/-/js-8.49.0.tgz#86f79756004a97fa4df866835093f1df3d03c333"
+  integrity sha512-1S8uAY/MTJqVx0SC4epBq+N2yhuwtNwLbJYNZyhL2pO1ZVKn5HFXav5T41Ryzy9K9V7ZId2JB2oy/W4aCd9/2w==
 
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
@@ -1833,7 +1833,7 @@
   resolved "https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.2.tgz#30aa825f11d438671d585bd44e7fd564535fc210"
   integrity sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==
 
-"@humanwhocodes/config-array@^0.11.10":
+"@humanwhocodes/config-array@^0.11.11":
   version "0.11.11"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.11.tgz#88a04c570dbbc7dd943e4712429c3df09bc32844"
   integrity sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==
@@ -5631,14 +5631,14 @@ author-regex@^1.0.0:
   integrity sha512-KbWgR8wOYRAPekEmMXrYYdc7BRyhn2Ftk7KWfMUnQ43hFdojWEFRxhhRUm3/OFEdPa1r0KAvTTg9YQK57xTe0g==
 
 auto@^11.0.1:
-  version "11.0.2"
-  resolved "https://registry.npmjs.org/auto/-/auto-11.0.2.tgz#fb66e20cde2b7c1968f5705eec2cc959d3d02ed9"
-  integrity sha512-D+f++K4NXWbEnpc+whYISyS52H/71HtYfAcXnUttjeg0ctkZsuHzNZEYdgoouYPT4IbkTDoxrgZhey1f80v38g==
+  version "11.0.4"
+  resolved "https://registry.npmjs.org/auto/-/auto-11.0.4.tgz#8aeccc8f9a898952aad88df9c70a24583e2a793e"
+  integrity sha512-jDe95fpOHZXRDe0HJMH1FvTrU0f3rXbee0eqNIAR2mB9EcdiWQTj1aF56R/xPyGLxF9y3WXzu38DgiIX9sjoDg==
   dependencies:
-    "@auto-it/core" "11.0.2"
-    "@auto-it/npm" "11.0.2"
-    "@auto-it/released" "11.0.2"
-    "@auto-it/version-file" "11.0.2"
+    "@auto-it/core" "11.0.4"
+    "@auto-it/npm" "11.0.4"
+    "@auto-it/released" "11.0.4"
+    "@auto-it/version-file" "11.0.4"
     await-to-js "^3.0.0"
     chalk "^4.0.0"
     command-line-application "^0.10.1"
@@ -7262,10 +7262,10 @@ core-js-pure@^3.0.0, core-js-pure@^3.8.2:
   resolved "https://registry.npmjs.org/core-js-pure/-/core-js-pure-3.19.2.tgz#26b5bfb503178cff6e3e115bc2ba6c6419383680"
   integrity sha512-5LkcgQEy8pFeVnd/zomkUBSwnmIxuF1C8E9KrMAbOc8f34IBT9RGvTYeNDdp1PnvMJrrVhvk1hg/yVV5h/znlg==
 
-core-js@3.32.1, core-js@^3.0.4, core-js@^3.6.5, core-js@^3.8.2:
-  version "3.32.1"
-  resolved "https://registry.npmjs.org/core-js/-/core-js-3.32.1.tgz#a7d8736a3ed9dd05940c3c4ff32c591bb735be77"
-  integrity sha512-lqufgNn9NLnESg5mQeYsxQP5w7wrViSj0jr/kv6ECQiByzQkrn1MKvV0L3acttpDqfQrHLwr2KCMgX5b8X+lyQ==
+core-js@3.32.2, core-js@^3.0.4, core-js@^3.6.5, core-js@^3.8.2:
+  version "3.32.2"
+  resolved "https://registry.npmjs.org/core-js/-/core-js-3.32.2.tgz#172fb5949ef468f93b4be7841af6ab1f21992db7"
+  integrity sha512-pxXSw1mYZPDGvTQqEc5vgIb83jGQKFGYWY76z4a7weZXUolw3G+OvpZqSRcfYOoOVUQJYEPsWeQK8pKEnUtWxQ==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -8786,15 +8786,15 @@ eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4
   integrity sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag==
 
 eslint@^8.11.0:
-  version "8.48.0"
-  resolved "https://registry.npmjs.org/eslint/-/eslint-8.48.0.tgz#bf9998ba520063907ba7bfe4c480dc8be03c2155"
-  integrity sha512-sb6DLeIuRXxeM1YljSe1KEx9/YYeZFQWcV8Rq9HfigmdDEugjLEVEa1ozDjL6YDjBpQHPJxJzze+alxi4T3OLg==
+  version "8.49.0"
+  resolved "https://registry.npmjs.org/eslint/-/eslint-8.49.0.tgz#09d80a89bdb4edee2efcf6964623af1054bf6d42"
+  integrity sha512-jw03ENfm6VJI0jA9U+8H5zfl5b+FvuU3YYvZRdZHOlU2ggJkxrlkJH4HcDrZpj6YwD8kuYqvQM8LyesoazrSOQ==
   dependencies:
     "@eslint-community/eslint-utils" "^4.2.0"
     "@eslint-community/regexpp" "^4.6.1"
     "@eslint/eslintrc" "^2.1.2"
-    "@eslint/js" "8.48.0"
-    "@humanwhocodes/config-array" "^0.11.10"
+    "@eslint/js" "8.49.0"
+    "@humanwhocodes/config-array" "^0.11.11"
     "@humanwhocodes/module-importer" "^1.0.1"
     "@nodelib/fs.walk" "^1.2.8"
     ajv "^6.12.4"
