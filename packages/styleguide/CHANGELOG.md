@@ -1,3 +1,16 @@
+# v0.6.6 (Wed Dec 06 2023)
+
+#### 🔩 Dependency Updates
+
+- chore(deps-dev): bump the development-dependencies group with 35 updates [#83](https://github.com/Codecademy/client-modules/pull/83) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@jakemhiller](https://github.com/jakemhiller))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Jake Hiller ([@jakemhiller](https://github.com/jakemhiller))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

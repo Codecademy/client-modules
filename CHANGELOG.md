@@ -1,3 +1,27 @@
+# (Wed Dec 06 2023)
+
+#### 🔩 Dependency Updates
+
+- chore(deps-dev): bump the development-dependencies group with 5 updates [#88](https://github.com/Codecademy/client-modules/pull/88) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps): bump json5 from 1.0.1 to 1.0.2 [#85](https://github.com/Codecademy/client-modules/pull/85) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps): bump semver from 5.7.1 to 5.7.2 [#72](https://github.com/Codecademy/client-modules/pull/72) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps): bump word-wrap from 1.2.3 to 1.2.4 [#73](https://github.com/Codecademy/client-modules/pull/73) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- `@codecademy/styleguide@0.6.6`, `@codecademy/webpack-config@6.4.1`
+  - chore(deps-dev): bump the development-dependencies group with 35 updates [#83](https://github.com/Codecademy/client-modules/pull/83) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@jakemhiller](https://github.com/jakemhiller))
+
+#### ⚠️ Pushed to `main`
+
+- ci: update dependabot again ([@jakemhiller](https://github.com/jakemhiller))
+- chore: update dependabot.yml ([@jakemhiller](https://github.com/jakemhiller))
+- chore: try out dependabot grouping ([@jakemhiller](https://github.com/jakemhiller))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Jake Hiller ([@jakemhiller](https://github.com/jakemhiller))
+
+---
+
 # (Thu May 11 2023)
 
 ### Release Notes
