@@ -6,14 +6,9 @@ updates:
       interval: 'daily'
       time: '13:00'
       timezone: 'America/New_York'
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 0
     target-branch: main
     labels:
       - dependencies
       - release/dependencies
     versioning-strategy: increase-if-necessary
-    groups:
-      production-dependencies:
-        dependency-type: 'production'
-      development-dependencies:
-        dependency-type: 'development'
