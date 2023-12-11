@@ -50,11 +50,11 @@
     "lerna": "3.22.1"
   },
   "devDependencies": {
-    "auto": "^11.0.1",
-    "@auto-it/all-contributors": "^11.0.1",
-    "@auto-it/first-time-contributor": "^11.0.1",
-    "@auto-it/npm": "^11.0.1",
-    "@auto-it/released": "^11.0.1",
+    "auto": "^11.0.4",
+    "@auto-it/all-contributors": "^11.0.4",
+    "@auto-it/first-time-contributor": "^11.0.4",
+    "@auto-it/npm": "^11.0.4",
+    "@auto-it/released": "^11.0.4",
     "@babel/cli": "7.13.10",
     "@babel/core": "7.19.6",
     "@babel/preset-typescript": "^7.13.0",
