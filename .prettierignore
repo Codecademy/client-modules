@@ -2,4 +2,3 @@ node_modules
 **/node_modules
 **/dist
 **/tmp
-packages/styleguide/stories/Core/Atoms/Markdown/*.md

@@ -24,8 +24,6 @@
     "clear-modules": "lerna clean -y && rm -rf node_modules",
     "build": "turbo run build --concurrency=3",
     "build-all": "yarn build",
-    "start:storybook": "cd ./packages/styleguide && yarn start",
-    "start": "yarn && yarn start:storybook",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -50,7 +48,7 @@
     "lerna": "3.22.1"
   },
   "devDependencies": {
-    "auto": "^11.0.4",
+    "auto": "^11.1.6",
     "@auto-it/all-contributors": "^11.0.4",
     "@auto-it/first-time-contributor": "^11.0.4",
     "@auto-it/npm": "^11.0.4",
