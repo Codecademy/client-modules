@@ -8,6 +8,7 @@ module.exports = createConfig()
   .cssExtracted()
   .merge({
     optimization: {
+      moduleIds: 'named',
       runtimeChunk: {
         name: 'runtime',
       },
