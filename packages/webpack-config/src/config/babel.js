@@ -5,7 +5,7 @@ const babelConfig = (options) => ({
     rules: [
       merge(
         {
-          test: /\.(mj|j|t)sx?$/,
+          test: /\.(mj|m|j|t)sx?$/,
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
