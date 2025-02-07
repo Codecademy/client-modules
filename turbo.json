@@ -1,6 +1,4 @@
 {
-  "npmClient": "yarn",
-  "baseBranch": "origin/main",
   "pipeline": {
     "build": {
       "dependsOn": ["^build"]
