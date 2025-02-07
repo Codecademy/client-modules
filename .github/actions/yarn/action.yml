@@ -6,8 +6,11 @@ runs:
   steps:
     - name: Setup Node.js
       uses: actions/setup-node@v3
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       with:
         node-version-file: .nvmrc
+        registry-url: https://registry.npmjs.org/
     - name: Custom Cypress Cache Folder
       shell: bash
       run: |
