@@ -45,7 +45,7 @@
     "conventional-changelog-cli": "^2.0.34",
     "conventional-changelog-conventionalcommits": "^4.3.0",
     "gh-pages": "^5.0.0",
-    "lerna": "3.22.1"
+    "lerna": "7.4.2"
   },
   "devDependencies": {
     "auto": "^11.3.0",
@@ -108,7 +108,8 @@
     "react-helmet": "6.1.0",
     "react-test-renderer": "18.2.0",
     "turbo": "^1.1.2",
-    "typescript": "4.4.2"
+    "typescript": "4.4.2",
+    "semver": "7.7.1"
   },
   "packageManager": "yarn@1.22.10"
 }
