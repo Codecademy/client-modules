@@ -1,18 +1,11 @@
 name: 'Restore Yarn Cache'
 description: 'Setup a NodeJS environment and restore cache if any, given a node version'
 
-inputs:
-  token:
-    description: 'NPM Token'
-    required: false
-
 runs:
   using: 'composite'
   steps:
     - name: Setup Node.js
       uses: actions/setup-node@v3
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.token }}
       with:
         node-version-file: .nvmrc
         registry-url: https://registry.npmjs.org/
