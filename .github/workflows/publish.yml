@@ -38,7 +38,11 @@ jobs:
       - uses: ./.github/actions/yarn
 
       - run: yarn turbo run build --concurrency=3
-
+      - name: NPM Auth
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - name: Publish
         env:
           HUSKY_ENABLED: true
