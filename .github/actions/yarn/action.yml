@@ -8,7 +8,8 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version-file: .nvmrc
-        registry-url: https://registry.npmjs.org/
+        registry-url: 'https://registry.npmjs.org'
+        scope: '@codecademy'
     - name: Custom Cypress Cache Folder
       shell: bash
       run: |
