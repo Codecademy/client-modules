@@ -51,6 +51,7 @@
     "webpack-merge": "^4.2.2"
   },
   "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
     "access": "public"
   }
 }
