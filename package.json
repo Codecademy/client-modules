@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "Codecademy Engineers <dev@codecademy.com>",
   "engines": {
-    "node": "^16.17",
+    "node": "^22",
     "yarn": "^1.22"
   },
   "scripts": {
@@ -45,7 +45,7 @@
     "conventional-changelog-cli": "^2.0.34",
     "conventional-changelog-conventionalcommits": "^4.3.0",
     "gh-pages": "^5.0.0",
-    "lerna": "7.4.2"
+    "lerna": "8.1.9"
   },
   "devDependencies": {
     "auto": "^11.3.0",
