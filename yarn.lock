@@ -3483,29 +3483,7 @@ babel-plugin-transform-dynamic-import@^2.1.0:
   dependencies:
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
 
-babel-preset-codecademy@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.npmjs.org/babel-preset-codecademy/-/babel-preset-codecademy-7.0.0.tgz#37a551726032315fe7588b9aa94741badc25059f"
-  integrity sha512-0tAjVN1r9voyz+GLrekJOUcnsRa5szHSx/p2A+Tgfqj96sIEQusPCoh+5oJLB2acGYN7nnvpD8mK6S7jrwhvAA==
-  dependencies:
-    "@babel/plugin-proposal-class-properties" "^7.12.1"
-    "@babel/plugin-proposal-decorators" "^7.12.1"
-    "@babel/plugin-proposal-do-expressions" "^7.12.1"
-    "@babel/plugin-proposal-export-default-from" "^7.12.1"
-    "@babel/plugin-proposal-export-namespace-from" "^7.12.1"
-    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.12.1"
-    "@babel/plugin-proposal-object-rest-spread" "^7.12.1"
-    "@babel/plugin-proposal-optional-chaining" "^7.12.1"
-    "@babel/plugin-syntax-dynamic-import" "^7.8.3"
-    "@babel/plugin-syntax-import-meta" "^7.10.4"
-    "@babel/plugin-transform-destructuring" "^7.12.1"
-    "@babel/plugin-transform-runtime" "^7.12.1"
-    "@babel/preset-env" "^7.12.1"
-    "@babel/preset-react" "^7.18.6"
-    babel-plugin-react-anonymous-display-name "0.0.1"
-    babel-plugin-transform-dynamic-import "^2.1.0"
-
-babel-preset-codecademy@^2.3.0:
+babel-preset-codecademy@2.3.0, babel-preset-codecademy@^2.3.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/babel-preset-codecademy/-/babel-preset-codecademy-2.3.0.tgz#a93a1263ee7b52e31ac250ff3a8c64f247df7a36"
   integrity sha512-hY+lBXbuRoysvIWmbWUAwO6ZAbFzbKXnC2FzzykEzyxkjZ7Dh2Hda6eiJ0P4cT4pdl84lvuJpUc2ALaIjY3RGg==
