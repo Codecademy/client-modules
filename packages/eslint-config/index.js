@@ -24,7 +24,7 @@ module.exports = {
   overrides: [
     // Stories generally have empty functions and other syntax shenanigans for code examples
     {
-      files: ['*.stories.*'],
+      files: ['*.stories.*', '*.stories.ts.*'],
       rules: {
         '@typescript-eslint/no-empty-function': 'off',
       },
