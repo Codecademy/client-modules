@@ -19,6 +19,9 @@ permissions:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
 jobs:
   publish:
     runs-on: ubuntu-22.04
@@ -36,14 +39,13 @@ jobs:
           git config --global push.default current
 
       - uses: ./.github/actions/yarn
-
       - run: yarn turbo run build --concurrency=3
 
       - name: Publish
         env:
           HUSKY_ENABLED: true
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: npx auto shipit
 
   publish-check:
@@ -54,4 +56,4 @@ jobs:
       - run: npx auto pr-check --url "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}?pr=${{github.event.pull_request.number}}"
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN || github.token }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
