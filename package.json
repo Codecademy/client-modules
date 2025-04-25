@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "Codecademy Engineers <dev@codecademy.com>",
   "engines": {
-    "node": "^16.17",
+    "node": "^22.14.0",
     "yarn": "^1.22"
   },
   "scripts": {
