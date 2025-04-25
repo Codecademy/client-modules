@@ -15,7 +15,6 @@ module.exports = {
     'plugin:jsx-a11y/strict',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'airbnb',
     'plugin:@typescript-eslint/recommended',
     'prettier',
     ...localExtends,
