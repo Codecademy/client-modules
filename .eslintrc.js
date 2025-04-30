@@ -16,15 +16,6 @@ module.exports = {
       },
     },
     {
-      files: ['**/jest/*', '**/*.stories.mdx'],
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
-      },
-    },
-    {
       files: ['*.js'],
       rules: {
         //   // We use require many times in this repository, so we need to turn this off.
