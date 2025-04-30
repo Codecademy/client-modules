@@ -42,6 +42,10 @@ tmp
 *.swp
 *.swo
 
+# IDE - Cursor
+.cursor/*
+!.cursor/rules
+
 # Automatic report....json files
 report*.json
 

@@ -64,35 +64,6 @@ The config for Turborepo is located at [/turbo.json](/turbo.json).
 
 To use Turborepo without extra configuration, if your package needs to be compiled, it should have a task called `build` that compiles it's files and puts them into a directory called `dist` inside the package directory. If you need a more complicated setup, you can read the docs and customize the configuration in `turbo.json`.
 
-**Release Labels**
-
-These labels will mark your PR as ready for release. They will trigger a release of the package(s) you changed once your PR is merged.
-
-- **release/major**: Increments the major version number of the package(s) you changed
-- **release/minor**: Increments the minor version number of the package(s) you changed
-- **release/patch**: Increments the patch version number of the package(s) you changed
-- **release/performance**: Increments the patch version number of the package(s) you changed
-
-These labels will not create a release by default, but will if combined with one of the above labels:
-
-- **release/dependencies**: Changes to dependencies
-- **release/internal**: Changes to internal code
-- **release/tests**: Changes to tests
-
-The skip label will prevent a release from being created. You can merge multiple PRs with this label, and then merge a PR without it to create a release from all of them at once.
-
-- **release/skip**: Skips the release process for the package(s) you changed
-
-**Scope**
-
-A scope is optional and consists of a noun describing a section of the codebase surrounded by parenthesis, e.g., feat(Button):
-
-**Breaking Changes**
-
-Using the **release/major** label will bump the major version number of the package(s) you changed, which indicates that your changes are not backwards compatible with previous versions of the package(s).
-
-This will indicate to package consumers that they need to refactor their usage of the module to upgrade.
-
 #### Breaking Changes Release Process
 
 Because client-modules is a separate repository from its consumers, it can be tricky to coordinate technically breaking changes.
