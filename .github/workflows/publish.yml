@@ -38,7 +38,7 @@ jobs:
           git config --global user.email "dev@codecademy.com"
           git config --global user.name "codecademydev"
           git config --global push.default current
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > .npmrc
 
       - uses: ./.github/actions/yarn
 
@@ -50,10 +50,10 @@ jobs:
         env:
           HUSKY_ENABLED: true
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
-          npx lerna publish --yes --canary --dist-tag=alpha.${GITHUB_SHA:0:6} --preid=alpha.${GITHUB_SHA:0:6}
+          npx lerna publish --loglevel=verbose --yes --canary --dist-tag=alpha.${GITHUB_SHA:0:6} --preid=alpha.${GITHUB_SHA:0:6}
 
       - name: Publish
         # Only publish the non-alpha version on main
@@ -61,7 +61,7 @@ jobs:
         env:
           HUSKY_ENABLED: true
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
           npx lerna publish --yes --exact --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github

@@ -1,7 +1,6 @@
 {
   "version": "independent",
   "npmClient": "yarn",
-  "useWorkspaces": true,
   "packages": ["packages/*"],
   "command": {
     "publish": {
@@ -11,5 +10,6 @@
     "version": {
       "changelogPreset": "conventionalcommits"
     }
-  }
+  },
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
