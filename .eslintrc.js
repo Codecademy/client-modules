@@ -25,14 +25,19 @@ module.exports = {
       },
     },
     {
+      files: ['*.js'],
+      rules: {
+        //   // We use require many times in this repository, so we need to turn this off.
+        '@typescript-eslint/no-require-imports': 'off',
+      },
+    },
+    {
       //   // We need to override them here, because as a result of the `extends` command pulling
       //   // in additional plugins, the base rules settings of turning this rules off were NOT
       //   // being respected. By moving them into this override definition, they are properly
       //   // being applied to subsequent plugin imports/extensions. Wild.
       files: ['*.tsx', '*.ts'],
       rules: {
-        //   // We use require many times in this repository, so we need to turn this off.
-        '@typescript-eslint/no-explicit-any': 'off',
         //     // These rules could be useful, but we haven't gotten around to enabling them here
         //     // See WEB-2 for general tracking.
         '@typescript-eslint/no-explicit-any': 'off',
