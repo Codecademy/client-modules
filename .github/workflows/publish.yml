@@ -29,29 +29,39 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
 
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v8
+
       - name: Set git user
         run: |
           git config --global user.email "dev@codecademy.com"
           git config --global user.name "codecademydev"
           git config --global push.default current
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
       - uses: ./.github/actions/yarn
 
       - run: yarn turbo run build --concurrency=3
 
-      - name: Publish
+      - name: Publish Alpha
+        # Only publish alpha on non-main branches
+        if: steps.branch-name.outputs.is_default != 'true'
         env:
           HUSKY_ENABLED: true
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx auto shipit
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npx lerna publish --yes --canary --dist-tag=alpha.${GITHUB_SHA:0:6} --preid=alpha.${GITHUB_SHA:0:6}
 
-  publish-check:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/yarn
-      - run: npx auto pr-check --url "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}?pr=${{github.event.pull_request.number}}"
+      - name: Publish
+        # Only publish the non-alpha version on main
+        if: steps.branch-name.outputs.is_default == 'true'
         env:
-          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN || github.token }}
+          HUSKY_ENABLED: true
+          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npx lerna publish --yes --exact --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
