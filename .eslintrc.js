@@ -16,15 +16,6 @@ module.exports = {
       },
     },
     {
-      files: ['**/jest/*', '**/*.stories.mdx'],
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
-      },
-    },
-    {
       //   // We need to override them here, because as a result of the `extends` command pulling
       //   // in additional plugins, the base rules settings of turning this rules off were NOT
       //   // being respected. By moving them into this override definition, they are properly
