@@ -73,7 +73,6 @@ module.exports = {
   plugins: [
     'import',
     'jest',
-    'jest-react',
     'jsx-a11y',
     'no-only-tests',
     'react',
@@ -151,6 +150,8 @@ module.exports = {
     'prefer-template': 'off',
     'default-props-match-prop-types': 'off',
     'react/destructuring-assignment': 'off',
+    'react/display-name': ['off', { ignoreTranspilerName: false }],
+    'react/forbid-dom-props': ['off', { forbid: [] }],
     'react/jsx-filename-extension': 'off',
     'react/jsx-no-bind': 'off',
     'react/jsx-one-expression-per-line': 'off',
