@@ -38,6 +38,7 @@ jobs:
           git config --global user.email "dev@codecademy.com"
           git config --global user.name "codecademydev"
           git config --global push.default current
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
       - uses: ./.github/actions/yarn
 
