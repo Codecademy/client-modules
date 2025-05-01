@@ -37,7 +37,7 @@
   "dependencies": {
     "babel-loader": "^8.2.5",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
-    "css-loader": "^3.6.0",
+    "css-loader": "^7.1.2",
     "cssnano": "^4.1.11",
     "file-loader": "^3.0.1",
     "mini-css-extract-plugin": "^2.9.0",
