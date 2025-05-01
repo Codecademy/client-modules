@@ -54,7 +54,7 @@ const scssLoaderDefaults = {
   loader: 'sass-loader',
   options: {
     sourceMap: true,
-    silenceDeprecations: ['legacy-js-api'],
+    silenceDeprecations: ['import', 'legacy-js-api'],
   },
 };
 
