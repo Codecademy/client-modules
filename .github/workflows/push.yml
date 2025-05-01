@@ -13,4 +13,4 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        command: ['format:verify', 'lint', 'verify']
+        command: ['format:verify', 'lint', 'verify', 'syncpack:lint']

@@ -108,6 +108,7 @@ module.exports = {
     '@typescript-eslint/no-magic-numbers': 'off',
     '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/typedef': 'off',
+    '@typescript-eslint/no-require-imports': 'off',
 
     'arrow-body-style': 'off',
     camelcase: 'off',
