@@ -10,6 +10,8 @@ module.exports = {
 
   extends: [
     'eslint:recommended',
+    'plugin:import/errors',
+    'plugin:import/typescript',
     'plugin:jsx-a11y/strict',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
@@ -65,6 +67,7 @@ module.exports = {
   ],
 
   plugins: [
+    'import',
     'jest',
     'jsx-a11y',
     'no-only-tests',
@@ -117,7 +120,11 @@ module.exports = {
     'default-case': 'off',
     'func-names': 'off',
     'global-require': 'off',
-
+    // 'import/export': 'off',
+    // 'import/extensions': 'off',
+    // 'import/no-default-export': 'off',
+    // 'import/no-unresolved': 'off',
+    // 'import/prefer-default-export': 'off',
     'lines-between-class-members': 'off',
     'max-classes-per-file': 'off',
     'no-bitwise': 'off',
