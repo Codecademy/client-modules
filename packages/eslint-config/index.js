@@ -15,7 +15,6 @@ module.exports = {
     'plugin:jsx-a11y/strict',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'airbnb',
     'plugin:@typescript-eslint/recommended',
     'prettier',
     ...localExtends,
@@ -40,10 +39,6 @@ module.exports = {
         '**/__tests__/*',
       ],
       rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
@@ -67,6 +62,19 @@ module.exports = {
             },
           },
         ],
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          {
+            vars: 'all',
+            varsIgnorePattern: '^_',
+            args: 'after-used',
+            argsIgnorePattern: '^_',
+            caughtErrors: 'none',
+            caughtErrorsIgnorePattern: '^_',
+            destructuredArrayIgnorePattern: '^_',
+            ignoreRestSiblings: true,
+          },
+        ],
       },
     },
   ],
@@ -74,7 +82,6 @@ module.exports = {
   plugins: [
     'import',
     'jest',
-    'jest-react',
     'jsx-a11y',
     'no-only-tests',
     'react',
@@ -117,6 +124,7 @@ module.exports = {
     '@typescript-eslint/no-magic-numbers': 'off',
     '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/typedef': 'off',
+    '@typescript-eslint/no-require-imports': 'off',
 
     'arrow-body-style': 'off',
     camelcase: 'off',
@@ -152,6 +160,8 @@ module.exports = {
     'prefer-template': 'off',
     'default-props-match-prop-types': 'off',
     'react/destructuring-assignment': 'off',
+    'react/display-name': ['off', { ignoreTranspilerName: false }],
+    'react/forbid-dom-props': ['off', { forbid: [] }],
     'react/jsx-filename-extension': 'off',
     'react/jsx-no-bind': 'off',
     'react/jsx-one-expression-per-line': 'off',

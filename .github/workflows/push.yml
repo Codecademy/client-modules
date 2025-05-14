@@ -1,16 +1,16 @@
 name: Push
 
+on: push
+
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: Codecademy/run-on-yarn@v2
-        with:
-          command: ${{ matrix.command }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/yarn
+      - run: yarn ${{ matrix.command }}
 
     strategy:
       fail-fast: false
       matrix:
-        command: ['format:verify', 'lint', 'verify']
-
-on: push
+        command: ['format:verify', 'lint', 'verify', 'syncpack:lint']

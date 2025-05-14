@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "Codecademy Engineers <dev@codecademy.com>",
   "engines": {
-    "node": "^16.17",
+    "node": "^22.14.0",
     "yarn": "^1.22"
   },
   "scripts": {
@@ -24,7 +24,8 @@
     "clear-modules": "lerna clean -y && rm -rf node_modules",
     "build": "turbo run build --concurrency=3",
     "build-all": "yarn build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "syncpack:lint": "syncpack lint"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json}": [
@@ -45,13 +46,13 @@
     "conventional-changelog-cli": "^2.0.34",
     "conventional-changelog-conventionalcommits": "^4.3.0",
     "gh-pages": "^5.0.0",
-    "lerna": "3.22.1"
+    "lerna": "8.2.2"
   },
   "devDependencies": {
     "@babel/cli": "7.13.10",
     "@babel/core": "7.19.6",
     "@babel/preset-typescript": "^7.13.0",
-    "@codecademy/webpack-config": "^6.0.0",
+    "@codecademy/webpack-config": "6.4.2",
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/jest": "^11.3.0",
     "@emotion/react": "^11.4.0",
@@ -69,26 +70,25 @@
     "@types/react": "^16.9",
     "@types/react-dom": "^16.9",
     "@types/stylis": "^4.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.15.0",
-    "@typescript-eslint/parser": "^5.15.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@typescript-eslint/parser": "^8.31.0",
     "babel-jest": "29.6.4",
     "babel-plugin-macros": "3.1.0",
-    "babel-preset-codecademy": "2.3.0",
+    "babel-preset-codecademy": "7.0.1",
     "component-test-setup": "^0.3.1",
     "core-js": "3.32.1",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.7",
     "enzyme-to-json": "3.6.2",
-    "eslint": "^8.11.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-jest": "^25.2.4",
+    "eslint": "^8.57.1",
+    "eslint-plugin-jest": "^28.11.0",
     "eslint-plugin-jest-react": "^0.1.0",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-no-only-tests": "^2.6.0",
-    "eslint-plugin-react": "^7.26.1",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-unused-imports": "^1.1.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-no-only-tests": "^3.3.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "husky": "^8.0.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "^29.6.4",
@@ -102,8 +102,10 @@
     "react-dom": "16.13.1",
     "react-helmet": "6.1.0",
     "react-test-renderer": "18.2.0",
+    "semver": "7.7.1",
+    "syncpack": "^14.0.0-alpha.10",
     "turbo": "^1.1.2",
-    "typescript": "4.4.2"
+    "typescript": "5.8.3"
   },
   "packageManager": "yarn@1.22.10"
 }
